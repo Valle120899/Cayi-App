@@ -1,8 +1,9 @@
-package com.example.trash
+package com.example.Cayi
 
 import android.app.Application
-import com.example.trash.utils.SAMPLE_CONFIG_FILE_NAME
-import com.example.trash.utils.getAllUsersFromFile
+import com.example.Cayi.utils.SAMPLE_CONFIG_FILE_NAME
+import com.example.Cayi.utils.getAllUsersFromFile
+import com.example.trash.R
 import com.quickblox.auth.session.QBSettings
 import com.quickblox.users.model.QBUser
 
@@ -26,7 +27,10 @@ class App : Application() {
     }
 
     private fun checkUserJson() {
-        val users = getAllUsersFromFile(SAMPLE_CONFIG_FILE_NAME, this)
+        val users = getAllUsersFromFile(
+            SAMPLE_CONFIG_FILE_NAME,
+            this
+        )
         if (users.size !in 2..4 || isUsersEmpty(users))
             throw AssertionError(getString(R.string.error_users_empty))
     }

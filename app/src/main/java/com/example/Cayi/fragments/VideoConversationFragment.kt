@@ -14,11 +14,11 @@ import androidx.core.util.isEmpty
 import androidx.core.util.putAll
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trash.R
-import com.example.trash.fragments.BaseToolBarFragment
-import com.example.trash.utils.EXTRA_IS_INCOMING_CALL
-import com.example.trash.utils.EXTRA_QB_USERS_LIST
+import com.example.Cayi.fragments.BaseToolBarFragment
+import com.example.Cayi.utils.EXTRA_IS_INCOMING_CALL
+import com.example.Cayi.utils.EXTRA_QB_USERS_LIST
 import com.quickblox.chat.QBChatService
-import com.example.trash.adapters.OpponentsCallAdapter
+import com.example.Cayi.adapters.OpponentsCallAdapter
 import com.quickblox.users.model.QBUser
 import com.quickblox.videochat.webrtc.AppRTCAudioManager
 import com.quickblox.videochat.webrtc.BaseSession
@@ -201,7 +201,12 @@ class VideoConversationFragment : BaseToolBarFragment(), QBRTCSessionStateCallba
         val cellSizeHeight = screenHeight()
 
         val qbUsers = ArrayList<QBUser>()
-        opponentsAdapter = OpponentsCallAdapter(context!!, qbUsers, cellSizeWidth, cellSizeHeight)
+        opponentsAdapter = OpponentsCallAdapter(
+            context!!,
+            qbUsers,
+            cellSizeWidth,
+            cellSizeHeight
+        )
         recycler_view_opponents.adapter = opponentsAdapter
     }
 

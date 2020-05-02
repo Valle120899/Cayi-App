@@ -1,4 +1,4 @@
-package com.example.trash.utils
+package com.example.Cayi.utils
 
 
 const val SAMPLE_CONFIG_FILE_NAME = "user_config.json"

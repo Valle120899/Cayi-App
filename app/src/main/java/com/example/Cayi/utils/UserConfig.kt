@@ -1,4 +1,4 @@
-package com.example.trash.utils
+package com.example.Cayi.utils
 
 import android.content.Context
 import com.google.gson.Gson

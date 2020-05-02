@@ -1,4 +1,4 @@
-package com.example.trash.activities
+package com.example.Cayi.activities
 
 import android.Manifest
 import android.app.Activity
@@ -15,7 +15,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.os.postDelayed
 import androidx.fragment.app.Fragment
 import com.example.trash.R
-import com.example.trash.fragments.PreviewCallFragment
+import com.example.Cayi.fragments.PreviewCallFragment
+import com.example.Cayi.utils.*
 import com.example.trash.utils.*
 import com.quickblox.chat.QBChatService
 import com.quickblox.chat.QBWebRTCSignaling
@@ -125,7 +126,9 @@ class CallActivity : AppCompatActivity(), QBRTCClientSessionCallbacks, PreviewCa
     }
 
     private fun requestCameraPermission() {
-        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO), PERMISSIONS_FOR_CALL_REQUEST)
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO),
+            PERMISSIONS_FOR_CALL_REQUEST
+        )
     }
 
     private fun initPreviewFragIfNeed() {
@@ -137,17 +140,31 @@ class CallActivity : AppCompatActivity(), QBRTCClientSessionCallbacks, PreviewCa
     }
 
     private fun initPreviewFragDelayed() {
-        Handler().postDelayed(CAMERA_RELEASE_DELAY) { popBackStackFragment(supportFragmentManager) }
+        Handler().postDelayed(CAMERA_RELEASE_DELAY) {
+            popBackStackFragment(
+                supportFragmentManager
+            )
+        }
     }
 
     private fun initPreviewFragment() {
         val previewFragment = PreviewCallFragment.newInstance(opponents)
-        addFragment(supportFragmentManager, R.id.fragment_container, previewFragment, PreviewCallFragment::class.java.simpleName)
+        addFragment(
+            supportFragmentManager,
+            R.id.fragment_container,
+            previewFragment,
+            PreviewCallFragment::class.java.simpleName
+        )
     }
 
     private fun initConversationFragment(incoming: Boolean) {
         val conversationFragment = VideoConversationFragment.newInstance(incoming, opponents)
-        addFragmentWithBackStack(supportFragmentManager, R.id.fragment_container, conversationFragment, VideoConversationFragment::class.java.simpleName)
+        addFragmentWithBackStack(
+            supportFragmentManager,
+            R.id.fragment_container,
+            conversationFragment,
+            VideoConversationFragment::class.java.simpleName
+        )
     }
 
     private fun updatePreviewCallButtons(show: Boolean) {

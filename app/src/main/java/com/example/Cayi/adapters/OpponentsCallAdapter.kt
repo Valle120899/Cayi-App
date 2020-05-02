@@ -1,4 +1,4 @@
-package com.example.trash.adapters
+package com.example.Cayi.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -53,7 +53,8 @@ class OpponentsCallAdapter(context: Context, val opponents: ArrayList<QBUser>, v
        // holder.itemView.opponent_name.text = user.fullName ?: user.login
     }
 
-    class ViewHolder(override val containerView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(containerView), LayoutContainer {
+    class ViewHolder(override val containerView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(containerView),
+        LayoutContainer {
         var userId: Int = 0
     }
 

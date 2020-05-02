@@ -1,4 +1,4 @@
-package com.example.trash.fragments
+package com.example.Cayi.fragments
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -25,7 +25,10 @@ abstract class BaseToolBarFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
-        mainHandler = FragmentLifeCycleHandler(this)
+        mainHandler =
+            FragmentLifeCycleHandler(
+                this
+            )
         super.onCreate(savedInstanceState)
     }
 

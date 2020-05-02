@@ -1,4 +1,4 @@
-package com.example.trash.view
+package com.example.Cayi.view
 
 import android.app.Activity
 import android.hardware.Camera
@@ -121,7 +121,11 @@ class CameraPreview(val activity: Activity, val cameraId: Int) : SurfaceView(act
         }
         val displayRotation = activity.windowManager.defaultDisplay
                 .rotation
-        val orientation = calculatePreviewOrientation(cameraId, displayRotation)
+        val orientation =
+            calculatePreviewOrientation(
+                cameraId,
+                displayRotation
+            )
         val parameters = mCamera!!.parameters
         parameters.setPreviewSize(mPreviewSize!!.width, mPreviewSize!!.height)
         mCamera!!.parameters = parameters

@@ -1,4 +1,4 @@
-package com.example.trash.fragments
+package com.example.Cayi.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -12,9 +12,9 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import com.example.trash.R
-import com.example.trash.utils.EXTRA_QB_USERS_LIST
-import com.example.trash.utils.MAX_OPPONENTS_COUNT
-import com.example.trash.view.CameraPreview
+import com.example.Cayi.utils.EXTRA_QB_USERS_LIST
+import com.example.Cayi.utils.MAX_OPPONENTS_COUNT
+import com.example.Cayi.view.CameraPreview
 import com.quickblox.chat.QBChatService
 import com.quickblox.users.model.QBUser
 import com.quickblox.videochat.webrtc.QBRTCClient
@@ -110,7 +110,8 @@ class PreviewCallFragment : BaseToolBarFragment() {
     private fun startCall() {
         if (opponents.size > MAX_OPPONENTS_COUNT) {
             Toast.makeText(activity, String.format(getString(R.string.error_max_opponents_count),
-                MAX_OPPONENTS_COUNT), Toast.LENGTH_LONG).show()
+                MAX_OPPONENTS_COUNT
+            ), Toast.LENGTH_LONG).show()
             return
         }
 
@@ -130,7 +131,10 @@ class PreviewCallFragment : BaseToolBarFragment() {
     }
 
     private fun startCameraPreview() {
-        cameraPreview = CameraPreview(activity!!, Camera.CameraInfo.CAMERA_FACING_FRONT)
+        cameraPreview = CameraPreview(
+            activity!!,
+            Camera.CameraInfo.CAMERA_FACING_FRONT
+        )
         camera_preview.addView(cameraPreview)
     }
 

@@ -1,4 +1,4 @@
-package com.example.trash.activities
+package com.example.Cayi.activities
 
 import android.app.ProgressDialog
 import android.content.Context
@@ -11,9 +11,9 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.annotation.StringRes
 import com.example.trash.R
-import com.example.trash.utils.EXTRA_QB_USERS_LIST
-import com.example.trash.utils.SAMPLE_CONFIG_FILE_NAME
-import com.example.trash.utils.getAllUsersFromFile
+import com.example.Cayi.utils.EXTRA_QB_USERS_LIST
+import com.example.Cayi.utils.SAMPLE_CONFIG_FILE_NAME
+import com.example.Cayi.utils.getAllUsersFromFile
 import com.quickblox.auth.session.QBSettings
 import com.quickblox.chat.QBChatService
 import com.quickblox.core.LogLevel
@@ -47,7 +47,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initQBUsers() {
-        users = getAllUsersFromFile(SAMPLE_CONFIG_FILE_NAME, this)
+        users = getAllUsersFromFile(
+            SAMPLE_CONFIG_FILE_NAME,
+            this
+        )
     }
 
     private fun initUserAdapter() {
