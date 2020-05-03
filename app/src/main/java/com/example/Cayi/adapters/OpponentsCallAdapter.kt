@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import com.example.trash.R
+import com.example.Cayi.R
 import com.quickblox.users.model.QBUser
 import kotlinx.android.synthetic.main.list_item_opponent_from_call.view.*
 

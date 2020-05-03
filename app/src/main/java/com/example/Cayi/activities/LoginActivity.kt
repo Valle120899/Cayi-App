@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
 import androidx.annotation.StringRes
-import com.example.trash.R
+import com.example.Cayi.R
 import com.example.Cayi.utils.EXTRA_QB_USERS_LIST
 import com.example.Cayi.utils.SAMPLE_CONFIG_FILE_NAME
 import com.example.Cayi.utils.getAllUsersFromFile

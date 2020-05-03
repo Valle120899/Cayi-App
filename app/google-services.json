@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "395933935862",
+    "firebase_url": "https://cayiapp.firebaseio.com",
+    "project_id": "cayiapp",
+    "storage_bucket": "cayiapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395933935862:android:b11e9ea6b14d3fb58ee4d7",
+        "android_client_info": {
+          "package_name": "com.example.Cayi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395933935862-uorvj1q5r0p4sc0c68g2pvvsug37tunh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJd5zTnrgV0iXV0AwHTYmtlCECnpYHEvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395933935862-uorvj1q5r0p4sc0c68g2pvvsug37tunh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,4 @@
-package com.example.trash
+package com.example.Cayi
 
 import org.junit.Test
 

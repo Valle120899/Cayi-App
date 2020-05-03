@@ -3,7 +3,6 @@ package com.example.Cayi
 import android.app.Application
 import com.example.Cayi.utils.SAMPLE_CONFIG_FILE_NAME
 import com.example.Cayi.utils.getAllUsersFromFile
-import com.example.trash.R
 import com.quickblox.auth.session.QBSettings
 import com.quickblox.users.model.QBUser
 

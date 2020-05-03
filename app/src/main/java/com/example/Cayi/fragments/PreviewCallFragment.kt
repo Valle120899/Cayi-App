@@ -11,7 +11,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import com.example.trash.R
+import com.example.Cayi.R
 import com.example.Cayi.utils.EXTRA_QB_USERS_LIST
 import com.example.Cayi.utils.MAX_OPPONENTS_COUNT
 import com.example.Cayi.view.CameraPreview

@@ -14,10 +14,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.os.postDelayed
 import androidx.fragment.app.Fragment
-import com.example.trash.R
+import com.example.Cayi.R
 import com.example.Cayi.fragments.PreviewCallFragment
 import com.example.Cayi.utils.*
-import com.example.trash.utils.*
 import com.quickblox.chat.QBChatService
 import com.quickblox.chat.QBWebRTCSignaling
 import com.quickblox.sample.videochatkotlin.fragments.VideoConversationFragment
