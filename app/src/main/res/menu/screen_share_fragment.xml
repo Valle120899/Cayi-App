@@ -4,6 +4,7 @@
     <item
         android:id="@+id/stop_screen_share"
         android:checkable="true"
-        android:title="@string/action_stop_share"
+        android:icon="@drawable/ic_stop_screenshare"
+        android:title="@string/stop_share"
         app:showAsAction="ifRoom" />
 </menu>

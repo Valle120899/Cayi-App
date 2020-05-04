@@ -1,23 +1,12 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
-    ext{
-        kotlin_version = '1.3.21'
-        navigationVersion = '2.3.0-alpha01'
-        anko_version='0.10.8'
-
-    }
     repositories {
         google()
         jcenter()
-        
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.3'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.google.gms:google-services:4.3.3'
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath 'com.google.gms:google-services:4.1.0'
     }
 }
 
@@ -32,50 +21,37 @@ allprojects {
 }
 
 ext {
-    compileSdkVersion = 28
-    buildToolsVersion = "28.0.3"
-
-    minSdkVersion = 14
-    targetSdkVersion = 28
-
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    dimensionDefault = 'default'
 
     lintAbortOnError = false
 
     // QuickBlox SDK version
-    qbChatAdapterVersion = '2.0'
-    qbSdkVersion = '3.9.0'
+    qbSdkVersion = '3.9.2'
 
-    versionCode = 381
-    versionName = '3.9.0'
+    //Firebase
+    firebaseCoreVersion = '16.0.8'
 
-    testRunnerVersion = "1.0.2"
+    //Glide
+    glideVersion = '3.6.1'
 
-    // Dependency versions
-    playServicesVersion = '16.0.0'
-
-    constraintLayoutAndroidXVersion = '1.1.3'
-    viewPagerAndroidXVersion = '1.0.0'
-    fragmentAndroidXVersion = '1.0.0'
-    lifecycleViewmodelAndroidXVersion = '1.0.0'
-    coreKtxVersion = '1.0.0'
-
-    rxAndroidVersion = '1.2.1'
+    //Material
     materialVersion = '1.0.0'
 
-    glideVersion = '3.6.1'
-    pullToRefreshVersion = '3.2.3'
+    //RobotoTextView
     robotoTextViewVersion = '4.0.0'
+
+    //Android X
+    fragmentAndroidXVersion = '1.0.0'
+    lifecycleViewmodelAndroidXVersion = '1.0.0'
+    coreKtxVersion = '1.0.1'
+
+    //Crashlytics
     crashlyticsVersion = '2.9.5'
-    fabricToolsVersion = '1.25.4'
-    kotlinGradlePlugin = '1.2.71'
-    stickylistheadersVersion = '0.4.2'
-    swipyVersion = '1.2.3'
 
-    dimensionDefault = 'default'
-}
+    //Fabric
+    fabricToolsVersion = '1.27.0'
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+    //Kotlin
+    kotlinGradlePluginVersion = '1.2.71'
+    kotlinReflectVersion = '1.2.71'
 }

@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@android:id/text1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/color_grey"
-    android:gravity="center"
-    android:minHeight="?android:attr/listPreferredItemHeightSmall"
-    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
-    android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
-    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-    android:paddingRight="?android:attr/listPreferredItemPaddingRight"
-    android:textAppearance="?android:attr/textAppearanceListItemSmall"
-    tools:text="@string/user" />
+    android:id="@+id/linear_layout_root"
+    style="@style/ListItem"
+    tools:ignore="RtlHardcoded">
+
+    <ImageView
+        android:id="@+id/image_user"
+        style="@style/UserIconStyle" />
+
+    <TextView
+        android:id="@+id/text_user_login"
+        style="@style/UserTitleStyle"
+        tools:text="Alexander" />
+
+    <CheckBox
+        android:id="@+id/checkbox_user"
+        style="@style/UserCheckboxStyle"
+        tools:checked="true" />
+</LinearLayout>
