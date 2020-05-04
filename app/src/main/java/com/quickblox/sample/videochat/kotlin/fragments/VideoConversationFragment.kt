@@ -9,12 +9,12 @@ import android.os.SystemClock
 import android.util.Log
 import android.util.SparseArray
 import android.view.*
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
-import android.widget.ToggleButton
+import android.widget.*
 import androidx.annotation.DimenRes
 import androidx.core.content.ContextCompat
+import androidx.core.view.isInvisible
+import androidx.databinding.BindingConversion
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.quickblox.sample.videochat.kotlin.R
@@ -31,9 +31,11 @@ import com.quickblox.videochat.webrtc.callbacks.QBRTCSessionEventsCallback
 import com.quickblox.videochat.webrtc.callbacks.QBRTCSessionStateCallback
 import com.quickblox.videochat.webrtc.view.QBRTCSurfaceView
 import com.quickblox.videochat.webrtc.view.QBRTCVideoTrack
+import kotlinx.android.synthetic.*
 import org.webrtc.CameraVideoCapturer
 import org.webrtc.RendererCommon
 import org.webrtc.SurfaceViewRenderer
+import java.io.BufferedReader
 import java.io.Serializable
 import java.util.*
 
@@ -74,10 +76,18 @@ class VideoConversationFragment : BaseConversationFragment(), Serializable,
     private var isCurrentCameraFront: Boolean = false
     private var isLocalVideoFullScreen: Boolean = false
 
+    private lateinit var Verdad:TextView
+    private lateinit var Pregunta:TextView
+    private lateinit var Reto:TextView
+    private lateinit var Conf:TextView
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         parentView = super.onCreateView(inflater, container, savedInstanceState)
+
         return parentView
     }
+
 
     override fun configureOutgoingScreen() {
         val context = activity!!
@@ -196,6 +206,35 @@ class VideoConversationFragment : BaseConversationFragment(), Serializable,
             })
         }
         connectionStatusLocal = view.findViewById(R.id.connection_status_local)
+
+        //Parte de inicializacion
+
+        Verdad = view.findViewById(R.id.Verdad)
+        Pregunta = view.findViewById(R.id.Pregunta)
+        Reto = view.findViewById(R.id.Reto)
+        Conf = view.findViewById(R.id.Confirmar)
+
+        fun hide(){
+            Verdad.visibility = View.INVISIBLE
+            Reto.visibility = View.INVISIBLE
+            Conf.visibility = View.VISIBLE
+        }
+        Verdad.setOnClickListener(){
+            Pregunta.text="Hola"
+            hide()
+        }
+        Reto.setOnClickListener(){
+            Pregunta.text="Adios"
+            hide()
+        }
+        Conf.setOnClickListener(){
+            Pregunta.text=""
+            Verdad.visibility = View.VISIBLE
+            Reto.visibility = View.VISIBLE
+            Conf.visibility = View.INVISIBLE
+        }
+
+        //Fin de la inicializacion
 
         cameraToggle = view.findViewById(R.id.toggle_camera)
         cameraToggle.visibility = View.VISIBLE

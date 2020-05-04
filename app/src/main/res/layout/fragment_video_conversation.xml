@@ -59,15 +59,54 @@
         android:layout_alignParentBottom="true" />
 
     <TextView
+        android:id="@+id/Pregunta"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fontFamily="@font/bowlby_one_sc"
-        android:gravity="center"
+        android:gravity="top"
         android:text="Texto prueba"
         android:textAlignment="center"
         android:textColor="@android:color/holo_red_dark"
+        android:textSize="36dp"
+        tools:ignore="RtlCompat" />
 
 
-        android:textSize="36dp" />
+    <TextView
+        android:id="@+id/Verdad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="normal|italic"
+        android:text="Verdad"
+        android:layout_below="@id/Confirmar"
+        />
+
+    <TextView
+        android:id="@+id/Reto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="normal|italic"
+        android:text="Reto"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:id="@+id/Confirmar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="normal|italic"
+        android:text="Confirmar"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        />
+
+
+
+
+
+
 
 </RelativeLayout>

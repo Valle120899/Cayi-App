@@ -33,6 +33,8 @@ class App : Application() {
         initFabric()
         checkCredentials()
         initCredentials()
+
+
     }
 
     private fun initFabric() {
