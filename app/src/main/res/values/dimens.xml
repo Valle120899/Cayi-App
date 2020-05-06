@@ -73,6 +73,5 @@
     <!--Pager fragment-->
     <dimen name="pager_image_width">400dp</dimen>
     <dimen name="pager_image_height">500dp</dimen>
-    <dimen name="Version_Size">20sp</dimen>
 
 </resources>
