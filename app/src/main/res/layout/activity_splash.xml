@@ -1,29 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_root"
     style="@style/MatchParent"
+    android:background="#55D6BE"
     tools:context=".activities.SplashActivity">
 
-    <LinearLayout
-        style="@style/WrapContent"
-        android:layout_centerInParent="true"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-
-        <com.devspark.robototextview.widget.RobotoTextView
-            android:id="@+id/text_splash_app_title"
-            style="@style/SplashAppTitleStyle"
-            tools:text="Cayi" />
-
-        <com.devspark.robototextview.widget.RobotoTextView
-            android:id="@+id/text_splash_app_version"
-            style="@style/SplashAppVersionStyle"
-            android:layout_marginTop="20dp"
-            tools:text="1.0.0" />
-    </LinearLayout>
-
     <ImageView
-        style="@style/SplashLogoStyle"
-        android:layout_marginBottom="40dp" />
+        android:id="@+id/Cayi_Logo"
+        android:layout_width="wrap_content"
+        android:layout_height="286dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="67dp"
+        android:layout_marginLeft="67dp"
+        android:layout_marginTop="226dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginRight="58dp"
+        android:layout_marginBottom="219dp"
+        app:srcCompat="@mipmap/ic_launcher_Cayi" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="148dp"
+        android:layout_marginLeft="148dp"
+        android:layout_marginEnd="145dp"
+        android:layout_marginRight="145dp"
+        android:layout_marginBottom="25dp"
+        android:text="@string/Version"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/Version_Size" />
+
+
 </RelativeLayout>
