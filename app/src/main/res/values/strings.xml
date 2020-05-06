@@ -215,5 +215,6 @@
     <string name="error_max_opponents_count">You can select up to %d opponents</string>
     <string name="error_permission_video">You should allow Camera permission</string>
     <string name="error_permission_audio">You should allow Microphone permission</string>
+    <string name="Version">Version 1.0.0</string>
 
 </resources>
