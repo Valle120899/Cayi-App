@@ -25,6 +25,7 @@ class LoginActivity : BaseActivity() {
 
     private lateinit var userLoginEditText: EditText
     private lateinit var userFullNameEditText: EditText
+    private lateinit var Password: EditText
 
     private lateinit var user: QBUser
 
@@ -46,6 +47,9 @@ class LoginActivity : BaseActivity() {
 
         userFullNameEditText = findViewById(R.id.userFullNameEditText)
         userFullNameEditText.addTextChangedListener(LoginEditTextWatcher(userFullNameEditText))
+
+        Password = findViewById(R.id.Password)
+        Password.addTextChangedListener(LoginEditTextWatcher(Password))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -75,9 +79,14 @@ class LoginActivity : BaseActivity() {
         return isFoolNameValid(this, userFullNameEditText)
     }
 
+    private fun isEnteredPasswordValid(): Boolean {
+        return isPasswordValid(this, Password)
+    }
+
     private fun hideKeyboard() {
         hideKeyboard(userLoginEditText)
         hideKeyboard(userFullNameEditText)
+        hideKeyboard(Password)
     }
 
     private fun signUpNewUser(newUser: QBUser) {
@@ -100,7 +109,7 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun loginToChat(qbUser: QBUser) {
-        qbUser.password = DEFAULT_USER_PASSWORD
+        qbUser.password = Password.text.toString()
         user = qbUser
         startLoginService(qbUser)
     }
@@ -111,7 +120,7 @@ class LoginActivity : BaseActivity() {
         val userFullName = userFullNameEditText.text.toString()
         qbUser.login = userLogin
         qbUser.fullName = userFullName
-        qbUser.password = DEFAULT_USER_PASSWORD
+        qbUser.password = Password.text.toString()
         return qbUser
     }
 
@@ -137,6 +146,7 @@ class LoginActivity : BaseActivity() {
                 longToast(getString(R.string.login_chat_login_error) + errorMessage)
                 userLoginEditText.setText(user.login)
                 userFullNameEditText.setText(user.fullName)
+                Password.setText(user.password)
             }
         }
     }
