@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
+import android.widget.Toast
 import com.drma.mycayiapp.R
 import com.drma.mycayiapp.utils.longToast
 import com.quickblox.core.QBEntityCallback
@@ -96,12 +97,12 @@ class LoginActivity : BaseActivity() {
             override fun onSuccess(result: QBUser, params: Bundle) {
                 SharedPrefsHelper.saveQbUser(newUser)
                 loginToChat(result)
+                SignInActivity.start(this@LoginActivity)
+                Toast.makeText(this@LoginActivity, "Usuario creado correctamente", Toast.LENGTH_SHORT).show()
             }
 
             override fun onError(e: QBResponseException) {
                 if (e.httpStatusCode == ERROR_LOGIN_ALREADY_TAKEN_HTTP_STATUS) {
-                    signInCreatedUser(newUser)
-                } else {
                     hideProgressDialog()
                     longToast(R.string.sign_up_error)
                 }
@@ -125,62 +126,8 @@ class LoginActivity : BaseActivity() {
         return qbUser
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == EXTRA_LOGIN_RESULT_CODE) {
-            hideProgressDialog()
 
-            var isLoginSuccess = false
-            data?.let {
-                isLoginSuccess = it.getBooleanExtra(EXTRA_LOGIN_RESULT, false)
-            }
 
-            var errorMessage = getString(R.string.unknown_error)
-            data?.let {
-                errorMessage = it.getStringExtra(EXTRA_LOGIN_ERROR_MESSAGE)
-            }
-
-            if (isLoginSuccess) {
-                SharedPrefsHelper.saveQbUser(user)
-                signInCreatedUser(user)
-            } else {
-                longToast(getString(R.string.login_chat_login_error) + errorMessage)
-                userLoginEditText.setText(user.login)
-                userFullNameEditText.setText(user.fullName)
-                Password.setText(user.password)
-            }
-        }
-    }
-
-    private fun signInCreatedUser(user: QBUser) {
-        signInUser(user, object : QBEntityCallback<QBUser> {
-            override fun onSuccess(result: QBUser, params: Bundle) {
-                SharedPrefsHelper.saveQbUser(user)
-                updateUserOnServer(user)
-            }
-
-            override fun onError(responseException: QBResponseException) {
-                hideProgressDialog()
-                longToast(R.string.sign_in_error)
-            }
-        })
-    }
-
-    private fun updateUserOnServer(user: QBUser) {
-        user.password = null
-        QBUsers.updateUser(user).performAsync(object : QBEntityCallback<QBUser> {
-            override fun onSuccess(updUser: QBUser?, params: Bundle?) {
-                hideProgressDialog()
-                OpponentsActivity.start(this@LoginActivity)
-                finish()
-            }
-
-            override fun onError(responseException: QBResponseException?) {
-                hideProgressDialog()
-                longToast(R.string.update_user_error)
-            }
-        })
-    }
 
     override fun onBackPressed() {
         finish()

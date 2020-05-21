@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchParent"
+    android:layout_marginLeft="@dimen/padding_start"
+    android:orientation="vertical"
+    tools:context=".activities.SignInActivity">
+
+    <TextView
+        style="@style/MatchWidth"
+        android:paddingTop="@dimen/padding_actionbar"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:text="@string/Put_values_SignIn"
+        android:layout_marginBottom="30dp"/>
+
+    <EditText
+        android:id="@+id/usernameEditText_SignIn"
+        style="@style/MatchWidth"
+        android:hint="@string/username"
+        android:paddingTop="@dimen/padding_top"
+        android:singleLine="true"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/Password_SignIn"
+        style="@style/MatchWidth"
+        android:hint="@string/type_your_password"
+        android:inputType="textPassword"
+        android:paddingTop="@dimen/padding_top"
+        android:singleLine="true"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/New_User_tv"
+        style="@style/MatchWidth"
+        android:textColor="@android:color/holo_blue_light"
+        android:paddingTop="@dimen/padding_actionbar"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:text="@string/New_user_signIn" />
+
+</LinearLayout>

@@ -753,13 +753,13 @@ class VideoConversationFragment : BaseConversationFragment(), Serializable,
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater?.inflate(R.menu.conversation_fragment, menu)
         super.onCreateOptionsMenu(menu, inflater)
         optionsMenu = menu
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             R.id.camera_switch -> {
                 Log.d("Conversation", "camera_switch")

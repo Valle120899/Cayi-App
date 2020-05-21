@@ -50,7 +50,7 @@ abstract class BaseConversationFragment : BaseToolBarFragment(), CallActivity.Cu
         }
     }
 
-    override fun onAttach(activity: Activity?) {
+    override fun onAttach(activity: Activity) {
         super.onAttach(activity)
         try {
             conversationFragmentCallback = context as ConversationFragmentCallback

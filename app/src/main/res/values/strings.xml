@@ -221,5 +221,8 @@
     <string name="error_permission_audio">You should allow Microphone permission</string>
     <string name="Version">Version 1.0.0</string>
     <string name="type_your_password">Type your password</string>
+    <string name="Put_values_SignIn">Bienvenido, ingrese los valores solicitados para continuar.</string>
+    <string name="New_user_signIn">¿Nuevo usuario?</string>
+    <string name="username">Username</string>
 
 </resources>

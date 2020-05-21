@@ -48,12 +48,12 @@ class ScreenShareFragment : BaseToolBarFragment() {
         (activity as CallActivity).addCurrentCallStateListener(currentCallStateCallback!!)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater?.inflate(R.menu.screen_share_fragment, menu)
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.screen_share_fragment, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             R.id.stop_screen_share -> {
                 Log.d(TAG, "stop_screen_share")
@@ -64,7 +64,7 @@ class ScreenShareFragment : BaseToolBarFragment() {
         }
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
             onSharingEvents = context as OnSharingEvents?

@@ -272,7 +272,7 @@ class OpponentsActivity : BaseActivity() {
     }
 
     private fun startLoginActivity() {
-        LoginActivity.start(this)
+        SignInActivity.start(this)
         finish()
     }
 }
