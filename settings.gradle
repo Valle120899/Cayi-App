@@ -1,1 +1,2 @@
+rootProject.name='MyCayiApp'
 include ':app'

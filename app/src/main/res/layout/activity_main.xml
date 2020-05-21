@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:keepScreenOn="true"
     android:orientation="vertical"
-    tools:context="com.quickblox.sample.videochat.kotlin.activities.CallActivity">
+    tools:context="com.drma.mycayiapp.activities.CallActivity">
 
     <FrameLayout
         android:id="@+id/fragment_container"
