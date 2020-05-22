@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_root"
     style="@style/MatchParent"
-    android:background="#55D6BE"
+    android:background="@drawable/background_cayi"
     tools:context=".activities.SplashActivity">
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/Cayi_Logo"
         android:layout_width="wrap_content"
         android:layout_height="286dp"
@@ -23,25 +23,9 @@
         android:layout_marginEnd="58dp"
         android:layout_marginRight="58dp"
         android:layout_marginBottom="219dp"
-        app:srcCompat="@mipmap/ic_launcher_cayi" />
+        app:srcCompat="@mipmap/ic_launcher_cayi" /> -->
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="148dp"
-        android:layout_marginLeft="148dp"
-        android:layout_marginEnd="145dp"
-        android:layout_marginRight="145dp"
-        android:layout_marginBottom="25dp"
-        android:text="@string/Version"
-        android:textColor="#FFFFFF"
-        android:textSize="@dimen/Version_Size" />
+
 
 
 </RelativeLayout>
