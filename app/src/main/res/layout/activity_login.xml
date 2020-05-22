@@ -24,7 +24,9 @@
         android:hint="@string/hint_user_full_name"
         android:paddingTop="@dimen/padding_top"
         android:singleLine="true"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:visibility="gone"
+/>
 
     <EditText
         android:id="@+id/Password"
@@ -34,5 +36,14 @@
         android:paddingTop="@dimen/padding_top"
         android:singleLine="true"
         android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/returned"
+        style="@style/MatchWidth"
+        android:paddingTop="@dimen/padding_actionbar"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="@color/color_blue_accent"
+        android:text="@string/r_u_user" />
 
 </LinearLayout>

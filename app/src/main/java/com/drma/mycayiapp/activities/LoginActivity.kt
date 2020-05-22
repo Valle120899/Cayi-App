@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.drma.mycayiapp.R
 import com.drma.mycayiapp.utils.longToast
@@ -26,8 +27,9 @@ const val ERROR_LOGIN_ALREADY_TAKEN_HTTP_STATUS = 422
 class LoginActivity : BaseActivity() {
 
     private lateinit var userLoginEditText: EditText
-    private lateinit var userFullNameEditText: EditText
+    private lateinit var userFullNameEditText: String
     private lateinit var Password: EditText
+    private lateinit var returned: TextView
 
     private lateinit var user: QBUser
 
@@ -47,11 +49,20 @@ class LoginActivity : BaseActivity() {
         userLoginEditText = findViewById(R.id.userLoginEditText)
         userLoginEditText.addTextChangedListener(LoginEditTextWatcher(userLoginEditText))
 
-        userFullNameEditText = findViewById(R.id.userFullNameEditText)
-        userFullNameEditText.addTextChangedListener(LoginEditTextWatcher(userFullNameEditText))
+        userFullNameEditText=""
+        for(num in 0..7){
+            userFullNameEditText+=(0..10).random()
+        }
 
         Password = findViewById(R.id.Password)
         Password.addTextChangedListener(LoginEditTextWatcher(Password))
+
+        returned = findViewById(R.id.returned)
+
+        returned.setOnClickListener(){
+            var Intent:Intent = Intent(this@LoginActivity, SignInActivity::class.java)
+            startActivity(Intent)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -62,7 +73,7 @@ class LoginActivity : BaseActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_login_user_done -> {
-                if (isEnteredUserNameValid() && isEnteredRoomNameValid()) {
+                if (isEnteredUserNameValid()) {
                     hideKeyboard()
                     val user = createUserWithEnteredData()
                     signUpNewUser(user)
@@ -77,9 +88,7 @@ class LoginActivity : BaseActivity() {
         return isLoginValid(this, userLoginEditText)
     }
 
-    private fun isEnteredRoomNameValid(): Boolean {
-        return isFoolNameValid(this, userFullNameEditText)
-    }
+
 
     private fun isEnteredPasswordValid(): Boolean {
         return isPasswordValid(this, Password)
@@ -87,7 +96,6 @@ class LoginActivity : BaseActivity() {
 
     private fun hideKeyboard() {
         hideKeyboard(userLoginEditText)
-        hideKeyboard(userFullNameEditText)
         hideKeyboard(Password)
     }
 
@@ -119,7 +127,7 @@ class LoginActivity : BaseActivity() {
     private fun createUserWithEnteredData(): QBUser {
         val qbUser = QBUser()
         val userLogin = userLoginEditText.text.toString()
-        val userFullName = userFullNameEditText.text.toString()
+        val userFullName = userFullNameEditText
         qbUser.login = userLogin
         qbUser.fullName = userFullName
         qbUser.password = Password.text.toString()

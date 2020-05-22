@@ -20,6 +20,7 @@ import com.drma.mycayiapp.util.signUp
 import com.drma.mycayiapp.utils.*
 import com.quickblox.users.QBUsers
 import com.quickblox.users.model.QBUser
+import kotlin.random.Random
 
 
 class SignInActivity : BaseActivity() {
@@ -27,6 +28,7 @@ class SignInActivity : BaseActivity() {
     private lateinit var userLoginEditText_SignIn: EditText
     private lateinit var Password_SignIn: EditText
     private lateinit var New_User_tv:TextView
+    private lateinit var userfullnameEditText_SignIn:String
 
     private lateinit var user: QBUser
 
@@ -51,6 +53,13 @@ class SignInActivity : BaseActivity() {
 
         Password_SignIn = findViewById(R.id.Password_SignIn)
         Password_SignIn.addTextChangedListener(LoginEditTextWatcher(Password_SignIn))
+
+        userfullnameEditText_SignIn=""
+        for(num in 0..7){
+                userfullnameEditText_SignIn+=(0..10).random()
+            }
+
+
 
         New_User_tv= findViewById(R.id.New_User_tv)
 
@@ -97,12 +106,17 @@ class SignInActivity : BaseActivity() {
         qbUser.password = Password_SignIn.text.toString()
         user = qbUser
         startLoginService(qbUser)
+        OpponentsActivity.start(this@SignInActivity)
+        finish()
+
     }
 
     private fun createUserWithEnteredData(): QBUser {
         val qbUser = QBUser()
         val userLogin = userLoginEditText_SignIn.text.toString()
+        val userFullLogin = userfullnameEditText_SignIn
         qbUser.login = userLogin
+        qbUser.fullName= userFullLogin
         qbUser.password = Password_SignIn.text.toString()
         return qbUser
     }
@@ -137,9 +151,7 @@ class SignInActivity : BaseActivity() {
         signInUser(user, object : QBEntityCallback<QBUser> {
             override fun onSuccess(result: QBUser, params: Bundle) {
                 SharedPrefsHelper.saveQbUser(user)
-                hideProgressDialog()
-                OpponentsActivity.start(this@SignInActivity)
-                finish()
+                updateUserOnServer(user)
             }
 
             override fun onError(responseException: QBResponseException) {
@@ -149,6 +161,21 @@ class SignInActivity : BaseActivity() {
         })
     }
 
+    private fun updateUserOnServer(user: QBUser) {
+        user.password = null
+        QBUsers.updateUser(user).performAsync(object : QBEntityCallback<QBUser> {
+            override fun onSuccess(updUser: QBUser?, params: Bundle?) {
+                hideProgressDialog()
+                OpponentsActivity.start(this@SignInActivity)
+                finish()
+            }
+
+            override fun onError(responseException: QBResponseException?) {
+                hideProgressDialog()
+                longToast(R.string.update_user_error)
+            }
+        })
+    }
 
     override fun onBackPressed() {
         finish()

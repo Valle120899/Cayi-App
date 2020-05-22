@@ -21,7 +21,7 @@ class SplashActivity : BaseActivity() {
                 LoginService.start(this, SharedPrefsHelper.getQbUser())
                 OpponentsActivity.start(this)
             } else {
-                SignInActivity.start(this)
+                LoginActivity.start(this)
             }
             finish()
         }, SPLASH_DELAY.toLong())

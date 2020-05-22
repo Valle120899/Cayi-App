@@ -253,7 +253,7 @@ class OpponentsActivity : BaseActivity() {
     }
 
     private fun initDefaultActionBar() {
-        val currentUserFullName = SharedPrefsHelper.getQbUser().fullName
+        val currentUserFullName = SharedPrefsHelper.getQbUser().login
         supportActionBar?.title = ""
         supportActionBar?.subtitle = getString(R.string.subtitle_text_logged_in_as, currentUserFullName)
     }
@@ -272,7 +272,7 @@ class OpponentsActivity : BaseActivity() {
     }
 
     private fun startLoginActivity() {
-        SignInActivity.start(this)
+        LoginActivity.start(this)
         finish()
     }
 }

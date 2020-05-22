@@ -224,5 +224,6 @@
     <string name="Put_values_SignIn">Bienvenido, ingrese los valores solicitados para continuar.</string>
     <string name="New_user_signIn">¿Nuevo usuario?</string>
     <string name="username">Username</string>
+    <string name="r_u_user">¿Ya tienes cuenta?</string>
 
 </resources>
