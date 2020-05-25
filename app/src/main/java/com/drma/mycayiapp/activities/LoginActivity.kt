@@ -27,7 +27,7 @@ const val ERROR_LOGIN_ALREADY_TAKEN_HTTP_STATUS = 422
 class LoginActivity : BaseActivity() {
 
     private lateinit var userLoginEditText: EditText
-    private lateinit var userFullNameEditText: String
+    private lateinit var userFullNameEditText: EditText
     private lateinit var Password: EditText
     private lateinit var returned: TextView
 
@@ -49,10 +49,7 @@ class LoginActivity : BaseActivity() {
         userLoginEditText = findViewById(R.id.userLoginEditText)
         userLoginEditText.addTextChangedListener(LoginEditTextWatcher(userLoginEditText))
 
-        userFullNameEditText=""
-        for(num in 0..7){
-            userFullNameEditText+=(0..10).random()
-        }
+        userFullNameEditText=findViewById(R.id.userLoginEditText)
 
         Password = findViewById(R.id.Password)
         Password.addTextChangedListener(LoginEditTextWatcher(Password))
@@ -127,7 +124,7 @@ class LoginActivity : BaseActivity() {
     private fun createUserWithEnteredData(): QBUser {
         val qbUser = QBUser()
         val userLogin = userLoginEditText.text.toString()
-        val userFullName = userFullNameEditText
+        val userFullName = userFullNameEditText.toString()
         qbUser.login = userLogin
         qbUser.fullName = userFullName
         qbUser.password = Password.text.toString()

@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.drma.mycayiapp.R
@@ -27,6 +28,7 @@ import com.drma.mycayiapp.services.LoginService
 import com.drma.mycayiapp.util.loadUsersByPagedRequestBuilder
 import com.drma.mycayiapp.util.signOut
 import com.drma.mycayiapp.utils.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.quickblox.users.model.QBUser
 import com.quickblox.videochat.webrtc.QBRTCClient
 import com.quickblox.videochat.webrtc.QBRTCTypes
@@ -41,6 +43,7 @@ class OpponentsActivity : BaseActivity() {
 
     private lateinit var usersRecyclerView: RecyclerView
     private lateinit var currentUser: QBUser
+    private lateinit var navView: BottomNavigationView
 
     private var usersAdapter: UsersAdapter? = null
 
@@ -54,7 +57,7 @@ class OpponentsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_select_users)
+        setContentView(R.layout.activity_navigation2)
         currentUser = SharedPrefsHelper.getQbUser()
         initDefaultActionBar()
         initUI()
@@ -117,6 +120,25 @@ class OpponentsActivity : BaseActivity() {
 
     private fun initUI() {
         usersRecyclerView = findViewById(R.id.list_select_users)
+        navView = findViewById(R.id.nav_view)
+        navView.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.navigation_videocalls -> {
+                    var Intent: Intent = Intent(this@OpponentsActivity, OpponentsActivity::class.java)
+                    startActivity(Intent)
+                    true
+                }
+                R.id.navigation_profile -> {
+                    var Intent: Intent = Intent(this@OpponentsActivity, ProfileActivity::class.java)
+                    startActivity(Intent)
+                    true
+                }
+                else -> {
+                    Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                    false
+                }
+            }
+        }
     }
 
     private fun initUsersList() {

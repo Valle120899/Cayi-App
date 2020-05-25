@@ -54,12 +54,6 @@ class SignInActivity : BaseActivity() {
         Password_SignIn = findViewById(R.id.Password_SignIn)
         Password_SignIn.addTextChangedListener(LoginEditTextWatcher(Password_SignIn))
 
-        userfullnameEditText_SignIn=""
-        for(num in 0..7){
-                userfullnameEditText_SignIn+=(0..10).random()
-            }
-
-
 
         New_User_tv= findViewById(R.id.New_User_tv)
 
@@ -114,7 +108,7 @@ class SignInActivity : BaseActivity() {
     private fun createUserWithEnteredData(): QBUser {
         val qbUser = QBUser()
         val userLogin = userLoginEditText_SignIn.text.toString()
-        val userFullLogin = userfullnameEditText_SignIn
+        val userFullLogin = userLogin
         qbUser.login = userLogin
         qbUser.fullName= userFullLogin
         qbUser.password = Password_SignIn.text.toString()
