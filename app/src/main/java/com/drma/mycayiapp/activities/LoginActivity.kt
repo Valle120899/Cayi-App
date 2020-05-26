@@ -29,6 +29,7 @@ class LoginActivity : BaseActivity() {
     private lateinit var userLoginEditText: EditText
     private lateinit var userFullNameEditText: EditText
     private lateinit var Password: EditText
+    private lateinit var confirmPassword: EditText
     private lateinit var returned: TextView
 
     private lateinit var user: QBUser
@@ -54,6 +55,9 @@ class LoginActivity : BaseActivity() {
         Password = findViewById(R.id.Password)
         Password.addTextChangedListener(LoginEditTextWatcher(Password))
 
+        confirmPassword = findViewById(R.id.confirmPassword)
+        confirmPassword.addTextChangedListener(LoginEditTextWatcher(confirmPassword))
+
         returned = findViewById(R.id.returned)
 
         returned.setOnClickListener(){
@@ -70,10 +74,14 @@ class LoginActivity : BaseActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_login_user_done -> {
-                if (isEnteredUserNameValid()) {
+                var firstpass = Password.text.toString()
+                var secondpass = confirmPassword.text.toString()
+                if (isEnteredUserNameValid() && firstpass == secondpass) {
                     hideKeyboard()
                     val user = createUserWithEnteredData()
                     signUpNewUser(user)
+                }else{
+                    Toast.makeText(this,"Password do not match!", Toast.LENGTH_SHORT).show();
                 }
                 return true
             }

@@ -19,6 +19,14 @@
         android:textSize="16sp" />
 
     <EditText
+        android:id="@+id/userEmail"
+        style="@style/MatchWidth"
+        android:hint="@string/field_name_user_email"
+        android:paddingTop="@dimen/padding_top"
+        android:singleLine="true"
+        android:textSize="16sp" />
+
+    <EditText
         android:id="@+id/userFullNameEditText"
         style="@style/MatchWidth"
         android:hint="@string/hint_user_full_name"
@@ -32,6 +40,15 @@
         android:id="@+id/Password"
         style="@style/MatchWidth"
         android:hint="@string/type_your_password"
+        android:inputType="textPassword"
+        android:paddingTop="@dimen/padding_top"
+        android:singleLine="true"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/confirmPassword"
+        style="@style/MatchWidth"
+        android:hint="@string/field_name_user_confirm_password"
         android:inputType="textPassword"
         android:paddingTop="@dimen/padding_top"
         android:singleLine="true"
