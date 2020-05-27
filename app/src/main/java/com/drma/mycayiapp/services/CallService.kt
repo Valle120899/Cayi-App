@@ -150,8 +150,8 @@ class CallService : Service() {
         builder.setContentTitle(notificationTitle)
         builder.setContentText(notificationText)
         builder.setWhen(System.currentTimeMillis())
-        builder.setSmallIcon(R.mipmap.ic_launcher)
-        val bitmapIcon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher)
+        builder.setSmallIcon(R.mipmap.ic_launcher_cayi)
+        val bitmapIcon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher_cayi)
         builder.setLargeIcon(bitmapIcon)
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {

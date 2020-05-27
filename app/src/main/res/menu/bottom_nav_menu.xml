@@ -3,16 +3,17 @@
 
     <item
         android:id="@+id/navigation_videocalls"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:icon="@drawable/ic_videocam_black_24dp"
+        android:title="Videocall" />
 
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="Profile" />
 
-
-
-
+    <item
+        android:id="@+id/navigation_chat"
+        android:icon="@drawable/ic_chat_black_24dp"
+        android:title="Chat" />
 
 </menu>

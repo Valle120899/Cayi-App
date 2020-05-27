@@ -133,6 +133,13 @@ class OpponentsActivity : BaseActivity() {
                     startActivity(Intent)
                     true
                 }
+
+                R.id.navigation_chat -> {
+                    var Intent: Intent = Intent(this@OpponentsActivity, ChatActivity::class.java)
+                    startActivity(Intent)
+                    true
+                }
+
                 else -> {
                     Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
                     false
