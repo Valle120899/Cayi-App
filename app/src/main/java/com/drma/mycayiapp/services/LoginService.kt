@@ -8,7 +8,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
-import com.drma.mycayiapp.services.fcm.PushListenerService
 import com.quickblox.chat.QBChatService
 import com.quickblox.chat.connections.tcp.QBTcpChatConnectionFabric
 import com.quickblox.chat.connections.tcp.QBTcpConfigurationBuilder
@@ -40,7 +39,7 @@ class LoginService : Service() {
     private var currentUser: QBUser? = null
 
     companion object {
-        fun start(context: PushListenerService, qbUser: QBUser, pendingIntent: PendingIntent? = null) {
+        fun start(context: Context, qbUser: QBUser, pendingIntent: PendingIntent? = null) {
             val intent = Intent(context, LoginService::class.java)
             intent.putExtra(EXTRA_COMMAND_TO_SERVICE, COMMAND_LOGIN)
             intent.putExtra(EXTRA_QB_USER, qbUser)

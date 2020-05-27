@@ -6,11 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".activities.ProfileActivity">
 
-    <TextView
+    <ImageView
+        android:id="@+id/ImageUsername"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/profile_image"
+        />
+
+    <EditText
+        android:id="@+id/username_settings"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Pefil"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/edit_profile"
+        android:backgroundTint="@android:color/black"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:hint="Usuario"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/black"
+        android:layout_below="@+id/ImageUsername"
 
         />
+
+    <EditText
+        android:id="@+id/bio_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/edit_status"
+        android:backgroundTint="@android:color/black"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:hint="Biogra"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/black"
+        android:layout_below="@+id/username_settings"
+        />
+
+    <Button
+        android:id="@+id/save_settings_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Guardar"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/bio_settings"
+        />
+
 </RelativeLayout>

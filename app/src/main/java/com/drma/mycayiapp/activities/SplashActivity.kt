@@ -2,6 +2,7 @@ package com.drma.mycayiapp.activities
 
 import android.os.Bundle
 import android.os.Handler
+import android.widget.TextView
 import com.drma.mycayiapp.R
 import com.drma.mycayiapp.services.LoginService
 import com.drma.mycayiapp.utils.SharedPrefsHelper

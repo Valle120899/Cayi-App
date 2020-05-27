@@ -29,12 +29,14 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        FirebaseApp.initializeApp(this@App )
+        //FirebaseApp.initializeApp(this)
         instance = this
         dbHelper = DbHelper(this)
         initFabric()
         checkCredentials()
         initCredentials()
+
+
     }
 
     private fun initFabric() {
@@ -50,7 +52,6 @@ class App : Application() {
     }
 
     private fun initCredentials() {
-
         QBSettings.getInstance().init(applicationContext, APPLICATION_ID, AUTH_KEY, AUTH_SECRET)
         QBSettings.getInstance().accountKey = ACCOUNT_KEY
 

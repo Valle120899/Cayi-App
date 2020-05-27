@@ -14,10 +14,18 @@ import com.drma.mycayiapp.R
 import com.drma.mycayiapp.utils.longToast
 import com.quickblox.core.QBEntityCallback
 import com.quickblox.core.exception.QBResponseException
+import com.drma.mycayiapp.DEFAULT_USER_PASSWORD
 import com.drma.mycayiapp.services.LoginService
+import com.drma.mycayiapp.util.signInUser
 import com.drma.mycayiapp.util.signUp
 import com.drma.mycayiapp.utils.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.quickblox.users.QBUsers
 import com.quickblox.users.model.QBUser
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.list_item_user.view.*
 
 const val ERROR_LOGIN_ALREADY_TAKEN_HTTP_STATUS = 422
 
@@ -29,6 +37,11 @@ class LoginActivity : BaseActivity() {
     private lateinit var confirmPassword: EditText
     private lateinit var returned: TextView
     private lateinit var Email:EditText
+
+    private lateinit var mAuth:FirebaseAuth
+    private lateinit var refUsers:DatabaseReference
+    private var firebaseUserID:String = ""
+
 
     private lateinit var user: QBUser
 
@@ -44,6 +57,8 @@ class LoginActivity : BaseActivity() {
 
     private fun initUI() {
         supportActionBar?.title = getString(R.string.title_login_activity)
+
+        mAuth = FirebaseAuth.getInstance()
 
         userLoginEditText = findViewById(R.id.userLoginEditText)
         userLoginEditText.addTextChangedListener(LoginEditTextWatcher(userLoginEditText))
@@ -78,6 +93,7 @@ class LoginActivity : BaseActivity() {
                 var secondpass = confirmPassword.text.toString()
                 if (isEnteredUserNameValid() && firstpass == secondpass) {
                     hideKeyboard()
+                    RegisterUserFirebase()
                     val user = createUserWithEnteredData()
                     signUpNewUser(user)
                 }else{
@@ -93,6 +109,23 @@ class LoginActivity : BaseActivity() {
         return isLoginValid(this, userLoginEditText)
     }
 
+    fun RegisterUserFirebase(){
+        val username:String = userLoginEditText.text.toString()
+        val email:String = userEmail.text.toString()
+        val password:String = Password.text.toString()
+
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
+            if(it.isSuccessful){
+                firebaseUserID = mAuth.currentUser!!.uid
+                refUsers= FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUserID)
+
+                val userHasMap= HashMap<String, Any>()
+                userHasMap["uid"] = firebaseUserID
+                userHasMap["username"] = username
+
+            }
+        }
+    }
 
 
     private fun isEnteredPasswordValid(): Boolean {
