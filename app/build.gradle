@@ -111,6 +111,9 @@ dependencies {
     implementation "com.quickblox:quickblox-android-sdk-videochat-webrtc:$qbSdkVersion"
     implementation "com.quickblox:quickblox-android-sdk-messages:$qbSdkVersion"
 
+    implementation "com.google.android.gms:play-services-gcm:17.0.0"
+    implementation "com.google.firebase:firebase-messaging:17.0.0"
+
     implementation "com.google.firebase:firebase-core:$firebaseCoreVersion"
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     implementation "com.google.android.material:material:$materialVersion"

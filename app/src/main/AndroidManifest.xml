@@ -63,7 +63,7 @@
 
         <service android:name=".services.LoginService" />
         <service android:name=".services.CallService" />
-        <service android:name=".services.fcm.PushListenerService">
+        <service android:name="com.quickblox.messages.services.fcm.QBFcmPushListenerService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -76,7 +76,7 @@
 
         <meta-data
             android:name="com.quickblox.messages.TYPE"
-            android:value="GCM" />
+            android:value="FCM" />
         <meta-data
             android:name="com.quickblox.messages.SENDER_ID"
             android:value="@string/sender_id" />

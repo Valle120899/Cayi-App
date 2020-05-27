@@ -21,16 +21,19 @@ import com.drma.mycayiapp.util.signUp
 import com.drma.mycayiapp.utils.*
 import com.quickblox.users.QBUsers
 import com.quickblox.users.model.QBUser
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.list_item_user.view.*
 
 const val ERROR_LOGIN_ALREADY_TAKEN_HTTP_STATUS = 422
 
 class LoginActivity : BaseActivity() {
 
     private lateinit var userLoginEditText: EditText
-    private lateinit var userFullNameEditText: EditText
+    private lateinit var userFullNameEditText: String
     private lateinit var Password: EditText
     private lateinit var confirmPassword: EditText
     private lateinit var returned: TextView
+    private lateinit var Email:EditText
 
     private lateinit var user: QBUser
 
@@ -50,13 +53,15 @@ class LoginActivity : BaseActivity() {
         userLoginEditText = findViewById(R.id.userLoginEditText)
         userLoginEditText.addTextChangedListener(LoginEditTextWatcher(userLoginEditText))
 
-        userFullNameEditText=findViewById(R.id.userLoginEditText)
 
         Password = findViewById(R.id.Password)
         Password.addTextChangedListener(LoginEditTextWatcher(Password))
 
         confirmPassword = findViewById(R.id.confirmPassword)
         confirmPassword.addTextChangedListener(LoginEditTextWatcher(confirmPassword))
+
+        Email = findViewById(R.id.userEmail)
+        Email.addTextChangedListener(LoginEditTextWatcher(Email))
 
         returned = findViewById(R.id.returned)
 
@@ -102,6 +107,8 @@ class LoginActivity : BaseActivity() {
     private fun hideKeyboard() {
         hideKeyboard(userLoginEditText)
         hideKeyboard(Password)
+        hideKeyboard(confirmPassword)
+        hideKeyboard(Email)
     }
 
     private fun signUpNewUser(newUser: QBUser) {
@@ -132,9 +139,11 @@ class LoginActivity : BaseActivity() {
     private fun createUserWithEnteredData(): QBUser {
         val qbUser = QBUser()
         val userLogin = userLoginEditText.text.toString()
-        val userFullName = userFullNameEditText.toString()
+        val userFullName = userLogin
+        val userEmail = Email.text.toString()
         qbUser.login = userLogin
         qbUser.fullName = userFullName
+        qbUser.email = userEmail
         qbUser.password = Password.text.toString()
         return qbUser
     }
