@@ -14,15 +14,10 @@ import com.drma.mycayiapp.R
 import com.drma.mycayiapp.utils.longToast
 import com.quickblox.core.QBEntityCallback
 import com.quickblox.core.exception.QBResponseException
-import com.drma.mycayiapp.DEFAULT_USER_PASSWORD
 import com.drma.mycayiapp.services.LoginService
-import com.drma.mycayiapp.util.signInUser
 import com.drma.mycayiapp.util.signUp
 import com.drma.mycayiapp.utils.*
-import com.quickblox.users.QBUsers
 import com.quickblox.users.model.QBUser
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.list_item_user.view.*
 
 const val ERROR_LOGIN_ALREADY_TAKEN_HTTP_STATUS = 422
 

@@ -3,6 +3,7 @@ package com.drma.mycayiapp
 import android.app.Application
 import com.crashlytics.android.Crashlytics
 import com.drma.mycayiapp.db.DbHelper
+import com.google.firebase.FirebaseApp
 import com.quickblox.auth.session.QBSettings
 import io.fabric.sdk.android.BuildConfig
 import io.fabric.sdk.android.Fabric
@@ -28,13 +29,12 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        FirebaseApp.initializeApp(this@App )
         instance = this
         dbHelper = DbHelper(this)
         initFabric()
         checkCredentials()
         initCredentials()
-
-
     }
 
     private fun initFabric() {
@@ -50,6 +50,7 @@ class App : Application() {
     }
 
     private fun initCredentials() {
+
         QBSettings.getInstance().init(applicationContext, APPLICATION_ID, AUTH_KEY, AUTH_SECRET)
         QBSettings.getInstance().accountKey = ACCOUNT_KEY
 

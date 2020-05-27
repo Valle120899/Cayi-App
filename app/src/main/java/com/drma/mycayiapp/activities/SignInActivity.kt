@@ -13,14 +13,11 @@ import com.drma.mycayiapp.R
 import com.drma.mycayiapp.utils.longToast
 import com.quickblox.core.QBEntityCallback
 import com.quickblox.core.exception.QBResponseException
-import com.drma.mycayiapp.DEFAULT_USER_PASSWORD
 import com.drma.mycayiapp.services.LoginService
 import com.drma.mycayiapp.util.signInUser
-import com.drma.mycayiapp.util.signUp
 import com.drma.mycayiapp.utils.*
 import com.quickblox.users.QBUsers
 import com.quickblox.users.model.QBUser
-import kotlin.random.Random
 
 
 class SignInActivity : BaseActivity() {
