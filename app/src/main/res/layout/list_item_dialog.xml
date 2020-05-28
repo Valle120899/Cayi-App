@@ -28,7 +28,7 @@
             android:singleLine="true"
             android:textColor="@color/text_color_primary"
             android:textSize="16sp"
-            tools:text="Room name" />
+            tools:text="@string/Room_name" />
 
         <TextView
             android:id="@+id/text_dialog_last_message"
@@ -37,6 +37,6 @@
             android:maxLines="1"
             android:textColor="@color/text_color_dark_grey"
             android:textSize="14sp"
-            tools:text="Long last message to see how margin on the right side works" />
+            tools:text="@string/message_long" />
     </LinearLayout>
 </LinearLayout>

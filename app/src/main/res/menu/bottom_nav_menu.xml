@@ -4,12 +4,12 @@
     <item
         android:id="@+id/navigation_videocalls"
         android:icon="@drawable/ic_videocam_black_24dp"
-        android:title="Videocall" />
+        android:title="Videollamada" />
 
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_account_circle_black_24dp"
-        android:title="Profile" />
+        android:title="Perfil" />
 
     <item
         android:id="@+id/navigation_chat"

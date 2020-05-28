@@ -19,10 +19,6 @@ import com.quickblox.auth.session.QBSettings
 class AppInfoActivity : AppCompatActivity() {
     private lateinit var appVersionTextView: TextView
     private lateinit var sdkVersionTextView: TextView
-    private lateinit var appIDTextView: TextView
-    private lateinit var authKeyTextView: TextView
-    private lateinit var authSecretTextView: TextView
-    private lateinit var accountKeyTextView: TextView
     private lateinit var apiDomainTextView: TextView
     private lateinit var chatDomainTextView: TextView
     private lateinit var appQAVersionTextView: TextView
@@ -39,12 +35,7 @@ class AppInfoActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        appVersionTextView = findViewById(R.id.text_app_version)
         sdkVersionTextView = findViewById(R.id.text_sdk_version)
-        appIDTextView = findViewById(R.id.text_app_id)
-        authKeyTextView = findViewById(R.id.text_auth_key)
-        authSecretTextView = findViewById(R.id.text_auth_secret)
-        accountKeyTextView = findViewById(R.id.text_account_key)
         apiDomainTextView = findViewById(R.id.text_api_domain)
         chatDomainTextView = findViewById(R.id.text_chat_domain)
         appQAVersionTextView = findViewById(R.id.text_qa_version)
@@ -53,12 +44,7 @@ class AppInfoActivity : AppCompatActivity() {
     private fun fillUI() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.appinfo_title)
-        appVersionTextView.text = BuildConfig.VERSION_NAME
         sdkVersionTextView.text = com.quickblox.BuildConfig.VERSION_NAME
-        appIDTextView.text = QBSettings.getInstance().applicationId
-        authKeyTextView.text = QBSettings.getInstance().authorizationKey
-        authSecretTextView.text = QBSettings.getInstance().authorizationSecret
-        accountKeyTextView.text = QBSettings.getInstance().accountKey
         apiDomainTextView.text = QBSettings.getInstance().serverApiDomain
         chatDomainTextView.text = QBSettings.getInstance().chatEndpoint
 

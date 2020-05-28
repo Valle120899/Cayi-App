@@ -4,16 +4,16 @@
 
     <string name="app_name">Cayi</string>
 
-    <string name="new_connection">new connection</string>
-    <string name="opponent_pending">Pending</string>
-    <string name="text_status_connect">Connect…</string>
-    <string name="text_status_checking">Checking…</string>
-    <string name="text_status_connected">Connected</string>
-    <string name="text_status_disconnected">Disconnected</string>
-    <string name="opponent_closed">Closed</string>
-    <string name="text_status_no_answer">No answer</string>
-    <string name="text_status_rejected">Rejected</string>
-    <string name="text_status_hang_up">Hung up</string>
+    <string name="new_connection">Nueva conexión</string>
+    <string name="opponent_pending">Pendiente</string>
+    <string name="text_status_connect">Conectando...</string>
+    <string name="text_status_checking">Chequeando…</string>
+    <string name="text_status_connected">Conectadro</string>
+    <string name="text_status_disconnected">Desconectado</string>
+    <string name="opponent_closed">Cerrado</string>
+    <string name="text_status_no_answer">Sin respuesta</string>
+    <string name="text_status_rejected">Rechazadp</string>
+    <string name="text_status_hang_up">Colgar</string>
 
     <string name="pref_disable_built_in_aec_key">disable_built_in_aec_preference</string>
     <string name="pref_disable_built_in_aec_default">false</string>
@@ -29,136 +29,136 @@
 
     <string name="pref_videocodec_key">videocodec_preference</string>
 
-    <string name="error_name_must_not_contain_special_characters_from_app">%1$s must contain 3 &#8212;
-        %2$s alphanumeric Latin characters without spaces, the first char must be a letter</string>
+    <string name="error_name_must_not_contain_special_characters_from_app">%1$s debe tener 3 &#8212;
+        %2$s caracteres latinos alfanuméricos sin espacios, el primer carácter debe ser una letra</string>
 
-    <string name="error_name_must_not_contain_special_characters_from_app_Password">%1$s must contain 8 &#8212;
-        %2$s alphanumeric Latin characters without spaces, the first char must be a letter</string>
+    <string name="error_name_must_not_contain_special_characters_from_app_Password">%1$s debe tener 8 &#8212;
+        %2$s caracteres latinos alfanuméricos sin espacios, el primer carácter debe ser una letra</string>
 
-    <string name="field_name_user_login">User name</string>
-    <string name="field_name_user_fullname">User Full Name</string>
-    <string name="field_name_user_email">User email</string>
-    <string name="field_name_user_password">User password</string>
-    <string name="field_name_user_confirm_password">Confirm password</string>
+    <string name="field_name_user_login">Nombre de usuario</string>
+    <string name="field_name_user_fullname">Nombre completo</string>
+    <string name="field_name_user_email">Correo</string>
+    <string name="field_name_user_password">Contraseña</string>
+    <string name="field_name_user_confirm_password">Confirmar contraseña</string>
 
     <integer name="pref_default_int_value">0</integer>
     <integer name="pref_seekbar_step_default_int_value">1</integer>
 
     <string name="splash_app_version">v %s</string>
-    <string name="hint_user_full_name">User full name</string>
+    <string name="hint_user_full_name">Nombre completo</string>
 
-    <string name="title_login_activity">Enter to chat</string>
+    <string name="title_login_activity">Entrar</string>
 
-    <string name="text_welcoming_message">Please enter username and chat room name. \nYou can join existed chat room.</string>
-    <string name="hint_user_login">User login</string>
+    <string name="text_welcoming_message">Registro, por favor complete los campos solicitados.</string>
+    <string name="hint_user_login">Usuario</string>
 
-    <string name="text_select_dialog_to_join">Select dialog you want to join</string>
+    <string name="text_select_dialog_to_join">Selecciona el diálogo para entrar</string>
 
-    <string name="loading_users_error">Loading users error. Error</string>
-    <string name="removeDataError">Logout error</string>
-    <string name="dialogs_deletion_error">Dialog deletion errors</string>
+    <string name="loading_users_error">Error al cargar usuarios.</string>
+    <string name="removeDataError">Error de cierre de serión</string>
+    <string name="dialogs_deletion_error">Error de diálogo</string>
 
     <!--Permissions Screen-->
-    <string name="permission_unavailable">%s is not available now!</string>
+    <string name="permission_unavailable">%s no está disponible ahorita!</string>
 
     <!--Select Users Screen-->
-    <string name="text_select_users_to_call">Select users you want to call</string>
-    <string name="title_one_user_selected">%s user selected</string>
-    <string name="tile_many_users_selected">%s users selected</string>
-    <string name="menu_refresh_users">Refresh</string>
-    <string name="menu_select_people_done">Done</string>
-    <string name="placeholder_username_you">%s (you)</string>
-    <string name="select_users_choose_users">Please, choose at least one participant</string>
+    <string name="text_select_users_to_call">Selecciona usuario(s) para marcar.</string>
+    <string name="title_one_user_selected">%s usuario seleccionado</string>
+    <string name="tile_many_users_selected">%s usuarios seleccionados</string>
+    <string name="menu_refresh_users">Refrescar</string>
+    <string name="menu_select_people_done">Terminado</string>
+    <string name="placeholder_username_you">%s (Tú)</string>
+    <string name="select_users_choose_users">Por favor, selecciona al menos un usuario.</string>
 
     <!-- Settings strings. -->
     <string name="title_video_category">Video</string>
-    <string name="title_call_settings_category">Call Settings</string>
+    <string name="title_call_settings_category">Ajuste de llamada</string>
 
-    <string name="pref_hwcodec_title">Video codec hardware acceleration</string>
-    <string name="pref_disable_built_in_aec_dlg">Disable built-in AEC</string>
-    <string name="pref_disable_built_in_aec_title">Disable built-in AEC</string>
-    <string name="pref_opensles_dlg">Use OpenSL ES for audio playback</string>
-    <string name="pref_opensles_title">Use OpenSL ES for audio playback</string>
-    <string name="pref_noaudioprocessing_dlg">Disable audio processing pipeline</string>
-    <string name="pref_noaudioprocessing_title">Disable audio processing</string>
+    <string name="pref_hwcodec_title">Aceleración de hardware</string>
+    <string name="pref_disable_built_in_aec_dlg">Inhabilitar built-in AEC</string>
+    <string name="pref_disable_built_in_aec_title">Inhabilitar built-in AEC</string>
+    <string name="pref_opensles_dlg">Usar OpenSL ES para reproducción de audio</string>
+    <string name="pref_opensles_title">Usar OpenSL ES para reproducción de audio</string>
+    <string name="pref_noaudioprocessing_dlg">Deshabilitar canal de procesamiento de audio</string>
+    <string name="pref_noaudioprocessing_title">Deshabilitar proceso de audio</string>
 
     <!--Preferences-->
     <string name="pref_resolution_key">resolution_preference</string>
-    <string name="pref_resolution_title">Video Format</string>
-    <string name="pref_resolution_dlg">Enter RTC local video resolution</string>
+    <string name="pref_resolution_title">Formato de video</string>
+    <string name="pref_resolution_dlg">Entrar RTC video de resolución local</string>
     <string name="pref_resolution_default">-1</string>
 
     <string name="pref_startbitratevalue_key">startbitratevalue_preference</string>
-    <string name="pref_startbitratevalue_title">Bandwidth (0&#8211;2000)</string>
+    <string name="pref_startbitratevalue_title">Banda ancha (0&#8211;2000)</string>
     <string name="pref_startbitratevalue_default">0</string>
     <integer name="pref_startbitratevalue_min_value">0</integer>
     <integer name="pref_startbitratevalue_max_value">2000</integer>
     <integer name="pref_startbitratevalue_step_size">100</integer>
 
     <string name="pref_frame_rate_key">frame_rate</string>
-    <string name="pref_frame_rate_title">Frame Rate (0&#8211;30)</string>
+    <string name="pref_frame_rate_title">Cuadros por segundo (0&#8211;30)</string>
     <string name="pref_frame_rate_default">0</string>
     <integer name="pref_frame_rate_min_value">0</integer>
     <integer name="pref_frame_rate_max_value">30</integer>
     <integer name="pref_frame_rate_stepSize">5</integer>
 
     <string name="pref_audiocodec_key">pref_audio_codec</string>
-    <string name="pref_audiocodec_title">Default audio codec</string>
+    <string name="pref_audiocodec_title">Audio codec por defecto</string>
     <string name="pref_audiocodec_def">ISAC</string>
-    <string name="pref_audiocodec_dlg">Select default audio codec</string>
+    <string name="pref_audiocodec_dlg">Seleccionar audio codec por defecto</string>
 
     <string name="pref_videocodec_default">0</string>
-    <string name="pref_videocodec_dlg">Select default video codec</string>
-    <string name="pref_videocodec_title">Default video codec</string>
+    <string name="pref_videocodec_dlg">Seleccionar video codec por defecto</string>
+    <string name="pref_videocodec_title">video codec por defecto</string>
 
-    <string name="packet_failed">Packet loss occurs</string>
+    <string name="packet_failed">Se produce pérdida de paquetes</string>
 
-    <string name="text_push_notification_message">"%s is calling you"</string>
+    <string name="text_push_notification_message">"%s te llama."</string>
 
     <!--Call Screen-->
-    <string name="in_conference">In Conference</string>
-    <string name="text_local_name">Me</string>
-    <string name="camera_swicth_failed">\"Failed switch camera\"</string>
-    <string name="opponents">and %s other</string>
-    <string name="text_status_closed">Closed</string>
+    <string name="in_conference">En conferencia</string>
+    <string name="text_local_name">Tú</string>
+    <string name="camera_swicth_failed">\"Falló cambiar cámara\"</string>
+    <string name="opponents">y %s otro</string>
+    <string name="text_status_closed">Cerrado</string>
 
     <!--action bar-->
-    <string name="subtitle_text_logged_in_as">Logged in as %s</string>
-    <string name="actionbar_title_settings">Settings</string>
+    <string name="subtitle_text_logged_in_as">Bienvenido %s</string>
+    <string name="actionbar_title_settings">Ajustes</string>
 
     <!-- Dialogs strings. -->
-    <string name="dlg_creating_new_user">Creating new user…</string>
-    <string name="dlg_loading_dialogs_users">Loading dialogs and users…</string>
-    <string name="dlg_retry">Retry</string>
-    <string name="dlg_updating_dialog">Updating dialog…</string>
-    <string name="dlg_create_dialog">Creating dialog…</string>
-    <string name="dlg_loading_opponents">Loading opponents…</string>
-    <string name="dlg_signal_error">Disconnected… Please check your Internet connection!</string>
-    <string name="dlg_login_error">The user does not logged</string>
-    <string name="dlg_allow">Allow</string>
+    <string name="dlg_creating_new_user">Creando cuenta…</string>
+    <string name="dlg_loading_dialogs_users">Cargando usuarios…</string>
+    <string name="dlg_retry">Reintentar</string>
+    <string name="dlg_updating_dialog">Actualizando…</string>
+    <string name="dlg_create_dialog">Creando chats…</string>
+    <string name="dlg_loading_opponents">Cargando usuarios…</string>
+    <string name="dlg_signal_error">Desconectado… chequea el estado de red!</string>
+    <string name="dlg_login_error">El usuario no ha iniciado sesión</string>
+    <string name="dlg_allow">Permitir</string>
 
-    <string name="login_chat_login_error">Login Chat error. Please relogin. Error</string>
-    <string name="login_chat_retry">Trying Relogin. Please wait a moment</string>
+    <string name="login_chat_login_error">Error de sesión. Intente de nuevo. Error</string>
+    <string name="login_chat_retry">Trate de iniciar sesión. Por favor espere</string>
 
     <!--menu-->
-    <string name="action_start_login">Done</string>
-    <string name="action_leave_dialog">Leave Dialog</string>
-    <string name="action_start_video_call">Video call</string>
-    <string name="action_start_audio_call">Audio call</string>
-    <string name="action_start_broadcast_call">Join to broadcast</string>
-    <string name="action_update_opponens_list">Update opponents list</string>
-    <string name="action_settings">Settings</string>
-    <string name="action_logout">Logout</string>
-    <string name="action_screen_share">Screen share</string>
-    <string name="action_dialogs_app_info">App Info</string>
+    <string name="action_start_login">Terminado</string>
+    <string name="action_leave_dialog">Dejar dialogo</string>
+    <string name="action_start_video_call">Video llamada</string>
+    <string name="action_start_audio_call">Llamada</string>
+    <string name="action_start_broadcast_call">Únete para transmitir</string>
+    <string name="action_update_opponens_list">Actualizando usuarios</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="action_logout">Salir de sesión</string>
+    <string name="action_screen_share">Pantalla compartida</string>
+    <string name="action_dialogs_app_info">Información de la aplicación</string>
 
     <!--Incoming Call-->
-    <string name="text_incoming_audio_call">Incoming Audio Call</string>
-    <string name="text_incoming_video_call">Incoming Video Call</string>
+    <string name="text_incoming_audio_call">Llamada entrante</string>
+    <string name="text_incoming_video_call">Videollamada entrante</string>
 
     <!--action bar-->
-    <string name="title_one_dialog_selected">%s dialog selected</string>
-    <string name="tile_many_dialogs_selected">%s dialogs selected</string>
+    <string name="title_one_dialog_selected">%s diálogo seleccionado</string>
+    <string name="tile_many_dialogs_selected">%s diálogos seleccionados</string>
 
     <!--Pref manager-->
     <string name="pref_manage_speakerphone_by_proximity_key">manage_speakerphone_by_proximity_preference</string>
@@ -172,64 +172,75 @@
     <string name="pref_dialing_time_interval_key">Dialing_time_interval</string>
     <string name="pref_dialing_time_interval_default_value">5</string>
 
-    <string name="also_on_call">Also on call:</string>
+    <string name="also_on_call">También en llamada:</string>
 
     <string name="user_list_on_call">User 1, User 2, User 3, User 4, User 5, User 6</string>
 
-    <string name="connection_was_lost">Connection was lost</string>
+    <string name="connection_was_lost">Conexión perdida</string>
 
-    <string name="opponent">and %s </string>
+    <string name="opponent">y %s </string>
 
-    <string name="accepted">Accepted</string>
+    <string name="accepted">Aceptado</string>
 
-    <string name="stop_share">Stop</string>
+    <string name="stop_share">Parar</string>
 
     <!-- App info -->
-    <string name="appinfo_application_version">Application version:</string>
-    <string name="appinfo_qbsdk_version">QuickBlox SDK version:</string>
-    <string name="appinfo_application_id">Application ID:</string>
+    <string name="appinfo_application_version">Versión de la aplicación:</string>
+    <string name="appinfo_qbsdk_version">versión de QuickBlox SDK:</string>
+    <string name="appinfo_application_id">ID de aplicación:</string>
     <string name="appinfo_authorization_key">Authorization key:</string>
     <string name="appinfo_authorization_secret">Authorization secret:</string>
     <string name="appinfo_account_key">Account key:</string>
-    <string name="appinfo_api_domain">API domain:</string>
-    <string name="appinfo_chat_domain">Chat domain:</string>
-    <string name="appinfo_title">App Info</string>
-    <string name="appinfo_qa_verion">QA version:</string>
+    <string name="appinfo_api_domain">Dominio API:</string>
+    <string name="appinfo_chat_domain">Dominio de Chat:</string>
+    <string name="appinfo_title">Información de la aplicación</string>
+    <string name="appinfo_qa_verion">Versión QA:</string>
 
     <!--Notification-->
-    <string name="notification_title">You have an active call</string>
-    <string name="notification_text">Touch takes you back to the call %1$s</string>
+    <string name="notification_title">Tienes una llamada activa</string>
+    <string name="notification_text">Toca para regresar a la llamada %1$s</string>
 
     <!-- Errors strings. -->
-    <string name="error_qb_credentials_empty">Credentials are wrong or empty. You have to set:
-        Application ID, Authentification Key, Authentification Secret, Account Key in constants in App.java
-        and you have to set Sender ID in the string resources to launch application.
-        If you haven\'t them you can register new account and application at https://admin.quickblox.com
-        then put Application credentials from Overview page + Account key from https://admin.quickblox.com/account/settings</string>
-    <string name="sign_up_error">Error creating new user, please try again</string>
-    <string name="sign_in_error">Error SignIn user, please try again</string>
-    <string name="update_user_error">Error updating User, please try again</string>
-    <string name="unknown_error">Unknown Error</string>
-    <string name="no_internet_connection">No internet connection</string>
+    <string name="error_qb_credentials_empty">
+        Las credenciales son incorrectas o están vacías. Tienes que configurar:
+        ID de aplicación, clave de autenticación, secreto de autenticación, clave de cuenta en constantes en App.java
+        y debe configurar la ID del remitente en los recursos de cadena para iniciar la aplicación.
+        Si no los tiene, puede registrar una nueva cuenta y aplicación en https://admin.quickblox.com
+        luego coloque las credenciales de la aplicación en la página Descripción general más la clave de la cuenta en https://admin.quickblox.com/account/settings
+
+    </string>
+    <string name="sign_up_error">Error creando usuario, intente de nuevo.</string>
+    <string name="sign_in_error">Error al iniciar sesión.</string>
+    <string name="update_user_error">Error actualizando datos.</string>
+    <string name="unknown_error">Error desconocido.</string>
+    <string name="no_internet_connection">Sin conexión de internet.</string>
     <string name="dlg_error">Error</string>
-    <string name="dlg_error_loading">Loading dialog error. Error</string>
-    <string name="dialogs_creation_error">Dialog creation errors</string>
-    <string name="join_conference">Join to conference…</string>
-    <string name="join_conference_error">Join to conference errors</string>
-    <string name="error_connection">Connection failed. Please check your internet connection.</string>
-    <string name="error_response_timeout">No response received within reply timeout</string>
-    <string name="error_max_opponents_count">You can select up to %d opponents</string>
-    <string name="error_permission_video">You should allow Camera permission</string>
-    <string name="error_permission_audio">You should allow Microphone permission</string>
+    <string name="dlg_error_loading">Error al cargar diálogos</string>
+    <string name="dialogs_creation_error">Error al crear diálogos</string>
+    <string name="join_conference">Unirse a conferencia…</string>
+    <string name="join_conference_error">Error al unirse al conferencia</string>
+    <string name="error_connection">Conexión fallida.</string>
+    <string name="error_response_timeout">Sin respuesta</string>
+    <string name="error_max_opponents_count">Puedes seleccionar hasta %d usuarios</string>
+    <string name="error_permission_video">´Deberías dar permisos de cámara</string>
+    <string name="error_permission_audio">Deberías dar permisos de micrófono</string>
     <string name="Version">Version 1.0.0</string>
-    <string name="type_your_password">Type your password</string>
+    <string name="type_your_password">Escribe tu contraseña</string>
     <string name="Put_values_SignIn">Bienvenido, ingrese los valores solicitados para continuar.</string>
     <string name="New_user_signIn">¿Nuevo usuario?</string>
-    <string name="username">Username</string>
+    <string name="username">Usuario</string>
     <string name="r_u_user">¿Ya tienes cuenta?</string>
     <string name="title_activity_navigation">Navigation</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Inicio</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_notifications">Notificaciones</string>
+    <string name="Room_name">Nombre de sala</string>
+    <string name="message_long">Último mensaje largo para ver cómo funciona el margen en el lado derecho</string>
+    <string name="Confirm">Confirmar</string>
+    <string name="Challenge">Reto</string>
+    <string name="True">Verdad</string>
+    <string name="tested_text"></string>
+    <string name="Status">Estado</string>
+    <string name="Save">Guardar</string>
 
 </resources>

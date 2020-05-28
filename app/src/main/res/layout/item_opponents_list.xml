@@ -19,5 +19,5 @@
         android:layout_marginStart="@dimen/padding_start"
         android:layout_marginLeft="@dimen/padding_start"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:text="User Name" />
+        tools:text="@string/username" />
 </LinearLayout>

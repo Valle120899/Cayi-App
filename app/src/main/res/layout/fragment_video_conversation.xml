@@ -64,7 +64,7 @@
         android:layout_height="match_parent"
         android:fontFamily="@font/bowlby_one_sc"
         android:gravity="top"
-        android:text="Texto prueba"
+        android:text="@string/tested_text"
         android:textAlignment="center"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="36dp"
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textStyle="normal|italic"
-        android:text="Verdad"
+        android:text="@string/True"
         android:layout_below="@id/Confirmar"
         />
 
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textStyle="normal|italic"
-        android:text="Reto"
+        android:text="@string/Challenge"
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
         />
@@ -98,7 +98,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textStyle="normal|italic"
-        android:text="Confirmar"
+        android:text="@string/Confirm"
         android:layout_centerInParent="true"
         android:visibility="invisible"
         />

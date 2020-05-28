@@ -11,19 +11,6 @@
         android:orientation="vertical"
         android:padding="15dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/appinfo_application_version"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/text_app_version"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:textSize="15sp"
-            tools:text="1.5.22" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -39,61 +26,6 @@
             android:textSize="15sp"
             tools:text="3.8.1" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/appinfo_application_id"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/text_app_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:textSize="15sp"
-            tools:text="thisIsExample" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/appinfo_authorization_key"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/text_auth_key"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:textSize="15sp"
-            tools:text="thisIsExample" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/appinfo_authorization_secret"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/text_auth_secret"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:textSize="15sp"
-            tools:text="thisIsExample" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/appinfo_account_key"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/text_account_key"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:textSize="15sp"
-            tools:text="thisIsExample" />
 
         <TextView
             android:layout_width="wrap_content"
