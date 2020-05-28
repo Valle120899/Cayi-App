@@ -6,7 +6,7 @@
         <item name="colorControlHighlight">@color/color_accent</item>
         <item name="colorControlNormal">@color/color_accent</item>
 
-        <item name="colorPrimary">@color/random_color_1</item>
+        <item name="colorPrimary">@color/CayiColor</item>
         <item name="colorPrimaryDark">@color/text_color_black</item>
         <item name="colorAccent">@color/color_accent</item>
 

@@ -25,7 +25,7 @@ class SettingsActivity : BaseActivity(), SharedPreferences.OnSharedPreferenceCha
         super.onCreate(savedInstanceState)
         supportActionBar?.title = getString(R.string.actionbar_title_settings)
 
-        // Display the fragment as the main content.
+        // Muestra el main content
         settingsFragment = SettingsFragment()
         fragmentManager.beginTransaction()
                 .replace(android.R.id.content, settingsFragment)
@@ -69,7 +69,6 @@ class SettingsActivity : BaseActivity(), SharedPreferences.OnSharedPreferenceCha
 
     private fun updateSummary(sharedPreferences: SharedPreferences, key: String) {
         val updatedPref = settingsFragment.findPreference(key)
-        // Set summary to be the user-description for the selected value
         if (updatedPref is EditTextPreference) {
             updatedPref.text = sharedPreferences.getString(key, "")
         } else if (updatedPref is SeekBarPreference) {

@@ -328,8 +328,7 @@ class VideoConversationFragment : BaseConversationFragment(), Serializable,
     }
 
     override fun onPause() {
-        // If camera state is CameraState.ENABLED_FROM_USER or CameraState.NONE
-        // than we turn off cam
+        // Estado de camara cuando se le da vuelta
         toggleCamera(false)
 
         if (connectionEstablished) {

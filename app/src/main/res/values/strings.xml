@@ -8,11 +8,11 @@
     <string name="opponent_pending">Pendiente</string>
     <string name="text_status_connect">Conectando...</string>
     <string name="text_status_checking">Chequeando…</string>
-    <string name="text_status_connected">Conectadro</string>
+    <string name="text_status_connected">Conectado</string>
     <string name="text_status_disconnected">Desconectado</string>
     <string name="opponent_closed">Cerrado</string>
     <string name="text_status_no_answer">Sin respuesta</string>
-    <string name="text_status_rejected">Rechazadp</string>
+    <string name="text_status_rejected">Rechazado</string>
     <string name="text_status_hang_up">Colgar</string>
 
     <string name="pref_disable_built_in_aec_key">disable_built_in_aec_preference</string>

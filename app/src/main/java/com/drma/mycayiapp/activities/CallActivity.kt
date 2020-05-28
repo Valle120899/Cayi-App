@@ -266,7 +266,7 @@ class CallActivity : BaseActivity(), IncomeCallFragmentCallbackListener, QBRTCSe
                     callService.stopRingtone()
                     hangUpCurrentSession()
                 }*/
-                // This is a fix to prevent call stop in case calling to user with more then one device logged in.
+                // Prevee las llamadas para usuarios con varias sesiones abiertas
                 longToast("Call was stopped by UserNoActions timer")
                 callService.clearCallState()
                 callService.clearButtonsState()
@@ -307,15 +307,11 @@ class CallActivity : BaseActivity(), IncomeCallFragmentCallbackListener, QBRTCSe
     }
 
     override fun finish() {
-        //Fix bug when user returns to call from service and the backstack doesn't have any screens
         OpponentsActivity.start(this)
         CallService.stop(this)
         super.finish()
     }
 
-    override fun onBackPressed() {
-        // To prevent returning from Call Fragment
-    }
 
     private fun addIncomeCallFragment() {
         if (callService.currentSessionExist()) {
@@ -614,7 +610,7 @@ class CallActivity : BaseActivity(), IncomeCallFragmentCallbackListener, QBRTCSe
             val binder = service as CallService.CallServiceBinder
             callService = binder.getService()
             if (callService.currentSessionExist()) {
-                //we have already currentSession == null, so it's no reason to do further initialization
+
                 if (QBChatService.getInstance().isLoggedIn) {
                     initScreen()
                 } else {

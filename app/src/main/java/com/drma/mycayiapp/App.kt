@@ -10,7 +10,7 @@ import io.fabric.sdk.android.Fabric
 
 const val DEFAULT_USER_PASSWORD = "root"
 
-//App credentials
+//Credenciales de la App (datos de base en quickblox)
 private const val APPLICATION_ID = "82749"
 private const val AUTH_KEY = "v-kuOXZ-7euCKHb"
 private const val AUTH_SECRET = "zAXtB6H7xZrEBLR"
