@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -32,6 +33,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.quickblox.users.model.QBUser
 import com.quickblox.videochat.webrtc.QBRTCClient
 import com.quickblox.videochat.webrtc.QBRTCTypes
+import java.lang.Exception
 
 
 private const val PER_PAGE_SIZE_100 = 100
@@ -44,6 +46,12 @@ class OpponentsActivity : BaseActivity() {
     private lateinit var usersRecyclerView: RecyclerView
     private lateinit var currentUser: QBUser
     private lateinit var navView: BottomNavigationView
+    private lateinit var ajustes: Button
+    var contador: Int = 0
+
+    private var usersIds: ArrayList<Int> = ArrayList<Int>()
+    private var usersIds2: ArrayList<Int> = ArrayList<Int>()
+    //intent.extras!!.getIntegerArrayList("returnedList")
 
     private var usersAdapter: UsersAdapter? = null
 
@@ -62,6 +70,8 @@ class OpponentsActivity : BaseActivity() {
         initDefaultActionBar()
         initUI()
         startLoginService()
+
+
     }
 
     override fun onResume() {
@@ -87,7 +97,8 @@ class OpponentsActivity : BaseActivity() {
     }
 
     private fun clearAppNotifications() {
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.cancelAll()
     }
 
@@ -113,19 +124,24 @@ class OpponentsActivity : BaseActivity() {
 
             override fun onError(responseException: QBResponseException) {
                 hideProgressDialog()
-                showErrorSnackbar(R.string.loading_users_error, responseException, View.OnClickListener { loadUsers() })
+                showErrorSnackbar(
+                    R.string.loading_users_error,
+                    responseException,
+                    View.OnClickListener { loadUsers() })
             }
         }, requestBuilder)
     }
 
     private fun initUI() {
+        ajustes = findViewById(R.id.ajustes)
         usersRecyclerView = findViewById(R.id.list_select_users)
         navView = findViewById(R.id.nav_view)
         navView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_videocalls -> {
-                    var Intent: Intent = Intent(this@OpponentsActivity, OpponentsActivity::class.java)
-                    startActivity(Intent)
+                    //  var Intent: Intent =
+                    //    Intent(this@OpponentsActivity, OpponentsActivity::class.java)
+                    //tartActivity(Intent)
                     true
                 }
                 R.id.navigation_profile -> {
@@ -146,14 +162,38 @@ class OpponentsActivity : BaseActivity() {
                 }
             }
         }
+        ajustes.setOnClickListener() {
+            var intent: Intent = Intent(this, FindFriendActivity::class.java)
+            intent.putExtra("Lista", usersIds)
+          //  intent.putExtra("contador", contador)
+            startActivity(intent)
+        }
     }
 
     private fun initUsersList() {
-        val currentOpponentsList = QbUsersDbManager.allUsers
+        try {
+            if (contador != 0) {
+                var bundle: Bundle? = intent.extras
+                 usersIds = bundle!!.getIntegerArrayList("Lista")
+               // contador = bundle!!.getInt("contador")
+               // var delete: Int = bundle.getInt("remove")
+              /*  if (add != null) {
+                    usersIds2.add(add)
+                    contador = 0
+                } */
+               // usersIds.add(add)
+               // usersIds.remove(delete)
+            }
+        }catch (e:Exception){
+            Toast.makeText(this, "No hay usuarios por actualizar", Toast.LENGTH_SHORT).show()
+        }
+        contador++
+        var currentOpponentsList = QbUsersDbManager.getUsersByIds(usersIds)
         currentOpponentsList.remove(SharedPrefsHelper.getQbUser())
         if (usersAdapter == null) {
             usersAdapter = UsersAdapter(this, currentOpponentsList)
-            usersAdapter!!.setSelectedItemsCountsChangedListener(object : UsersAdapter.SelectedItemsCountsChangedListener {
+            usersAdapter!!.setSelectedItemsCountsChangedListener(object :
+                UsersAdapter.SelectedItemsCountsChangedListener {
                 override fun onCountSelectedItemsChanged(count: Int) {
                     updateActionBar(count)
                 }
@@ -165,6 +205,7 @@ class OpponentsActivity : BaseActivity() {
             usersAdapter!!.updateUsersList(currentOpponentsList)
         }
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         if (usersAdapter != null && usersAdapter!!.selectedUsers.isNotEmpty()) {
@@ -235,7 +276,12 @@ class OpponentsActivity : BaseActivity() {
     private fun startCall(isVideoCall: Boolean) {
         val usersCount = usersAdapter!!.selectedUsers.size
         if (usersCount > MAX_OPPONENTS_COUNT) {
-            longToast(String.format(getString(R.string.error_max_opponents_count), MAX_OPPONENTS_COUNT))
+            longToast(
+                String.format(
+                    getString(R.string.error_max_opponents_count),
+                    MAX_OPPONENTS_COUNT
+                )
+            )
             return
         }
 
@@ -247,7 +293,8 @@ class OpponentsActivity : BaseActivity() {
         }
         val qbrtcClient = QBRTCClient.getInstance(applicationContext)
 
-        val newQbRtcSession = qbrtcClient.createNewSessionWithOpponents(opponentsList, conferenceType)
+        val newQbRtcSession =
+            qbrtcClient.createNewSessionWithOpponents(opponentsList, conferenceType)
 
         WebRtcSessionManager.setCurrentSession(newQbRtcSession)
 
@@ -284,7 +331,8 @@ class OpponentsActivity : BaseActivity() {
     private fun initDefaultActionBar() {
         val currentUserFullName = SharedPrefsHelper.getQbUser().login
         supportActionBar?.title = ""
-        supportActionBar?.subtitle = getString(R.string.subtitle_text_logged_in_as, currentUserFullName)
+        supportActionBar?.subtitle =
+            getString(R.string.subtitle_text_logged_in_as, currentUserFullName)
     }
 
     private fun logout() {

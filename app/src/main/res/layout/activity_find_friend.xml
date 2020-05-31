@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.FindFriendActivity"
+    android:layout_margin="50dp"
+    >
+
+    <TextView
+        android:id="@+id/info_findfriend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Por favor ingrese el ID del usuario y luego presione su decisión."
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        />
+
+    <EditText
+        android:id="@+id/id_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese el ID"
+        android:layout_below="@+id/info_findfriend"
+        android:layout_margin="50dp"
+        android:inputType="number"
+
+        />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_user"
+        android:text="Agregar"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp"
+        />
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_user"
+        android:text="Eliminar"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        />
+
+</RelativeLayout>

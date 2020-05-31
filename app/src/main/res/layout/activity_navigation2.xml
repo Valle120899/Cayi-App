@@ -22,7 +22,21 @@
             android:id="@+id/list_select_users"
             style="@style/ListViewWithoutDividerStyle"
             tools:listitem="@layout/list_item_user" />
+
+
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/ajustes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/nav_view"
+        android:layout_centerInParent="true"
+        android:text="Ajustes"
+        android:padding="20dp"
+        android:layout_marginRight="50dp"
+        />
 
 
 
@@ -33,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
-
+        android:layout_marginTop="50dp"
         app:menu="@menu/bottom_nav_menu" />
 
 
