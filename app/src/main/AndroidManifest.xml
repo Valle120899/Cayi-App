@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.FindFriendActivity"></activity>
+        <activity android:name=".activities.OptionsActivity"></activity>
+        <activity android:name=".activities.FindFriendActivity" />
         <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".activities.ChatActivity" />
         <activity

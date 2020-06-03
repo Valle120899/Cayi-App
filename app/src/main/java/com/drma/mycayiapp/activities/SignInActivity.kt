@@ -172,7 +172,7 @@ class SignInActivity : BaseActivity() {
         QBUsers.updateUser(user).performAsync(object : QBEntityCallback<QBUser> {
             override fun onSuccess(updUser: QBUser?, params: Bundle?) {
                 hideProgressDialog()
-                OpponentsActivity.start(this@SignInActivity)
+                OptionsActivity.start(this@SignInActivity)
                 finish()
             }
 

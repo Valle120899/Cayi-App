@@ -58,7 +58,7 @@ class OpponentsActivity : BaseActivity() {
     companion object {
         fun start(context: Context) {
             val intent = Intent(context, OpponentsActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             context.startActivity(intent)
         }
     }
@@ -139,19 +139,10 @@ class OpponentsActivity : BaseActivity() {
         navView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_videocalls -> {
-                    //  var Intent: Intent =
-                    //    Intent(this@OpponentsActivity, OpponentsActivity::class.java)
-                    //tartActivity(Intent)
                     true
                 }
                 R.id.navigation_profile -> {
                     var Intent: Intent = Intent(this@OpponentsActivity, ProfileActivity::class.java)
-                    startActivity(Intent)
-                    true
-                }
-
-                R.id.navigation_chat -> {
-                    var Intent: Intent = Intent(this@OpponentsActivity, ChatActivity::class.java)
                     startActivity(Intent)
                     true
                 }
@@ -165,7 +156,6 @@ class OpponentsActivity : BaseActivity() {
         ajustes.setOnClickListener() {
             var intent: Intent = Intent(this, FindFriendActivity::class.java)
             intent.putExtra("Lista", usersIds)
-          //  intent.putExtra("contador", contador)
             startActivity(intent)
         }
     }
@@ -175,14 +165,6 @@ class OpponentsActivity : BaseActivity() {
             if (contador != 0) {
                 var bundle: Bundle? = intent.extras
                  usersIds = bundle!!.getIntegerArrayList("Lista")
-               // contador = bundle!!.getInt("contador")
-               // var delete: Int = bundle.getInt("remove")
-              /*  if (add != null) {
-                    usersIds2.add(add)
-                    contador = 0
-                } */
-               // usersIds.add(add)
-               // usersIds.remove(delete)
             }
         }catch (e:Exception){
             Toast.makeText(this, "No hay usuarios por actualizar", Toast.LENGTH_SHORT).show()

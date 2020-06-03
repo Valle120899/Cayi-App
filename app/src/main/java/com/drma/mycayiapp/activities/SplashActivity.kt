@@ -18,7 +18,7 @@ class SplashActivity : BaseActivity() {
         Handler().postDelayed({
             if (SharedPrefsHelper.hasQbUser()) {
                 LoginService.start(this, SharedPrefsHelper.getQbUser())
-                OpponentsActivity.start(this)
+                OptionsActivity.start(this)
             } else {
                 LoginActivity.start(this)
             }

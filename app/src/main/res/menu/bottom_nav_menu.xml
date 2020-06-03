@@ -11,9 +11,10 @@
         android:icon="@drawable/ic_account_circle_black_24dp"
         android:title="Perfil" />
 
+    <!--
     <item
         android:id="@+id/navigation_chat"
         android:icon="@drawable/ic_chat_black_24dp"
         android:title="Chat" />
-
+-->
 </menu>
