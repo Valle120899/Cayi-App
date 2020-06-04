@@ -24,6 +24,14 @@
         android:textSize="16sp" />
 
     <EditText
+        android:id="@+id/correo_SignIn"
+        style="@style/MatchWidth"
+        android:hint="Correo"
+        android:paddingTop="@dimen/padding_top"
+        android:singleLine="true"
+        android:textSize="16sp" />
+
+    <EditText
         android:id="@+id/userfullnameEditText_SignIn"
         style="@style/MatchWidth"
         android:hint="@string/hint_user_full_name"

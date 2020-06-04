@@ -22,6 +22,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.quickblox.users.QBUsers
 import com.quickblox.users.model.QBUser
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlin.random.Random
 
 
@@ -29,10 +31,13 @@ class SignInActivity : BaseActivity() {
 
     private lateinit var userLoginEditText_SignIn: EditText
     private lateinit var Password_SignIn: EditText
+    private lateinit var correo_SignIn: EditText
     private lateinit var New_User_tv:TextView
     private lateinit var userfullnameEditText_SignIn:String
 
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var refUser:DatabaseReference
+    private var firebaseUserID:String = ""
 
 
     private lateinit var user: QBUser
@@ -53,6 +58,9 @@ class SignInActivity : BaseActivity() {
         supportActionBar?.title = getString(R.string.title_login_activity)
 
         mAuth = FirebaseAuth.getInstance()
+
+        correo_SignIn= findViewById(R.id.correo_SignIn)
+        correo_SignIn.addTextChangedListener(LoginEditTextWatcher(correo_SignIn))
 
         userLoginEditText_SignIn = findViewById(R.id.usernameEditText_SignIn)
         userLoginEditText_SignIn.addTextChangedListener(LoginEditTextWatcher(userLoginEditText_SignIn))
@@ -92,6 +100,14 @@ class SignInActivity : BaseActivity() {
 
     fun EntradaFirebase(){
 
+        val username:String = usernameEditText_SignIn.text.toString()
+        val email:String = correo_SignIn.text.toString()
+        val password:String = Password_SignIn.text.toString()
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
+            if(it.isSuccessful){
+
+            }
+        }
     }
 
     private fun isEnteredUserNameValid(): Boolean {

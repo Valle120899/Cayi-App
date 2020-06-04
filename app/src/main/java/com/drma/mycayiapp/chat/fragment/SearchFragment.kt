@@ -37,6 +37,7 @@ class SearchFragment : Fragment() {
         recyclerView = view.findViewById(R.id.searchList)
         recyclerView!!.setHasFixedSize(true)
         recyclerView!!.layoutManager = LinearLayoutManager(context)
+
         mUsers = ArrayList()
         retrieveAllUsers()
 
@@ -70,7 +71,6 @@ class SearchFragment : Fragment() {
             refUsers.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(p0: DataSnapshot) {
                     (mUsers as ArrayList<Users>).clear()
-                    if (value == "") {
                         if (searchEditText!!.text.toString() == "") {
                             (mUsers as ArrayList<Users>).clear()
                             for (snapshot in p0.children) {
@@ -82,7 +82,7 @@ class SearchFragment : Fragment() {
                             userAdapter = UserAdapter(context!!, mUsers!!, false)
                             recyclerView!!.adapter = userAdapter
                         }
-                    }
+
                 }
                 override fun onCancelled(p0: DatabaseError) {
 

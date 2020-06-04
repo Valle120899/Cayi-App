@@ -57,10 +57,8 @@ class ChatActivity : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()){
                     val user : Users? = p0.getValue(Users::class.java)
-                    user_name.text= SharedPrefsHelper.getQbUser().login
-                    var imageDB : String = p0.child("image").getValue().toString()
-                    Picasso.get().load(imageDB).placeholder(R.drawable.ic_person_big).into(profile_image)
-                    //Picasso.get().load(user.getprofile()).placeholder(R.drawable.ic_person_big).into(profile_image)
+                    user_name.text= user!!.getusername()
+                    Picasso.get().load(user.getprofile()).placeholder(R.drawable.ic_person_big).into(profile_image)
                 }
             }
 

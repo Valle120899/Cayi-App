@@ -30,6 +30,7 @@ import com.drma.mycayiapp.util.loadUsersByPagedRequestBuilder
 import com.drma.mycayiapp.util.signOut
 import com.drma.mycayiapp.utils.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.quickblox.users.model.QBUser
 import com.quickblox.videochat.webrtc.QBRTCClient
 import com.quickblox.videochat.webrtc.QBRTCTypes
@@ -318,6 +319,7 @@ class OpponentsActivity : BaseActivity() {
     }
 
     private fun logout() {
+        FirebaseAuth.getInstance().signOut()
         SubscribeService.unSubscribeFromPushes(this)
         LoginService.logout(this)
         removeAllUserData()
