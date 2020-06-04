@@ -1,12 +1,16 @@
 package com.drma.mycayiapp.chat.AdapterClasses
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.drma.mycayiapp.R
+import com.drma.mycayiapp.chat.MessageChatActivity
 import com.drma.mycayiapp.chat.modelclasses.Users
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
@@ -41,7 +45,27 @@ class UserAdapter(
     override fun onBindViewHolder(holder: ViewHolder, i: Int) {
         val user : Users = mUsers[i]
         holder.userNameText.text= user!!.getusername()
-        //Picasso.get().load(user.getprofile()).placeholder(R.drawable.ic_person_big).into(holder.profileImageView)
+        Picasso.get().load(user.getprofile()).placeholder(R.drawable.ic_person_big).into(holder.profileImageView)
+
+        holder.itemView.setOnClickListener{
+            val options = arrayOf<CharSequence>(
+                "Send Message",
+                "Visit Profile"
+            )
+            val builder: AlertDialog.Builder = AlertDialog.Builder(mContext)
+            builder.setTitle("What do you want?")
+            builder.setItems(options, DialogInterface.OnClickListener{dialog, position ->
+                if(position == 0){
+                    val intent = Intent(mContext, MessageChatActivity::class.java)
+                    intent.putExtra("visit_id", user.getuid())
+                    mContext.startActivity(intent)
+                }
+                if(position == 1){
+
+                }
+            })
+            builder.show()
+        }
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
