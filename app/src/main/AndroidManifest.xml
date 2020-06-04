@@ -21,10 +21,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.OptionsActivity"></activity>
+        <activity
+            android:name=".chat.ChatActivity"
+            android:label="@string/title_activity_chat"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activities.OptionsActivity" />
         <activity android:name=".activities.FindFriendActivity" />
         <activity android:name=".activities.ProfileActivity" />
-        <activity android:name=".activities.ChatActivity" />
         <activity
             android:name=".Navigation"
             android:label="@string/title_activity_navigation" />

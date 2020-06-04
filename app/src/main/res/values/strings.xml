@@ -3,6 +3,7 @@
     <string name="sender_id">412438318009</string>
 
     <string name="app_name">Cayi</string>
+    <string name="name_user">username</string>
 
     <string name="new_connection">Nueva conexión</string>
     <string name="opponent_pending">Pendiente</string>
@@ -242,5 +243,16 @@
     <string name="tested_text"></string>
     <string name="Status">Estado</string>
     <string name="Save">Guardar</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.drma.mycayiapp.R
+import com.drma.mycayiapp.chat.ChatActivity
 
 class OptionsActivity : AppCompatActivity() {
 

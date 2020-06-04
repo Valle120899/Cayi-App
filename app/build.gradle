@@ -108,9 +108,13 @@ android {
 
 dependencies {
 
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
     implementation "com.quickblox:quickblox-android-sdk-videochat-webrtc:$qbSdkVersion"
     implementation "com.quickblox:quickblox-android-sdk-messages:$qbSdkVersion"
-
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation "com.google.android.gms:play-services-gcm:17.0.0"
     implementation "com.google.firebase:firebase-messaging:20.2.0"
     implementation 'com.google.firebase:firebase-analytics:17.4.2'
@@ -141,6 +145,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
 
 apply from: "../artifacts.gradle"
