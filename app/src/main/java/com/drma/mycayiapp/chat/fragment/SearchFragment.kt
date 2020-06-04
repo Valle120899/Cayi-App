@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_search.*
+import java.lang.Exception
 
 class SearchFragment : Fragment() {
     private var userAdapter : UserAdapter? = null
@@ -39,19 +40,23 @@ class SearchFragment : Fragment() {
         mUsers = ArrayList()
         retrieveAllUsers()
 
-        searchEditText!!.addTextChangedListener(object : TextWatcher{
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+        try {
+            searchEditText!!.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
-            }
+                }
 
-            override fun onTextChanged(cs: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                searchForUsers(cs.toString().toLowerCase())
-            }
+                override fun onTextChanged(cs: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    searchForUsers(cs.toString().toLowerCase())
+                }
 
-            override fun afterTextChanged(p0: Editable?) {
+                override fun afterTextChanged(p0: Editable?) {
 
-            }
-        })
+                }
+            })
+        }catch (e: Exception){
+
+        }
 
         return view
     }
@@ -59,26 +64,33 @@ class SearchFragment : Fragment() {
     private fun retrieveAllUsers(){
         var firebaseUserID = FirebaseAuth.getInstance().currentUser!!.uid
         val refUsers = FirebaseDatabase.getInstance().reference.child("Users")
-        refUsers.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(p0: DataSnapshot) {
-                (mUsers as ArrayList<Users>).clear()
-                if(searchEditText!!.text.toString() == ""){
+
+        try {
+            var value: String = searchEditText!!.text.toString()
+            refUsers.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(p0: DataSnapshot) {
                     (mUsers as ArrayList<Users>).clear()
-                    for(snapshot in p0.children){
-                        val user : Users? = snapshot.getValue(Users::class.java)
-                        if(!(user!!.getuid()).equals(firebaseUserID)){
-                            (mUsers as ArrayList<Users>).add(user)
+                    if (value == "") {
+                        if (searchEditText!!.text.toString() == "") {
+                            (mUsers as ArrayList<Users>).clear()
+                            for (snapshot in p0.children) {
+                                val user: Users? = snapshot.getValue(Users::class.java)
+                                if (!(user!!.getuid()).equals(firebaseUserID)) {
+                                    (mUsers as ArrayList<Users>).add(user)
+                                }
+                            }
+                            userAdapter = UserAdapter(context!!, mUsers!!, false)
+                            recyclerView!!.adapter = userAdapter
                         }
                     }
-                    userAdapter = UserAdapter(context!!, mUsers!!, false)
-                    recyclerView!!.adapter = userAdapter
                 }
-            }
+                override fun onCancelled(p0: DatabaseError) {
 
-            override fun onCancelled(p0: DatabaseError) {
+                }
+            })
+        }catch (e:Exception){
 
-            }
-        })
+        }
     }
 
     private fun searchForUsers(str: String){

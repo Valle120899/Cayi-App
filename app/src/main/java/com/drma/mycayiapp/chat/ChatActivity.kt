@@ -16,6 +16,7 @@ import com.drma.mycayiapp.chat.fragment.ChatFragment
 import com.drma.mycayiapp.chat.fragment.SearchFragment
 import com.drma.mycayiapp.chat.fragment.SettingFragment
 import com.drma.mycayiapp.chat.modelclasses.Users
+import com.drma.mycayiapp.utils.SharedPrefsHelper
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -56,8 +57,10 @@ class ChatActivity : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()){
                     val user : Users? = p0.getValue(Users::class.java)
-                    user_name.text= user!!.getusername()
-                    Picasso.get().load(user.getprofile()).placeholder(R.drawable.ic_person_big).into(profile_image)
+                    user_name.text= SharedPrefsHelper.getQbUser().login
+                    var imageDB : String = p0.child("image").getValue().toString()
+                    Picasso.get().load(imageDB).placeholder(R.drawable.ic_person_big).into(profile_image)
+                    //Picasso.get().load(user.getprofile()).placeholder(R.drawable.ic_person_big).into(profile_image)
                 }
             }
 
