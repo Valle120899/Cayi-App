@@ -34,8 +34,9 @@ class SettingFragment : Fragment() {
                 if(p0.exists()){
                     val user : Users? = p0.getValue(Users::class.java)
                     if(context!=null){
-                        view.username_settings.text = user!!.getusername()
-                        Picasso.get().load(user.getprofile()).into(view.idfotoPerfil)
+                        view.username_profile.text = user!!.getusername()
+                        Picasso.get().load(user.getprofile()).into(view.profile_image)
+                        Picasso.get().load(user.getcover()).into(view.cover_image)
                     }
                 }
             }

@@ -20,12 +20,28 @@ class UserAdapter(
 
     private val mContext:Context
     private val mUsers: List<Users>
-    private val isChatCheck: Boolean
+    private var isChatCheck: Boolean
 
     init{
         this.mUsers = mUsers
         this.isChatCheck = isChatCheck
         this.mContext = mContext
+    }
+
+
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
+        val view: View = LayoutInflater.from(mContext).inflate(R.layout.user_search_item_layout,viewGroup,false)
+        return UserAdapter.ViewHolder(view)
+    }
+
+    override fun getItemCount(): Int {
+        return mUsers.size
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, i: Int) {
+        val user : Users = mUsers[i]
+        holder.userNameText.text= user!!.getusername()
+        //Picasso.get().load(user.getprofile()).placeholder(R.drawable.ic_person_big).into(holder.profileImageView)
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -45,19 +61,6 @@ class UserAdapter(
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(mContext).inflate(R.layout.user_search_item_layout,viewGroup,false)
-        return UserAdapter.ViewHolder(view)
-    }
 
-    override fun getItemCount(): Int {
-        return mUsers.size
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, i: Int) {
-        val user : Users = mUsers[i]
-        holder.userNameText.text= user!!.getusername()
-        Picasso.get().load(user.getprofile()).placeholder(R.drawable.ic_person_big).into(holder.profileImageView)
-    }
 
 }
