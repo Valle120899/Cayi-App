@@ -56,14 +56,13 @@ class ChatActivity : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()){
                     val user : Users? = p0.getValue(Users::class.java)
-
                     user_name.text= user!!.getusername()
                     Picasso.get().load(user.getprofile()).placeholder(R.drawable.ic_person_big).into(profile_image)
                 }
             }
 
             override fun onCancelled(p0: DatabaseError) {
-                TODO("Not yet implemented")
+
             }
         })
 
