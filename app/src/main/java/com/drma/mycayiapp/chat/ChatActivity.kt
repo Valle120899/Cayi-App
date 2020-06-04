@@ -15,15 +15,27 @@ import com.drma.mycayiapp.R
 import com.drma.mycayiapp.chat.fragment.ChatFragment
 import com.drma.mycayiapp.chat.fragment.SearchFragment
 import com.drma.mycayiapp.chat.fragment.SettingFragment
+import com.drma.mycayiapp.chat.modelclasses.Users
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_chat2.*
 
 class ChatActivity : AppCompatActivity() {
+
+    var refUsers : DatabaseReference? = null
+    var firebaseUser : FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat2)
         setSupportActionBar(toolbar_chat)
+
+
+        firebaseUser = FirebaseAuth.getInstance().currentUser
+        refUsers = FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUser!!.uid)
 
         val toolbar : Toolbar = findViewById(R.id.toolbar_chat)
         setSupportActionBar(toolbar)
@@ -39,6 +51,21 @@ class ChatActivity : AppCompatActivity() {
 
         viewpager.adapter = viewPagerAdapter
         tablayout.setupWithViewPager(viewpager)
+
+        refUsers!!.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.exists()){
+                    val user : Users? = p0.getValue(Users::class.java)
+
+                    user_name.text= user!!.getusername()
+                    Picasso.get().load(user.getprofile()).placeholder(R.drawable.ic_person_big).into(profile_image)
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
 
     }
 

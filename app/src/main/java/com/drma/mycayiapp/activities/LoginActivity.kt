@@ -15,6 +15,7 @@ import com.drma.mycayiapp.utils.longToast
 import com.quickblox.core.QBEntityCallback
 import com.quickblox.core.exception.QBResponseException
 import com.drma.mycayiapp.DEFAULT_USER_PASSWORD
+import com.drma.mycayiapp.chat.ChatActivity
 import com.drma.mycayiapp.services.LoginService
 import com.drma.mycayiapp.util.signInUser
 import com.drma.mycayiapp.util.signUp
@@ -122,6 +123,20 @@ class LoginActivity : BaseActivity() {
                 val userHasMap= HashMap<String, Any>()
                 userHasMap["uid"] = firebaseUserID
                 userHasMap["username"] = username
+                userHasMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/Users%20Image%2FDbSL3cG7l3g5XKLPEWoVcnnc5o32?alt=media&token=ef27c5b3-42d7-45b3-950c-42abb3cc6397"
+                userHasMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/Users%20Image%2Fs0kqsgHHfBYAKSHBvhRU54GQr7s1?alt=media&token=dee1bc74-ef7a-4c31-83c4-4144b8d04ad7"
+                userHasMap["status"] = "Hello Cayi Friend"
+                userHasMap["search"] = username.toLowerCase()
+
+
+                refUsers.updateChildren(userHasMap).addOnCompleteListener {
+                    task ->  if(task.isSuccessful){
+                    var intent: Intent = Intent(this@LoginActivity, OptionsActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    finish()
+                }
+                }
 
             }
         }
@@ -175,8 +190,6 @@ class LoginActivity : BaseActivity() {
         qbUser.password = Password.text.toString()
         return qbUser
     }
-
-
 
 
     override fun onBackPressed() {
