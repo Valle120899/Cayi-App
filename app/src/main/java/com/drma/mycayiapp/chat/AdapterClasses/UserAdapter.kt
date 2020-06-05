@@ -45,7 +45,7 @@ class UserAdapter(
     override fun onBindViewHolder(holder: ViewHolder, i: Int) {
         val user : Users = mUsers[i]
         holder.userNameText.text= user!!.getusername()
-        Picasso.get().load(user.getprofile()).placeholder(R.drawable.ic_person_big).into(holder.profileImageView)
+        //Picasso.get().load(user.getprofile()).placeholder(R.drawable.ic_person_big).into(holder.profileImageView)
 
         holder.itemView.setOnClickListener{
             val options = arrayOf<CharSequence>(

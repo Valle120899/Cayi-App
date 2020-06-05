@@ -15,6 +15,7 @@ import com.drma.mycayiapp.R
 import com.drma.mycayiapp.chat.fragment.ChatFragment
 import com.drma.mycayiapp.chat.fragment.SearchFragment
 import com.drma.mycayiapp.chat.fragment.SettingFragment
+import com.drma.mycayiapp.chat.modelclasses.Chat
 import com.drma.mycayiapp.chat.modelclasses.Users
 import com.drma.mycayiapp.utils.SharedPrefsHelper
 import com.google.android.material.tabs.TabLayout
@@ -42,16 +43,45 @@ class ChatActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.title=""
 
+        //De aquí para abajo se modificó el ChatActivity, eliminando los PagerAdapter comentados y
+        //colocándolos en el listener de abajo
         val tablayout : TabLayout = findViewById(R.id.nav_chat_menu)
         val viewpager : ViewPager = findViewById(R.id.view_id)
-        val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
 
-        viewPagerAdapter.addFragment(ChatFragment(), "Chats")
-        viewPagerAdapter.addFragment(SearchFragment(), "Search")
-        viewPagerAdapter.addFragment(SettingFragment(), "Settings")
+        val ref = FirebaseDatabase.getInstance().reference.child("Chats")
+        ref!!.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
 
-        viewpager.adapter = viewPagerAdapter
-        tablayout.setupWithViewPager(viewpager)
+                var countUnreadMessages = 0
+
+                for(dataSnapshot in p0.children){
+                    val chat = dataSnapshot.getValue(Chat::class.java)
+                    if (chat!!.getReceiver().equals(firebaseUser!!.uid) && !chat.isIsSeen())
+                    {
+                        countUnreadMessages += 1
+                    }
+                }
+
+                if(countUnreadMessages == 0)
+                {
+                    viewPagerAdapter.addFragment(ChatFragment(), "Chats")
+                }else
+                {
+                    viewPagerAdapter.addFragment(ChatFragment(), "($countUnreadMessages) Chats")
+                }
+
+                viewPagerAdapter.addFragment(SearchFragment(), "Search")
+                viewPagerAdapter.addFragment(SettingFragment(), "Settings")
+                viewpager.adapter = viewPagerAdapter
+                tablayout.setupWithViewPager(viewpager)
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+        })
+
 
         refUsers!!.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
