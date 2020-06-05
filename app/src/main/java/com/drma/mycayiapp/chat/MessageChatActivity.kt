@@ -2,10 +2,12 @@ package com.drma.mycayiapp.chat
 
 import android.app.Activity
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.Toast
 import android.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,6 +34,7 @@ class MessageChatActivity : AppCompatActivity() {
     var chatsAdapter: ChatsAdapter? = null
     var mChatList: List<Chat>? = null
     lateinit var recycler_view_chats: RecyclerView
+    lateinit var messageET: EditText
     var reference: DatabaseReference? = null
 
 
@@ -41,7 +44,7 @@ class MessageChatActivity : AppCompatActivity() {
 
         //Este es el toolbar que dió error cuando se intentaba de abrir el chat de texto.
         val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_message_chat)
-        setSupportActionBar(toolbar)
+        //setSupportActionBar(toolbar)
         supportActionBar!!.title = ""
         supportActionBar!!. setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener {
@@ -54,6 +57,8 @@ class MessageChatActivity : AppCompatActivity() {
         }
 
 
+        messageET = findViewById(R.id.text_message)
+        mChatList = ArrayList()
         intent = intent
         userIdVisit = intent.getStringExtra("visit_id")
         firebaseUser = FirebaseAuth.getInstance().currentUser
@@ -87,6 +92,7 @@ class MessageChatActivity : AppCompatActivity() {
                 Toast.makeText(this@MessageChatActivity, "Please write a message", Toast.LENGTH_LONG).show()
             }else{
                sendMessageToUser(firebaseUser!!.uid, userIdVisit, message)
+                messageET.setText("")
             }
         }
 
@@ -188,7 +194,7 @@ class MessageChatActivity : AppCompatActivity() {
                     messageHashMap["url"] = url
                     messageHashMap["messageId"] = messageId
 
-                    ref.child("Chats").child(messageId!!).setValue(messageHashMap)
+                    ref.child("chats").child(messageId!!).setValue(messageHashMap)
                     progressBar.dismiss()
                }
             }
@@ -196,8 +202,8 @@ class MessageChatActivity : AppCompatActivity() {
     }
 
     private fun retrieveMessages(senderId: String, receiverId: String?, receiverImageUrl: String?) {
-        mChatList = ArrayList()
-        val reference = FirebaseDatabase.getInstance().reference.child("Chats")
+
+        val reference = FirebaseDatabase.getInstance().reference.child("chats")
 
         reference.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
@@ -223,7 +229,7 @@ class MessageChatActivity : AppCompatActivity() {
     var seenListener : ValueEventListener? = null
 
     private fun seenMessage(userId : String){
-        reference = FirebaseDatabase.getInstance().reference.child("Chats")
+        reference = FirebaseDatabase.getInstance().reference.child("chats")
 
         seenListener = reference!!.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {

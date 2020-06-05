@@ -48,7 +48,7 @@ class ChatActivity : AppCompatActivity() {
         val tablayout : TabLayout = findViewById(R.id.nav_chat_menu)
         val viewpager : ViewPager = findViewById(R.id.view_id)
 
-        val ref = FirebaseDatabase.getInstance().reference.child("Chats")
+        val ref = FirebaseDatabase.getInstance().reference.child("chats")
         ref!!.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
                 val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
