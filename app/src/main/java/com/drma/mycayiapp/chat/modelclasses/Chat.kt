@@ -51,7 +51,7 @@ class Chat {
         this.receiver = receiver!!
     }
 
-    fun getIsSeen(): Boolean{
+    fun isIsSeen(): Boolean{
         return isseen
     }
 
