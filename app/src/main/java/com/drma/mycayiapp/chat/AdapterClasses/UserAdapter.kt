@@ -47,6 +47,25 @@ class UserAdapter(
         holder.userNameText.text= user!!.getusername()
         //Picasso.get().load(user.getprofile()).placeholder(R.drawable.ic_person_big).into(holder.profileImageView)
 
+        if(isChatCheck){
+            retrieveLastMessage(user.getuid(), holder.lastMessagetxt)
+        }else{
+            holder.lastMessagetxt.visibility = View.GONE
+        }
+
+        if(isChatCheck){
+            if(user.getstatus() == "online"){
+                holder.onlinetxt.visibility = View.VISIBLE
+                holder.offlineTxt.visibility = View.GONE
+            }else{
+                holder.onlinetxt.visibility = View.GONE
+                holder.offlineTxt.visibility = View.VISIBLE
+            }
+        }else{
+            holder.onlinetxt.visibility = View.GONE
+            holder.offlineTxt.visibility = View.GONE
+        }
+
         holder.itemView.setOnClickListener{
             val options = arrayOf<CharSequence>(
                 "Send Message",
@@ -68,6 +87,7 @@ class UserAdapter(
         }
     }
 
+
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var userNameText: TextView
         var profileImageView: CircleImageView
@@ -85,6 +105,9 @@ class UserAdapter(
         }
     }
 
+    private fun retrieveLastMessage(getuid: String?, lastMessagetxt: TextView) {
+
+    }
 
 
 }
