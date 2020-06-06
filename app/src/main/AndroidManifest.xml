@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".chat.ViewFullImageActivity"></activity>
+        <activity android:name=".chat.VisitUserProfileActivity"></activity>
+        <activity android:name=".chat.ViewFullImageActivity" />
         <activity android:name=".chat.MessageChatActivity" />
         <activity
             android:name=".chat.ChatActivity"
@@ -108,18 +109,16 @@
 
         <service
             android:name=".chat.Notifications.MyFirebaseMessaging"
-            android:exported="false"
-            android:enabled="true">
-
+            android:enabled="true"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
         <service
             android:name=".chat.Notifications.MyFirebaseInstanceId"
-            android:exported="true"
-            android:enabled="true">
-
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>

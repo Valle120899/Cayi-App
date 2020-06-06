@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.drma.mycayiapp.R
 import com.drma.mycayiapp.chat.MessageChatActivity
+import com.drma.mycayiapp.chat.VisitUserProfileActivity
 import com.drma.mycayiapp.chat.modelclasses.Chat
 import com.drma.mycayiapp.chat.modelclasses.Users
 import com.google.firebase.auth.FirebaseAuth
@@ -87,6 +88,9 @@ class UserAdapter(
                     mContext.startActivity(intent)
                 }
                 if(position == 1){
+                    val intent = Intent(mContext, VisitUserProfileActivity::class.java)
+                    intent.putExtra("visit_id", user.getuid())
+                    mContext.startActivity(intent)
 
                 }
             })
