@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.drma.mycayiapp.R
 import com.drma.mycayiapp.chat.AdapterClasses.UserAdapter
+import com.drma.mycayiapp.chat.Notifications.Token
 import com.drma.mycayiapp.chat.modelclasses.Chat
 import com.drma.mycayiapp.chat.modelclasses.Chatlist
 import com.drma.mycayiapp.chat.modelclasses.Users
@@ -18,6 +19,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.iid.FirebaseInstanceId
 
 class ChatFragment : Fragment() {
 
@@ -65,8 +67,16 @@ class ChatFragment : Fragment() {
 
             }
         })
+            updateToken(FirebaseInstanceId.getInstance().token)
+
 
         return view
+    }
+
+    private fun updateToken(token: String?) {
+        val ref = FirebaseDatabase.getInstance().reference.child("Tokens")
+        val token1 = Token(token!!)
+        ref.child(firebaseUser!!.uid).setValue(token1)
     }
 
 
