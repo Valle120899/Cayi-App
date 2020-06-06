@@ -25,19 +25,16 @@ import com.google.firebase.messaging.RemoteMessage
 
             val sharedPref = getSharedPreferences("PREFS", Context.MODE_PRIVATE)
 
-            val currentOnlineUser = sharedPref.getString("currentUser","none")
+            val currentOnlineUser = sharedPref.getString("currentUser", "none")
 
             val firebaseUser = FirebaseAuth.getInstance().currentUser
 
             if (firebaseUser != null && sented == firebaseUser.uid) {
             }
             if (currentOnlineUser != user) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-                {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     sendOreoNotification(mRemoteMessage)
-                }
-                else
-                {
+                } else {
                     sendNotification(mRemoteMessage)
                 }
             }
@@ -58,7 +55,8 @@ import com.google.firebase.messaging.RemoteMessage
             intent.putExtras(bundle)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
-            val pendingIntent = PendingIntent.getActivity(this, j, intent, PendingIntent.FLAG_ONE_SHOT)
+            val pendingIntent =
+                PendingIntent.getActivity(this, j, intent, PendingIntent.FLAG_ONE_SHOT)
 
             val defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
@@ -78,37 +76,43 @@ import com.google.firebase.messaging.RemoteMessage
             }
             noti.notify(i, builder.build())
         }
-    }
 
-    private fun sendOreoNotification(mRemoteMessage: RemoteMessage) {
-        val user = mRemoteMessage.data["user"]
-        val icon = mRemoteMessage.data["icon"]
-        val title = mRemoteMessage.data["title"]
-        val body = mRemoteMessage.data["body"]
 
-        val notification = mRemoteMessage.notification
-        val j = user!!.replace("[\\D]".toRegex(), "").toInt()
-        val intent = Intent(this, MessageChatActivity::class.java)
+        private fun sendOreoNotification(mRemoteMessage: RemoteMessage) {
+            val user = mRemoteMessage.data["user"]
+            val icon = mRemoteMessage.data["icon"]
+            val title = mRemoteMessage.data["title"]
+            val body = mRemoteMessage.data["body"]
 
-        val bundle = Bundle()
-        bundle.putString("userid", user)
-        intent.putExtras(bundle)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            val notification = mRemoteMessage.notification
+            val j = user!!.replace("[\\D]".toRegex(), "").toInt()
+            val intent = Intent(this@MyFirebaseMessaging, MessageChatActivity::class.java)
 
-        val pendingIntent = PendingIntent.getActivity(this, j, intent, PendingIntent.FLAG_ONE_SHOT)
+            val bundle = Bundle()
+            bundle.putString("userid", user)
+            intent.putExtras(bundle)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
-        val defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+            val pendingIntent = PendingIntent.getActivity(
+                this@MyFirebaseMessaging,
+                j,
+                intent,
+                PendingIntent.FLAG_ONE_SHOT
+            )
 
-        val oreoNotification = OreoNotification(this)
+            val defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
-        val builder: Notification.Builder =
-            oreoNotification.getOreoNotification(title, body, pendingIntent, defaultSound, icon)
+            val oreoNotification = OreoNotification(this@MyFirebaseMessaging)
 
-        var i = 0
-        if (j > 0) {
-            i = j
+            val builder: Notification.Builder =
+                oreoNotification.getOreoNotification(title, body, pendingIntent, defaultSound, icon)
+
+            var i = 0
+            if (j > 0) {
+                i = j
+            }
+            oreoNotification.getManager!!.notify(i, builder.build())
         }
-        oreoNotification.getManager!!.notify(i, builder.build())
     }
 
 
