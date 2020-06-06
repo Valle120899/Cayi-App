@@ -103,22 +103,24 @@ class ChatsAdapter(mContext: Context,
         }else{
             holder.show_text_message!!.text = chat.getMessage()
 
-            holder.show_text_message!!.setOnClickListener {
-                val options = arrayOf<CharSequence>(
-                    "Delete message",
-                    "Cancel"
-                )
+            if(firebaseUser!!.uid == chat.getSender()){
+                holder.show_text_message!!.setOnClickListener {
+                    val options = arrayOf<CharSequence>(
+                        "Delete message",
+                        "Cancel"
+                    )
 
-                var builder: AlertDialog.Builder = AlertDialog.Builder(holder.itemView.context)
-                builder.setTitle("What do you want?")
+                    var builder: AlertDialog.Builder = AlertDialog.Builder(holder.itemView.context)
+                    builder.setTitle("What do you want?")
 
-                builder.setItems(options, DialogInterface.OnClickListener{
-                        dialog, which ->
-                    if(which == 0){
-                        deleteSentMessage(position, holder)
-                    }
-                })
-                builder.show()
+                    builder.setItems(options, DialogInterface.OnClickListener{
+                            dialog, which ->
+                        if(which == 0){
+                            deleteSentMessage(position, holder)
+                        }
+                    })
+                    builder.show()
+                }
             }
         }
 
