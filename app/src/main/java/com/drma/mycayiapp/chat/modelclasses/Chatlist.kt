@@ -13,7 +13,7 @@ class Chatlist {
         return id
     }
 
-    fun setId(Id : String?){
+    fun setId(id : String?){
         this.id = id!!
     }
 }
