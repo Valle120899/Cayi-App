@@ -84,5 +84,27 @@
         android:text="Send Message"
         ></Button>
 
+    <Button
+        android:id="@+id/send_friend_request_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll1"
+        android:layout_marginTop="94dp"
+        android:background="@color/color_light_blue_qb"
+        android:text="Send Friend Request"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"></Button>
+
+    <Button
+        android:id="@+id/decline_request_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll1"
+        android:layout_marginTop="170dp"
+        android:background="@color/color_light_blue_qb"
+        android:text="Decline Friend Request"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"></Button>
+
 
 </RelativeLayout>
