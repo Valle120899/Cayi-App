@@ -17,7 +17,7 @@
             android:id="@+id/toolbar_chat"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/CayiSecondColor">
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/nameApp"
@@ -25,8 +25,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:fontFamily="@font/chewy"
-                android:text="@string/name_user"
-                android:textColor="@color/white"
+                android:text="@string/app_name"
+                android:textColor="@color/CayiColor"
                 android:textSize="28sp">
 
             </TextView>
@@ -37,8 +37,8 @@
             android:id="@+id/nav_chat_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/CayiColor"
-            app:tabIndicatorColor="@color/white">
+            android:background="@color/white"
+            app:tabIndicatorColor="@color/CayiSecondColor">
 
         </com.google.android.material.tabs.TabLayout>
 

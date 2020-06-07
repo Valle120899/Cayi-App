@@ -49,7 +49,7 @@ class ChatFragment : Fragment() {
 
         usersChatList = ArrayList()
 
-        val ref = FirebaseDatabase.getInstance().reference.child("ChatList")
+        val ref = FirebaseDatabase.getInstance().reference.child("chatList")
             .child(firebaseUser!!.uid)
         ref!!.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {

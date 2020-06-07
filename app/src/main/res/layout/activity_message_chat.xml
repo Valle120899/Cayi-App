@@ -18,7 +18,7 @@
             android:id = "@+id/toolbar_message_chat"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:background="?attr/colorPrimaryDark"
+            android:background="@color/CayiColor"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
          <de.hdodenhof.circleimageview.CircleImageView
@@ -68,7 +68,7 @@
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            >
+            android:src="@drawable/ic_baseline_image_">
         </ImageView>
 
         <EditText
@@ -90,7 +90,7 @@
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            >
+            android:src="@drawable/ic_baseline_send">
         </ImageView>
 
     </RelativeLayout>

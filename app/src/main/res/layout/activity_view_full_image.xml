@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".chat.ViewFullImageActivity">
+    tools:context=".chat.ViewFullImageActivity"
+    android:background="@color/toolbar_subtitle_color">
 
     <ImageView
         android:id="@+id/image_viewer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-
     </ImageView>
 
 

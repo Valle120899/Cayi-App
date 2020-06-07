@@ -29,9 +29,9 @@
            android:layout_alignParentEnd="true"
            android:layout_alignParentRight="true"
            android:text="testing message"
-           android:textSize="18sp"
-           android:padding="8dp"
-           >
+           android:textSize="16sp"
+           android:padding="9dp"
+           android:background="@drawable/ic_baseline_mode_comment_">
        </TextView>
 
        <ImageView
