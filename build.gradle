@@ -30,7 +30,7 @@ ext {
     qbSdkVersion = '3.9.2'
 
     //Firebase
-    firebaseCoreVersion = '16.0.8'
+    firebaseCoreVersion = '17.2.2'
 
     //Glide
     glideVersion = '3.6.1'

@@ -37,10 +37,11 @@ class ChatActivity : AppCompatActivity() {
 
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
-        refUsers = FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUser!!.uid)
+       // refUsers = FirebaseDatabase.getInstance().reference.child("users").child(firebaseUser!!.uid)
 
         val toolbar : Toolbar = findViewById(R.id.toolbar_chat)
         setSupportActionBar(toolbar)
+
         supportActionBar!!.title=""
 
         //De aquí para abajo se modificó el ChatActivity, eliminando los PagerAdapter comentados y
@@ -49,7 +50,7 @@ class ChatActivity : AppCompatActivity() {
         val viewpager : ViewPager = findViewById(R.id.view_id)
 
         val ref = FirebaseDatabase.getInstance().reference.child("chats")
-        ref!!.addValueEventListener(object : ValueEventListener{
+        ref.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
                 val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
 
@@ -83,7 +84,7 @@ class ChatActivity : AppCompatActivity() {
         })
 
 
-        refUsers!!.addValueEventListener(object : ValueEventListener{
+       /* refUsers!!.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()){
                     val user : Users? = p0.getValue(Users::class.java)
@@ -94,8 +95,8 @@ class ChatActivity : AppCompatActivity() {
 
             override fun onCancelled(p0: DatabaseError) {
 
-            }
-        })
+            }*/
+      //  })
 
     }
 
@@ -150,7 +151,7 @@ class ChatActivity : AppCompatActivity() {
 
         val hashMap = HashMap<String, Any>()
         hashMap["status"] = status
-        ref!!.updateChildren(hashMap)
+        ref.updateChildren(hashMap)
     }
 
     override fun onResume() {

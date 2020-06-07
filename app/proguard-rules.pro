@@ -25,6 +25,10 @@
 # removes such information by default, so configure it to keep all of it.
 -keepattributes Signature
 
+-keepclassmembers class com.drma.models.**{
+*;
+}
+
 # For using GSON @Expose annotation
 -keepattributes *Annotation*
 
@@ -68,3 +72,4 @@
 
 -dontwarn org.jivesoftware.smackx.**
 -dontwarn android.support.v4.app.**
+
