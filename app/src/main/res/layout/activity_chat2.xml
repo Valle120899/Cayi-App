@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme.Base">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_chat"
+            android:id="@+id/toolbar_chat2"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white">

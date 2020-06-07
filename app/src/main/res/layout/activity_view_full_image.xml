@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".chat.ViewFullImageActivity"
-    android:background="@color/toolbar_subtitle_color">
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/image_viewer"

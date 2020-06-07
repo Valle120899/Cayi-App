@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.activity_chat2.*
+//import kotlinx.android.synthetic.main.activity_chat2.*
 
 class UserAdapter(
     mContext : Context,

@@ -1,5 +1,6 @@
 package com.drma.mycayiapp.chat
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -12,6 +13,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.drma.mycayiapp.R
+import com.drma.mycayiapp.activities.OpponentsActivity
 import com.drma.mycayiapp.chat.fragment.ChatFragment
 import com.drma.mycayiapp.chat.fragment.SearchFragment
 import com.drma.mycayiapp.chat.fragment.SettingFragment
@@ -33,13 +35,13 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat2)
-        setSupportActionBar(toolbar_chat)
+        setSupportActionBar(toolbar_chat2)
 
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
        // refUsers = FirebaseDatabase.getInstance().reference.child("users").child(firebaseUser!!.uid)
 
-        val toolbar : Toolbar = findViewById(R.id.toolbar_chat)
+        val toolbar : Toolbar = findViewById(R.id.toolbar_chat2)
         setSupportActionBar(toolbar)
 
         supportActionBar!!.title=""

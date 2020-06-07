@@ -3,8 +3,8 @@
 
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light">
         <item name="colorControlActivated">@color/color_accent</item>
-        <item name="colorControlHighlight">@color/color_accent</item>
-        <item name="colorControlNormal">@color/color_accent</item>
+        <item name="colorControlHighlight">@color/white</item>
+        <item name="colorControlNormal">@color/CayiColor</item>
 
         <item name="colorPrimary">@color/CayiColor</item>
         <item name="colorPrimaryDark">@color/text_color_black</item>

@@ -136,8 +136,8 @@ class OpponentsActivity : BaseActivity() {
     private fun initUI() {
         ajustes = findViewById(R.id.ajustes)
         usersRecyclerView = findViewById(R.id.list_select_users)
-        navView = findViewById(R.id.nav_view)
-        navView.setOnNavigationItemSelectedListener {
+        //navView = findViewById(R.id.nav_view)
+        /*navView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_videocalls -> {
                     true
@@ -153,7 +153,7 @@ class OpponentsActivity : BaseActivity() {
                     false
                 }
             }
-        }
+        }*/
         ajustes.setOnClickListener() {
             var intent: Intent = Intent(this, FindFriendActivity::class.java)
             intent.putExtra("Lista", usersIds)

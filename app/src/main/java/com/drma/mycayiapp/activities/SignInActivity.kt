@@ -22,8 +22,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.quickblox.users.QBUsers
 import com.quickblox.users.model.QBUser
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_sign_in.*
+//import kotlinx.android.synthetic.main.activity_login.*
+//import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlin.random.Random
 
 
@@ -100,7 +100,7 @@ class SignInActivity : BaseActivity() {
 
     fun EntradaFirebase(){
 
-        val username:String = usernameEditText_SignIn.text.toString()
+        //val username:String = userfullnameEditText_SignIn.text.toString()
         val email:String = correo_SignIn.text.toString()
         val password:String = Password_SignIn.text.toString()
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener{

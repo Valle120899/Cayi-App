@@ -18,7 +18,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.fragment_search.*
+//import kotlinx.android.synthetic.main.fragment_search.*
 import java.lang.Exception
 
 class SearchFragment : Fragment() {
@@ -41,9 +41,6 @@ class SearchFragment : Fragment() {
 
         mUsers = ArrayList()
         retrieveAllUsers()
-
-
-
 
         searchEditText!!.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
