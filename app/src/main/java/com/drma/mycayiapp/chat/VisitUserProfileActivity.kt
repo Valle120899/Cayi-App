@@ -105,7 +105,7 @@ class VisitUserProfileActivity : AppCompatActivity() {
                                                 .addOnCompleteListener { task ->
                                                     if (task.isSuccessful()) {
                                                         send_friend_request_btn.setEnabled(true)
-                                                        CURRENT_STATE = "Friend"
+                                                        CURRENT_STATE = "Friends"
                                                         send_friend_request_btn.setText("Unfriend this person")
                                                         decline_request_btn.visibility =
                                                             View.INVISIBLE
@@ -184,6 +184,25 @@ class VisitUserProfileActivity : AppCompatActivity() {
                             decline_request_btn.visibility = View.VISIBLE
                             decline_request_btn.isEnabled = true
                         }
+                    }
+                   else {
+                        FriendsRef!!.child(senderUserId)
+                            .addListenerForSingleValueEvent(object : ValueEventListener{
+                                override fun onDataChange(p0: DataSnapshot) {
+                                if(p0.hasChild(receiverUserId)){
+                                    CURRENT_STATE = "Friends"
+                                    send_friend_request_btn.setText("Unfriend this person")
+
+                                    decline_request_btn.visibility = View.INVISIBLE
+                                    decline_request_btn.isEnabled = false
+                                }
+                            }
+
+                                override fun onCancelled(p0: DatabaseError) {
+                                    TODO("Not yet implemented")
+                                }
+                        })
+
                     }
                 }
             })
