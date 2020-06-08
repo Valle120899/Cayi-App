@@ -16,6 +16,8 @@ class VisitUserProfileActivity : AppCompatActivity() {
 
     private var userVisitId: String = ""
 
+    //Comentario~
+
     private var FriendRequestRef: DatabaseReference? = null
     private var UsersRef: DatabaseReference? = null
     private var mAuth: FirebaseAuth? = null
