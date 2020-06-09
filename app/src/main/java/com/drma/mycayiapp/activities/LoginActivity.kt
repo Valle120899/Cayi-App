@@ -125,13 +125,13 @@ class LoginActivity : BaseActivity() {
                 userHasMap["username"] = username
                 userHasMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/Users%20Image%2FDbSL3cG7l3g5XKLPEWoVcnnc5o32?alt=media&token=ef27c5b3-42d7-45b3-950c-42abb3cc6397"
                 userHasMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/Users%20Image%2Fs0kqsgHHfBYAKSHBvhRU54GQr7s1?alt=media&token=dee1bc74-ef7a-4c31-83c4-4144b8d04ad7"
-                userHasMap["status"] = "Hello Cayi Friend"
+                userHasMap["status"] = "offline"
                 userHasMap["search"] = username.toLowerCase()
 
 
                 refUsers.updateChildren(userHasMap).addOnCompleteListener {
                     task ->  if(task.isSuccessful){
-                    var intent: Intent = Intent(this@LoginActivity, OptionsActivity::class.java)
+                    var intent: Intent = Intent(this@LoginActivity, ChatActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     Toast.makeText(this,"Usuario creado exitosamente", Toast.LENGTH_SHORT).show();

@@ -30,10 +30,6 @@
             android:name=".chat.ChatActivity"
             android:label="@string/title_activity_chat"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.OptionsActivity"
-            android:label="OptionsActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.FindFriendActivity" />
         <activity
             android:name=".Navigation"

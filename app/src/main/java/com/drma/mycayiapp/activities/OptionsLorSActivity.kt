@@ -15,7 +15,7 @@ class OptionsLorSActivity : AppCompatActivity() {
 
     companion object {
         fun start(context: Context) {
-            val intent = Intent(context, OptionsActivity::class.java)
+            val intent = Intent(context, ChatActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             context.startActivity(intent)
         }

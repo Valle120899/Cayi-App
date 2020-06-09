@@ -14,6 +14,9 @@ import com.drma.mycayiapp.utils.longToast
 import com.quickblox.core.QBEntityCallback
 import com.quickblox.core.exception.QBResponseException
 import com.drma.mycayiapp.DEFAULT_USER_PASSWORD
+import com.drma.mycayiapp.activities.SignInActivity.Companion.start
+import com.drma.mycayiapp.chat.ChatActivity
+import com.drma.mycayiapp.chat.fragment.ChatFragment
 import com.drma.mycayiapp.services.LoginService
 import com.drma.mycayiapp.util.signInUser
 import com.drma.mycayiapp.util.signUp
@@ -34,7 +37,6 @@ class SignInActivity : BaseActivity() {
     private lateinit var correo_SignIn: EditText
     private lateinit var New_User_tv:TextView
     private lateinit var userfullnameEditText_SignIn:String
-
     private lateinit var mAuth: FirebaseAuth
     private lateinit var refUser:DatabaseReference
     private var firebaseUserID:String = ""
@@ -188,7 +190,8 @@ class SignInActivity : BaseActivity() {
         QBUsers.updateUser(user).performAsync(object : QBEntityCallback<QBUser> {
             override fun onSuccess(updUser: QBUser?, params: Bundle?) {
                 hideProgressDialog()
-                OptionsActivity.start(this@SignInActivity)
+                var Intent: Intent = Intent(this@SignInActivity, ChatActivity::class.java)
+                startActivity(Intent)
                 finish()
             }
 

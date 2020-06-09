@@ -58,13 +58,13 @@ class ChatActivity : AppCompatActivity() {
 
                 var countUnreadMessages = 0
 
-                for(dataSnapshot in p0.children){
+                /*for(dataSnapshot in p0.children){
                     val chat = dataSnapshot.getValue(Chat::class.java)
                     if (chat!!.getReceiver().equals(firebaseUser!!.uid) && !chat.isIsSeen())
                     {
                         countUnreadMessages += 1
                     }
-                }
+                }*/
 
                 if(countUnreadMessages == 0)
                 {
@@ -147,18 +147,15 @@ class ChatActivity : AppCompatActivity() {
 
     }
 
-
-    private fun updateStatus(status: String){
+    /*private fun updateStatus(status: String){
         val ref = FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUser!!.uid)
-
         val hashMap = HashMap<String, Any>()
         hashMap["status"] = status
-        ref.updateChildren(hashMap)
+        ref!!.updateChildren(hashMap)
     }
 
     override fun onResume() {
         super.onResume()
-
         updateStatus("online")
     }
 
@@ -166,5 +163,5 @@ class ChatActivity : AppCompatActivity() {
         super.onPause()
 
         updateStatus("offline")
-    }
+    }*/
 }

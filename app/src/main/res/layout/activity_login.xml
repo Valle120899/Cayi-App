@@ -2,10 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root_view_login_activity"
     style="@style/MatchParent"
-    android:layout_marginLeft="@dimen/padding_start"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@drawable/login_background">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp"
+        android:gravity="center">
     <TextView
         android:id="@+id/nameapp"
         android:layout_width="match_parent"
@@ -60,5 +69,6 @@
         android:textColor="@color/white"
         android:background="@drawable/button_circle"
         android:text="@string/r_u_user" />
+    </LinearLayout>
 
 </LinearLayout>

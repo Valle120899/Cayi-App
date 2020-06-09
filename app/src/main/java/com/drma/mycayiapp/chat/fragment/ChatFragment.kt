@@ -1,16 +1,19 @@
 package com.drma.mycayiapp.chat.fragment
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.drma.mycayiapp.R
+import com.drma.mycayiapp.activities.OpponentsActivity
 import com.drma.mycayiapp.chat.AdapterClasses.UserAdapter
 import com.drma.mycayiapp.chat.Notifications.Token
-import com.drma.mycayiapp.chat.modelclasses.Chat
 import com.drma.mycayiapp.chat.modelclasses.Chatlist
 import com.drma.mycayiapp.chat.modelclasses.Users
 import com.google.firebase.auth.FirebaseAuth
@@ -28,6 +31,15 @@ class ChatFragment : Fragment() {
     private var usersChatList: List<Chatlist>? = null
     lateinit var recycler_view_chatlist: RecyclerView
     private var firebaseUser: FirebaseUser? = null
+    private lateinit var videocallopt: Button
+
+    companion object {
+        fun start(context: Context) {
+            val intent = Intent(context, ChatFragment::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            context.startActivity(intent)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,13 +56,13 @@ class ChatFragment : Fragment() {
         recycler_view_chatlist = view.findViewById(R.id.recycler_view_chatlist)
         recycler_view_chatlist.setHasFixedSize(true)
         recycler_view_chatlist.layoutManager = LinearLayoutManager(context)
+        videocallopt = view.findViewById(R.id.videocall_btn)
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
 
         usersChatList = ArrayList()
 
-        val ref = FirebaseDatabase.getInstance().reference.child("chatList")
-            .child(firebaseUser!!.uid)
+        val ref = FirebaseDatabase.getInstance().reference.child("chatList").child(firebaseUser!!.uid)
         ref!!.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
                 (usersChatList as ArrayList).clear()
@@ -69,6 +81,10 @@ class ChatFragment : Fragment() {
         })
             updateToken(FirebaseInstanceId.getInstance().token)
 
+        videocallopt.setOnClickListener {
+            var Intent: Intent = Intent(activity, OpponentsActivity::class.java)
+            startActivity(Intent)
+        }
 
         return view
     }
