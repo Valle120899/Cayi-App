@@ -6,24 +6,28 @@ import android.view.View.INVISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import com.drma.mycayiapp.R
 import com.drma.mycayiapp.chat.modelclasses.Users
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_visit_user_profile.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class VisitUserProfileActivity : AppCompatActivity() {
 
     private var userVisitId: String = ""
-
-    //Comentario~
-
     private var FriendRequestRef: DatabaseReference? = null
     var UsersRef: DatabaseReference? = null
     private var mAuth: FirebaseAuth? = null
     private var senderUserId: String = ""
-    private var receiverUserId:String? = null
+    private var receiverUserId:String? = ""
     private var CURRENT_STATE:String = "not_friends"
+    private var FriendsRef : DatabaseReference? = null
+    private var saveCurrentDate : String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +40,7 @@ class VisitUserProfileActivity : AppCompatActivity() {
         senderUserId = mAuth!!.currentUser!!.uid
         UsersRef = FirebaseDatabase.getInstance().reference.child("Users")
         FriendRequestRef = FirebaseDatabase.getInstance().reference.child("FriendRequests")
+        FriendsRef = FirebaseDatabase.getInstance().reference.child("Friends")
 
 
         val ref = FirebaseDatabase.getInstance().reference.child("Users").child(userVisitId)
@@ -70,6 +75,9 @@ class VisitUserProfileActivity : AppCompatActivity() {
                 {
                     CancelFriendRequest()
                 }
+                if(CURRENT_STATE == "request_received"){
+                    AcceptFriendRequest()
+                }
             }
         }
         else
@@ -101,16 +109,58 @@ class VisitUserProfileActivity : AppCompatActivity() {
             }
     }
 
+    private fun AcceptFriendRequest() {
+        var calForDate: Calendar = Calendar.getInstance()
+        val currentDate = SimpleDateFormat("dd-MMMM-yyyy")
+        saveCurrentDate = currentDate.format(calForDate.time)
+
+        receiverUserId?.let {
+            FriendsRef!!.child(senderUserId).child(it).child("date").setValue(saveCurrentDate)
+                .addOnCompleteListener{task ->
+                    if (task.isSuccessful) {
+                        FriendsRef!!.child(it).child(senderUserId).child("date")
+                            .setValue(saveCurrentDate)
+                            .addOnCompleteListener {task ->
+                                if(task.isSuccessful){
+                                    FriendRequestRef!!.child(senderUserId).child(userVisitId)
+                                        .removeValue()
+                                        .addOnCompleteListener{task ->
+                                            if (task.isSuccessful)
+                                            {
+                                                FriendRequestRef!!.child(it).child(senderUserId)
+                                                    .removeValue()
+                                                    .addOnCompleteListener{task ->
+                                                        if (task.isSuccessful)
+                                                        {
+                                                            send_friend_request_btn.setEnabled(true)
+                                                            CURRENT_STATE = "friends"
+                                                            send_friend_request_btn.setText("Unfriend this person")
+                                                            decline_request_btn.visibility = View.INVISIBLE
+                                                            decline_request_btn.isEnabled = false
+                                                        }
+                                                    }
+                                            }
+                                        }
+                                }
+
+                            }
+
+                }
+            }
+        }
+    }
+
+
     private fun CancelFriendRequest() {
         FriendRequestRef!!.child(senderUserId).child(userVisitId)
             .removeValue()
             .addOnCompleteListener{task ->
-                    if (task.isSuccessful())
+                    if (task.isSuccessful)
                     {
                         FriendRequestRef!!.child(userVisitId).child(senderUserId)
                             .removeValue()
                             .addOnCompleteListener{task ->
-                                    if (task.isSuccessful())
+                                    if (task.isSuccessful)
                                     {
                                         send_friend_request_btn.setEnabled(true)
                                         CURRENT_STATE = "not_friends"
@@ -139,6 +189,13 @@ class VisitUserProfileActivity : AppCompatActivity() {
                         send_friend_request_btn.setText("Cancel Friend Request")
                         decline_request_btn.visibility = View.INVISIBLE
                         decline_request_btn.isEnabled = false
+                    }
+                    else if(request_type == "received"){
+                        CURRENT_STATE = "request_received"
+                        send_friend_request_btn.setText("Accept friend Request")
+
+                        decline_request_btn.visibility = View.VISIBLE
+                        decline_request_btn.isEnabled =  true
                     }
                 }
             }

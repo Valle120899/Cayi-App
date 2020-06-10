@@ -31,6 +31,8 @@
             android:label="@string/title_activity_chat"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.FindFriendActivity" />
+        <activity android:name=".activities.OptionsLorSActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Navigation"
             android:label="@string/title_activity_navigation" />

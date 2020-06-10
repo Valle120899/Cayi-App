@@ -22,18 +22,15 @@ class SplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         supportActionBar?.hide()
-        Handler().postDelayed({
-            FirebaseUser = FirebaseAuth.getInstance().currentUser
-
-            if (SharedPrefsHelper.hasQbUser() && FirebaseUser!=null) {
-                LoginService.start(this, SharedPrefsHelper.getQbUser())
-                var Intent: Intent = Intent(this@SplashActivity, ChatActivity::class.java)
-                startActivity(Intent)
-            } else {
-                OptionsLorSActivity.start(this)
-            }
-            finish()
-        }, SPLASH_DELAY.toLong())
+        if (FirebaseAuth.getInstance().currentUser == null) {
+            var Intent: Intent = Intent(this@SplashActivity, OptionsLorSActivity::class.java)
+            startActivity(Intent)
+        }
+        else {
+            var Intent: Intent = Intent(this@SplashActivity, ChatActivity::class.java)
+            startActivity(Intent)
+        }
+        finish()
     }
 
 
