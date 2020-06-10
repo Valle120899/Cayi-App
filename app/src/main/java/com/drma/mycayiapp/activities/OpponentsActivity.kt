@@ -161,18 +161,39 @@ class OpponentsActivity : BaseActivity() {
         }
     }
 
+    private fun createUserWithEnteredData(name: String): QBUser {
+        val qbUser = QBUser()
+        var id = 0
+        var C = 0
+        var AllUsers = QbUsersDbManager.allUsers
+
+        for (i in AllUsers) {
+            if (i.fullName.equals(name)) {
+                id = i.id
+                C++
+                break
+            }
+        }
+        if (C != 0) {
+            qbUser.fullName = name
+            qbUser.id = id
+        }else{
+            qbUser.fullName=""
+            qbUser.id=0
+        }
+
+        return qbUser
+    }
+
+    var List: ArrayList<QBUser> = ArrayList()
     private fun initUsersList() {
         try {
-            if (contador != 0) {
-                var bundle: Bundle? = intent.extras
-                 usersIds = bundle!!.getIntegerArrayList("Lista")
-            }
-        }catch (e:Exception){
-            Toast.makeText(this, "No hay usuarios por actualizar", Toast.LENGTH_SHORT).show()
-        }
-        contador++
-        var currentOpponentsList = QbUsersDbManager.getUsersByIds(usersIds)
-        currentOpponentsList.remove(SharedPrefsHelper.getQbUser())
+            var Value: QBUser = createUserWithEnteredData("andrea")
+            List.add(Value)
+        }catch(e:Exception){ }
+
+        var currentOpponentsList = List//QbUsersDbManager.allUsers
+        //currentOpponentsList.remove(SharedPrefsHelper.getQbUser())
         if (usersAdapter == null) {
             usersAdapter = UsersAdapter(this, currentOpponentsList)
             usersAdapter!!.setSelectedItemsCountsChangedListener(object :
