@@ -14,7 +14,7 @@ class OreoNotification(base: Context?) : ContextWrapper(base)
 {
     private var notificationManager: NotificationManager? = null
 
-    @TargetApi(Build.VERSION_CODES.O)
+
 
     companion object
     {

@@ -103,7 +103,7 @@ class ChatsAdapter(mContext: Context,
         }else{
             holder.show_text_message!!.text = chat.getMessage()
 
-           // if(firebaseUser!!.uid == chat.getSender()){
+            if(firebaseUser!!.uid == chat.getSender()){
                 holder.show_text_message!!.setOnClickListener {
                     val options = arrayOf<CharSequence>(
                         "Delete message",
@@ -121,7 +121,7 @@ class ChatsAdapter(mContext: Context,
                     })
                     builder.show()
                 }
-            //}
+            }
         }
 
         //Mensajes vistos
@@ -190,7 +190,7 @@ class ChatsAdapter(mContext: Context,
     }
 
     private fun deleteSentMessage(position: Int, holder:ChatsAdapter.ViewHolder){
-        val ref = FirebaseDatabase.getInstance().reference.child("Chats")
+        val ref = FirebaseDatabase.getInstance().reference.child("chats")
             .child(mChatList.get(position).getMessageId()!!)
             .removeValue()
             .addOnCompleteListener { task ->

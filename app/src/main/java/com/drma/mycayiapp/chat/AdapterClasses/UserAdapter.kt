@@ -23,7 +23,7 @@ import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 //import kotlinx.android.synthetic.main.activity_chat2.*
 
-class UserAdapter(
+class  UserAdapter(
     mContext : Context,
     mUsers:List<Users>,
     isChatCheck: Boolean)
@@ -120,7 +120,7 @@ class UserAdapter(
         lastMsg = "defaultMsg"
 
         val firebaseUsers = FirebaseAuth.getInstance().currentUser
-        val reference = FirebaseDatabase.getInstance().reference.child("Chats")
+        val reference = FirebaseDatabase.getInstance().reference.child("chats")
 
         reference.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {

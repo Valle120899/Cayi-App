@@ -320,6 +320,7 @@ class OpponentsActivity : BaseActivity() {
 
     private fun logout() {
         FirebaseAuth.getInstance().signOut()
+
         SubscribeService.unSubscribeFromPushes(this)
         LoginService.logout(this)
         removeAllUserData()

@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.drma.mycayiapp.R
 import com.drma.mycayiapp.utils.longToast
 import com.quickblox.core.QBEntityCallback
@@ -90,9 +91,10 @@ class SignInActivity : BaseActivity() {
             R.id.menu_login_user_done -> {
                 if (isEnteredUserNameValid()) {
                     hideKeyboard()
-                    EntradaFirebase()
+
                     val user = createUserWithEnteredData()
                     signInCreatedUser(user)
+                    EntradaFirebase()
                 }
                 return true
             }
@@ -107,7 +109,10 @@ class SignInActivity : BaseActivity() {
         val password:String = Password_SignIn.text.toString()
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
             if(it.isSuccessful){
-
+                var intent: Intent = Intent(this@SignInActivity, ChatActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                finish()
             }
         }
     }
@@ -190,9 +195,9 @@ class SignInActivity : BaseActivity() {
         QBUsers.updateUser(user).performAsync(object : QBEntityCallback<QBUser> {
             override fun onSuccess(updUser: QBUser?, params: Bundle?) {
                 hideProgressDialog()
-                var Intent: Intent = Intent(this@SignInActivity, ChatActivity::class.java)
-                startActivity(Intent)
-                finish()
+                //var Intent: Intent = Intent(this@SignInActivity, ChatActivity::class.java)
+                //startActivity(Intent)
+                //finish()
             }
 
             override fun onError(responseException: QBResponseException?) {

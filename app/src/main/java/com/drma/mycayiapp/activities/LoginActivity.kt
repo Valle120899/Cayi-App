@@ -94,9 +94,11 @@ class LoginActivity : BaseActivity() {
                 var secondpass = confirmPassword.text.toString()
                 if (isEnteredUserNameValid() && firstpass == secondpass) {
                     hideKeyboard()
-                    RegisterUserFirebase()
+
                     val user = createUserWithEnteredData()
                     signUpNewUser(user)
+
+                    RegisterUserFirebase()
                 }else{
                     Toast.makeText(this,"Password do not match!", Toast.LENGTH_SHORT).show();
                 }
@@ -161,7 +163,7 @@ class LoginActivity : BaseActivity() {
             override fun onSuccess(result: QBUser, params: Bundle) {
                 SharedPrefsHelper.saveQbUser(newUser)
                 loginToChat(result)
-                SignInActivity.start(this@LoginActivity)
+                //SignInActivity.start(this@LoginActivity)
                 //Toast.makeText(this@LoginActivity, "Usuario creado correctamente", Toast.LENGTH_SHORT).show()
             }
 

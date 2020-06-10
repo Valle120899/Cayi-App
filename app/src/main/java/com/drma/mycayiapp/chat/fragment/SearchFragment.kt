@@ -66,7 +66,6 @@ class SearchFragment : Fragment() {
 
         refUsers.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
-                //(mUsers as ArrayList<Users>).clear()
                 if (searchEditText!!.text.toString() == "") {
                     (mUsers as ArrayList<Users>).clear()
                     for (snapshot in p0.children) {
@@ -75,7 +74,7 @@ class SearchFragment : Fragment() {
                             (mUsers as ArrayList<Users>).add(user)
                         }
                     }
-                    userAdapter = UserAdapter(context!!, mUsers!!, false)
+                    userAdapter = UserAdapter(context!!, mUsers!!, true)
                     recyclerView!!.adapter = userAdapter
                 }
 

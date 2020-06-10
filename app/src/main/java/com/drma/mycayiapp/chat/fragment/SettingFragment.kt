@@ -107,7 +107,7 @@ class SettingFragment : Fragment() {
             uploadTask = fileRef.putFile(imageUri!!)
 
             uploadTask.continueWithTask(Continuation <UploadTask.TaskSnapshot, Task<Uri>> { task ->
-                if(task.isSuccessful){
+                if(!task.isSuccessful){
                     task.exception?.let {
                         throw it
                     }

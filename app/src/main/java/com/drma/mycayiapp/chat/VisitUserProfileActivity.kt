@@ -19,7 +19,7 @@ class VisitUserProfileActivity : AppCompatActivity() {
     //Comentario~
 
     private var FriendRequestRef: DatabaseReference? = null
-    private var UsersRef: DatabaseReference? = null
+    var UsersRef: DatabaseReference? = null
     private var mAuth: FirebaseAuth? = null
     private var senderUserId: String = ""
     private var receiverUserId:String? = null
@@ -45,8 +45,8 @@ class VisitUserProfileActivity : AppCompatActivity() {
                     val user = p0.getValue(Users::class.java)
 
                     username_display.text = user!!.getusername()
-                    Picasso.get().load(user.getprofile()).into(profile_display)
-                    Picasso.get().load(user.getcover()).into(cover_display)
+                    Picasso.get().load(user!!.getprofile()).into(profile_display)
+                    Picasso.get().load(user!!.getcover()).into(cover_display)
 
                     MaintananceofButtons();
                 }

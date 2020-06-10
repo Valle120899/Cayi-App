@@ -56,11 +56,6 @@ class MessageChatActivity : AppCompatActivity() {
         supportActionBar!!.title = ""
         supportActionBar!!. setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener {
-            //Ojo, en el video este intent mandaba a otra actividad que no tenemos, por lo que la mandé a ChatActivity por el momento
-            //No ha dado error al mandarlo a ese mainActivity
-           // val intent = Intent(this@MessageChatActivity, ChatActivity::class.java)
-            //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            //startActivity(intent)
             finish()
         }
 
@@ -247,7 +242,7 @@ class MessageChatActivity : AppCompatActivity() {
             uploadTask = filePath.putFile(fileUri!!)
 
             uploadTask.continueWithTask(Continuation <UploadTask.TaskSnapshot, Task<Uri>> { task ->
-                if(task.isSuccessful){
+                if(!task.isSuccessful){
                     task.exception?.let {
                         throw it
                     }

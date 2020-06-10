@@ -72,16 +72,8 @@
 
         <service android:name=".services.LoginService" />
         <service android:name=".services.CallService" />
-        <service android:name="com.quickblox.messages.services.fcm.QBFcmPushListenerService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-        <service android:name="com.quickblox.messages.services.fcm.QBFcmPushInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
+
+
 
         <meta-data
             android:name="com.quickblox.messages.TYPE"
@@ -105,7 +97,7 @@
         <service
             android:name=".chat.Notifications.MyFirebaseMessaging"
             android:enabled="true"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
