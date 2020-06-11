@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".chat.VisitUserProfileActivity"></activity>
+        <activity android:name=".chat.FriendsActivity"></activity>
+        <activity android:name=".chat.VisitUserProfileActivity" />
         <activity android:name=".chat.ViewFullImageActivity" />
         <activity android:name=".chat.MessageChatActivity" />
         <activity
@@ -31,8 +32,9 @@
             android:label="@string/title_activity_chat"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.FindFriendActivity" />
-        <activity android:name=".activities.OptionsLorSActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.OptionsLorSActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Navigation"
             android:label="@string/title_activity_navigation" />
@@ -74,8 +76,6 @@
 
         <service android:name=".services.LoginService" />
         <service android:name=".services.CallService" />
-
-
 
         <meta-data
             android:name="com.quickblox.messages.TYPE"
