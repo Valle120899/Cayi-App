@@ -78,6 +78,9 @@ class VisitUserProfileActivity : AppCompatActivity() {
                 if(CURRENT_STATE == "request_received"){
                     AcceptFriendRequest()
                 }
+                if(CURRENT_STATE.equals("friends")){
+                    UnfriendAnExistingFriend();
+                }
             }
         }
         else
@@ -85,6 +88,28 @@ class VisitUserProfileActivity : AppCompatActivity() {
             decline_request_btn.visibility = INVISIBLE
             send_friend_request_btn.visibility = INVISIBLE
         }
+    }
+
+    private fun UnfriendAnExistingFriend() {
+        FriendsRef!!.child(senderUserId).child(userVisitId)
+            .removeValue()
+            .addOnCompleteListener{task ->
+                if (task.isSuccessful)
+                {
+                    FriendsRef!!.child(userVisitId).child(senderUserId)
+                        .removeValue()
+                        .addOnCompleteListener{task ->
+                            if (task.isSuccessful)
+                            {
+                                send_friend_request_btn.setEnabled(true)
+                                CURRENT_STATE = "not_friends"
+                                send_friend_request_btn.setText("Send Friend Request")
+                                decline_request_btn.visibility = View.INVISIBLE
+                                decline_request_btn.isEnabled = false
+                            }
+                        }
+                }
+            }
     }
 
     private fun SendFriendRequestToaPerson() {
@@ -196,11 +221,32 @@ class VisitUserProfileActivity : AppCompatActivity() {
 
                         decline_request_btn.visibility = View.VISIBLE
                         decline_request_btn.isEnabled =  true
+
+                        decline_request_btn.setOnClickListener{
+                            fun onClick(V:View) {
+                                CancelFriendRequest()
+                            }
+                        }
                     }
+                }
+                else{
+                    FriendsRef!!.child(senderUserId).addListenerForSingleValueEvent(object: ValueEventListener{
+                        override fun onCancelled(p0: DatabaseError) {
+                        }
+
+                        override fun onDataChange(p0: DataSnapshot){
+                            if(p0.hasChild(userVisitId)){
+                                CURRENT_STATE = "friends";
+                                send_friend_request_btn.setText("Unfriend this person");
+
+                                decline_request_btn.visibility = View.INVISIBLE
+                                decline_request_btn.isEnabled = false
+                            }
+                        }
+                    });
                 }
             }
         })
     }
-
 
 }
