@@ -2,6 +2,7 @@ package com.drma.mycayiapp.activities
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -58,6 +59,8 @@ class LoginActivity : BaseActivity() {
 
     private fun initUI() {
         supportActionBar?.title = getString(R.string.title_login_activity)
+
+
 
         mAuth = FirebaseAuth.getInstance()
 

@@ -6,12 +6,13 @@
         android:icon="@drawable/ic_videocam_black_24dp"
         android:title="Videollamada" />
 
+    <!--
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_account_circle_black_24dp"
         android:title="Perfil" />
 
-    <!--
+
     <item
         android:id="@+id/navigation_chat"
         android:icon="@drawable/ic_chat_black_24dp"

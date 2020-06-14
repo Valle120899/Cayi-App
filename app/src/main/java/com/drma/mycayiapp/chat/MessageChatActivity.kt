@@ -52,12 +52,13 @@ class MessageChatActivity : AppCompatActivity() {
 
         //Este es el toolbar que dió error cuando se intentaba de abrir el chat de texto.
         val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_message_chat)
-        //setSupportActionBar(toolbar)
+        setSupportActionBar(toolbar)
         supportActionBar!!.title = ""
         supportActionBar!!. setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener {
             finish()
         }
+
 
         apiService = Client.Client.getClient("https://fcm.googleapis.com/")!!.create(APIService::class.java)
 
@@ -95,7 +96,7 @@ class MessageChatActivity : AppCompatActivity() {
             notify = true
             val message = text_message.text.toString()
             if(message == ""){
-                Toast.makeText(this@MessageChatActivity, "Please write a message", Toast.LENGTH_LONG).show()
+                //Toast.makeText(this@MessageChatActivity, "", Toast.LENGTH_LONG).show()
             }else{
                sendMessageToUser(firebaseUser!!.uid, userIdVisit, message)
                 messageET.setText("")
@@ -206,7 +207,7 @@ class MessageChatActivity : AppCompatActivity() {
                             ) {
                                 if(response.code() == 200){
                                     if(response.body()!!.success !== 1){
-                                        Toast.makeText(this@MessageChatActivity, "Failed, Nothing happen.", Toast.LENGTH_LONG).show()
+                                        Toast.makeText(this@MessageChatActivity, "Error.", Toast.LENGTH_LONG).show()
                                     }
                                 }
                             }
@@ -229,8 +230,8 @@ class MessageChatActivity : AppCompatActivity() {
 
         if(requestCode == 438 && resultCode == RESULT_OK && data !=null && data!!.data !=null){
             val progressBar = ProgressDialog(this)
-            progressBar.setMessage("Image is uploading, please wait...")
-            progressBar.show()
+            //progressBar.setMessage("Image is uploading, please wait...")
+            //progressBar.show()
 
             val fileUri = data.data
             val storageReference = FirebaseStorage.getInstance().reference.child("Chat Images")
@@ -264,7 +265,7 @@ class MessageChatActivity : AppCompatActivity() {
                     ref.child("chats").child(messageId!!).setValue(messageHashMap)
                         .addOnCompleteListener{task ->
                             if(task.isSuccessful){
-                                progressBar.dismiss()
+                                //progressBar.dismiss()
                                 //implement the push notifications using fcm
 
                                 val reference = FirebaseDatabase.getInstance().reference

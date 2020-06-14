@@ -36,7 +36,6 @@
         android:text="Ajustes"
         android:padding="20dp"
         android:layout_marginRight="50dp"
-        android:visibility="gone"
         />
 
 

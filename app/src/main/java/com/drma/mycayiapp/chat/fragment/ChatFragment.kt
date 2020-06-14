@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.drma.mycayiapp.R
@@ -23,6 +24,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.iid.FirebaseInstanceId
+import kotlinx.android.synthetic.main.fragment_chat.*
 
 class ChatFragment : Fragment() {
 
@@ -98,7 +100,6 @@ class ChatFragment : Fragment() {
 
     private fun retrieveChatList(){
         mUsers = ArrayList()
-
         val ref = FirebaseDatabase.getInstance().reference.child("Users")
         ref!!.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
@@ -116,7 +117,6 @@ class ChatFragment : Fragment() {
                 userAdapter = UserAdapter(context!!, (mUsers as ArrayList<Users>), true)
                 recycler_view_chatlist.adapter = userAdapter
             }
-
             override fun onCancelled(p0: DatabaseError) {
 
             }

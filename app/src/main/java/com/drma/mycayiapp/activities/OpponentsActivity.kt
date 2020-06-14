@@ -25,12 +25,22 @@ import com.quickblox.core.request.GenericQueryRule
 import com.quickblox.core.request.QBPagedRequestBuilder
 import com.quickblox.messages.services.SubscribeService
 import com.drma.mycayiapp.adapters.UsersAdapter
+import com.drma.mycayiapp.chat.AdapterClasses.UserAdapter
+import com.drma.mycayiapp.chat.modelclasses.Chatlist
+import com.drma.mycayiapp.chat.modelclasses.Friends
+import com.drma.mycayiapp.chat.modelclasses.IDFriends
+import com.drma.mycayiapp.chat.modelclasses.Users
 import com.drma.mycayiapp.services.LoginService
 import com.drma.mycayiapp.util.loadUsersByPagedRequestBuilder
 import com.drma.mycayiapp.util.signOut
 import com.drma.mycayiapp.utils.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.quickblox.users.model.QBUser
 import com.quickblox.videochat.webrtc.QBRTCClient
 import com.quickblox.videochat.webrtc.QBRTCTypes
@@ -48,13 +58,19 @@ class OpponentsActivity : BaseActivity() {
     private lateinit var currentUser: QBUser
     private lateinit var navView: BottomNavigationView
     private lateinit var ajustes: Button
-    var contador: Int = 0
 
-    private var usersIds: ArrayList<Int> = ArrayList<Int>()
-    private var usersIds2: ArrayList<Int> = ArrayList<Int>()
-    //intent.extras!!.getIntegerArrayList("returnedList")
+    private var mUsers: List<Users>? = null
+    private var usersChatList: List<Chatlist>? = null
+    private var firebaseUser: FirebaseUser? = null
+
 
     private var usersAdapter: UsersAdapter? = null
+    var c:Int = 0
+
+
+    var ListS:ArrayList<String>? = ArrayList()
+    var List: ArrayList<QBUser> = ArrayList()
+    var IDList:ArrayList<Int> = ArrayList()
 
     companion object {
         fun start(context: Context) {
@@ -71,7 +87,6 @@ class OpponentsActivity : BaseActivity() {
         initDefaultActionBar()
         initUI()
         startLoginService()
-
 
     }
 
@@ -110,6 +125,7 @@ class OpponentsActivity : BaseActivity() {
     private fun loadUsers() {
         showProgressDialog(R.string.dlg_loading_opponents)
 
+
         val rules = ArrayList<GenericQueryRule>()
         rules.add(GenericQueryRule(ORDER_RULE, ORDER_DESC_UPDATED))
         val requestBuilder = QBPagedRequestBuilder()
@@ -134,32 +150,51 @@ class OpponentsActivity : BaseActivity() {
     }
 
     private fun initUI() {
+        usersChatList = ArrayList()
+        mUsers = ArrayList()
+        IDList = ArrayList()
+
         ajustes = findViewById(R.id.ajustes)
         usersRecyclerView = findViewById(R.id.list_select_users)
-        //navView = findViewById(R.id.nav_view)
-        /*navView.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.navigation_videocalls -> {
-                    true
-                }
-                R.id.navigation_profile -> {
-                    var Intent: Intent = Intent(this@OpponentsActivity, ProfileActivity::class.java)
-                    startActivity(Intent)
-                    true
-                }
 
-                else -> {
-                    Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-                    false
+        ajustes.setOnClickListener(){
+            val intent:Intent = Intent(this@OpponentsActivity, FindFriendActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
+
+        firebaseUser = FirebaseAuth.getInstance().currentUser
+
+
+
+    }
+    private fun retrieveChatList(){
+        mUsers = ArrayList()
+        val ref = FirebaseDatabase.getInstance().reference.child("Users")
+        ref!!.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                (mUsers as ArrayList).clear()
+
+                for (dataSnapshot in p0.children){
+                    val user = dataSnapshot.getValue(Users::class.java)
+
+                    for (eachChatList in usersChatList!!){
+                        if(user!!.getuid().equals(eachChatList.getId())){
+                            (mUsers as ArrayList).add(user!!)
+                            user.getusername()?.let { ListS?.add(it) }
+                        }
+                    }
                 }
             }
-        }*/
-        ajustes.setOnClickListener() {
-            var intent: Intent = Intent(this, FindFriendActivity::class.java)
-            intent.putExtra("Lista", usersIds)
-            startActivity(intent)
-        }
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+        })
     }
+
+
 
     private fun createUserWithEnteredData(name: String): QBUser {
         val qbUser = QBUser()
@@ -185,12 +220,41 @@ class OpponentsActivity : BaseActivity() {
         return qbUser
     }
 
-    var List: ArrayList<QBUser> = ArrayList()
+
     private fun initUsersList() {
-        try {
-            var Value: QBUser = createUserWithEnteredData("andrea")
-            List.add(Value)
-        }catch(e:Exception){ }
+       /* */
+
+        val ref = FirebaseDatabase.getInstance().reference.child("Amigos").child(firebaseUser!!.uid)
+        ref!!.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                (usersChatList as ArrayList).clear()
+
+                for(dataSnapshot in p0.children){
+                    val chatlist = dataSnapshot.getValue(Chatlist::class.java)
+
+                    (usersChatList as ArrayList).add(chatlist!!)
+                }
+                retrieveChatList()
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+        })
+
+
+            try {
+
+                for (i in ListS!!) {
+                    var Value: QBUser = createUserWithEnteredData(i)
+                    List.add(Value)
+                }
+
+            } catch (e: Exception) {
+            }
+
+        c++
+
 
         var currentOpponentsList = List//QbUsersDbManager.allUsers
         //currentOpponentsList.remove(SharedPrefsHelper.getQbUser())

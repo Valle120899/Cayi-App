@@ -13,17 +13,26 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.drma.mycayiapp.R
+import com.drma.mycayiapp.activities.AppInfoActivity
+import com.drma.mycayiapp.activities.LoginActivity
 import com.drma.mycayiapp.activities.OpponentsActivity
+import com.drma.mycayiapp.activities.SettingsActivity
+import com.drma.mycayiapp.chat.AdapterClasses.ChatsAdapter
 import com.drma.mycayiapp.chat.fragment.ChatFragment
 import com.drma.mycayiapp.chat.fragment.SearchFragment
 import com.drma.mycayiapp.chat.fragment.SettingFragment
 import com.drma.mycayiapp.chat.modelclasses.Chat
 import com.drma.mycayiapp.chat.modelclasses.Users
+import com.drma.mycayiapp.db.QbUsersDbManager
+import com.drma.mycayiapp.services.LoginService
+import com.drma.mycayiapp.util.signOut
+import com.drma.mycayiapp.utils.PERMISSIONS
 import com.drma.mycayiapp.utils.SharedPrefsHelper
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.quickblox.messages.services.SubscribeService
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_chat2.*
 
@@ -74,8 +83,8 @@ class ChatActivity : AppCompatActivity() {
                     viewPagerAdapter.addFragment(ChatFragment(), "($countUnreadMessages) Chats")
                 }
 
-                viewPagerAdapter.addFragment(SearchFragment(), "Search")
-                viewPagerAdapter.addFragment(SettingFragment(), "Settings")
+                viewPagerAdapter.addFragment(SearchFragment(), "Búsqueda")
+                viewPagerAdapter.addFragment(SettingFragment(), "Perfil")
                 viewpager.adapter = viewPagerAdapter
                 tablayout.setupWithViewPager(viewpager)
             }
@@ -108,13 +117,41 @@ class ChatActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+        val id = item.itemId
+        when (id) {
+            R.id.settingsChat -> {
+                SettingsActivity.start(this)
+                return true
+            }
+            /*R.id.log_outChat -> {
+                logout()
+                return true
+            }*/
+            R.id.appinfoChat -> {
+                AppInfoActivity.start(this)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
         }
+
+    }
+    private fun logout() {
+        FirebaseAuth.getInstance().signOut()
+
+        SubscribeService.unSubscribeFromPushes(this)
+        LoginService.logout(this)
+        removeAllUserData()
+        startLoginActivity()
+    }
+    private fun removeAllUserData() {
+        SharedPrefsHelper.clearAllData()
+        QbUsersDbManager.clearDB()
+        signOut()
+    }
+
+    private fun startLoginActivity() {
+        LoginActivity.start(this)
+        finish()
     }
 
     internal class ViewPagerAdapter(fragmentManager : FragmentManager) :

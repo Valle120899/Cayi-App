@@ -51,13 +51,13 @@ class ChatsAdapter(mContext: Context,
 
                 holder.right_image_view!!.setOnClickListener {
                     val options = arrayOf<CharSequence>(
-                        "View Full Image",
-                        "Delete Image",
-                        "Cancel"
+                        "Mirar imagen completa",
+                        "Eliminar imagen",
+                        "Cancelar"
                     )
 
                     var builder: AlertDialog.Builder = AlertDialog.Builder(holder.itemView.context)
-                    builder.setTitle("What do you want?")
+                    builder.setTitle("¿Qué desea hacer?")
 
                     builder.setItems(options, DialogInterface.OnClickListener{
                         dialog, which ->
@@ -81,12 +81,12 @@ class ChatsAdapter(mContext: Context,
 
                 holder.left_image_view!!.setOnClickListener {
                     val options = arrayOf<CharSequence>(
-                        "View Full Image",
+                        "Mirar imagen completa",
                         "Cancel"
                     )
 
                     var builder: AlertDialog.Builder = AlertDialog.Builder(holder.itemView.context)
-                    builder.setTitle("What do you want?")
+                    builder.setTitle("¿Qué desea hacer?")
 
                     builder.setItems(options, DialogInterface.OnClickListener{
                             dialog, which ->
@@ -106,12 +106,12 @@ class ChatsAdapter(mContext: Context,
             if(firebaseUser!!.uid == chat.getSender()){
                 holder.show_text_message!!.setOnClickListener {
                     val options = arrayOf<CharSequence>(
-                        "Delete message",
-                        "Cancel"
+                        "Eliminar mensaje",
+                        "Cancelar"
                     )
 
                     var builder: AlertDialog.Builder = AlertDialog.Builder(holder.itemView.context)
-                    builder.setTitle("What do you want?")
+                    builder.setTitle("¿Qué desea hacer?")
 
                     builder.setItems(options, DialogInterface.OnClickListener{
                             dialog, which ->
@@ -123,11 +123,10 @@ class ChatsAdapter(mContext: Context,
                 }
             }
         }
-
         //Mensajes vistos
         if(position == mChatList.size-1){
             if(chat.isIsSeen()){
-                holder.text_seen!!.text = "Seen"
+                holder.text_seen!!.text = "Visto"
 
                 if(chat.getMessage().equals("sent you an image.") && !chat.getUrl().equals("")){
                         val lp: RelativeLayout.LayoutParams? = holder.text_seen!!.layoutParams as RelativeLayout.LayoutParams?
@@ -135,7 +134,7 @@ class ChatsAdapter(mContext: Context,
                         holder.text_seen!!.layoutParams = lp
                     }
             }else{
-                holder.text_seen!!.text = "Sent"
+                holder.text_seen!!.text = "Enviado"
 
                 if(chat.getMessage().equals("sent you an image.") && !chat.getUrl().equals("")){
                     val lp: RelativeLayout.LayoutParams? = holder.text_seen!!.layoutParams as RelativeLayout.LayoutParams?
@@ -147,7 +146,19 @@ class ChatsAdapter(mContext: Context,
         else {
             holder.text_seen!!.visibility = View.GONE
         }
-
+    }
+    private fun deleteSentMessage(position: Int, holder:ChatsAdapter.ViewHolder){
+        val ref = FirebaseDatabase.getInstance().reference.child("chats")
+            .child(mChatList.get(position).getMessageId()!!)
+            .removeValue()
+            .addOnCompleteListener { task ->
+                if(task.isSuccessful){
+                    Toast.makeText(holder.itemView.context, "Eliminado.", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    Toast.makeText(holder.itemView.context, "No se pudo eliminar.", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
@@ -189,17 +200,5 @@ class ChatsAdapter(mContext: Context,
         }
     }
 
-    private fun deleteSentMessage(position: Int, holder:ChatsAdapter.ViewHolder){
-        val ref = FirebaseDatabase.getInstance().reference.child("chats")
-            .child(mChatList.get(position).getMessageId()!!)
-            .removeValue()
-            .addOnCompleteListener { task ->
-                if(task.isSuccessful){
-                    Toast.makeText(holder.itemView.context, "Deleted.", Toast.LENGTH_SHORT).show()
-                }
-                else{
-                    Toast.makeText(holder.itemView.context, "Failed, Not Deleted.", Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
+
 }

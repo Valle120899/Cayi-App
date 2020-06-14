@@ -1,5 +1,6 @@
 package com.drma.mycayiapp.chat.fragment
 
+import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.drma.mycayiapp.R
@@ -74,8 +76,12 @@ class SearchFragment : Fragment() {
                             (mUsers as ArrayList<Users>).add(user)
                         }
                     }
-                    userAdapter = UserAdapter(context!!, mUsers!!, true)
-                    recyclerView!!.adapter = userAdapter
+                    try {
+                        userAdapter = UserAdapter(context!!, mUsers!!, true)
+                        recyclerView!!.adapter = userAdapter
+                    }catch (e:Exception){
+                        Toast.makeText(context, "Espere un momento", Toast.LENGTH_SHORT).show()
+                    }
                 }
 
             }

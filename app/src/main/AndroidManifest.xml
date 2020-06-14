@@ -26,7 +26,11 @@
         <activity android:name=".chat.FriendsActivity"></activity>
         <activity android:name=".chat.VisitUserProfileActivity" />
         <activity android:name=".chat.ViewFullImageActivity" />
-        <activity android:name=".chat.MessageChatActivity" />
+        <activity
+            android:name=".chat.MessageChatActivity"
+            android:label="@string/title_activity_chat"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".chat.ChatActivity"
             android:label="@string/title_activity_chat"

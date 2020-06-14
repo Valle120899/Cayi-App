@@ -38,6 +38,7 @@ import org.webrtc.SurfaceViewRenderer
 import java.io.BufferedReader
 import java.io.Serializable
 import java.util.*
+import kotlin.collections.RandomAccess
 
 const val CAMERA_ENABLED = "is_camera_enabled"
 const val IS_CURRENT_CAMERA_FRONT = "is_camera_front"
@@ -80,6 +81,10 @@ class VideoConversationFragment : BaseConversationFragment(), Serializable,
     private lateinit var Pregunta:TextView
     private lateinit var Reto:TextView
     private lateinit var Conf:TextView
+    private lateinit var Char:TextView
+    private lateinit var charadas: MutableList<String>
+    private lateinit var retos: MutableList<String>
+    private lateinit var verdades: MutableList<String>
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -213,26 +218,68 @@ class VideoConversationFragment : BaseConversationFragment(), Serializable,
         Pregunta = view.findViewById(R.id.Pregunta)
         Reto = view.findViewById(R.id.Reto)
         Conf = view.findViewById(R.id.Confirmar)
+        Char = view.findViewById(R.id.Charada)
+        var random = Random()
+
+        charadas = mutableListOf(
+            "Reina",
+            "hospital",
+            "basketball",
+            "gato",
+            "Perro",
+            "ojo",
+            "sopa",
+            "calendario",
+            "triste",
+            "escritorio",
+            "guitarra",
+            "casa",
+            "arcoiris",
+            "elefante",
+            "llave",
+            "carro",
+            "león",
+            "juego",
+            "bolsón",
+            "dona",
+            "burbuja"
+        )
+        retos = mutableListOf(
+
+        )
+        verdades= mutableListOf()
+
 
         fun hide(){
-            Verdad.visibility = View.INVISIBLE
-            Reto.visibility = View.INVISIBLE
+            Verdad.visibility = View.GONE
+            Reto.visibility = View.GONE
             Conf.visibility = View.VISIBLE
+            Char.visibility = View.GONE
         }
         Verdad.setOnClickListener(){
-            Pregunta.text="Hola"
+            Pregunta.text= verdades.random()
             hide()
         }
         Reto.setOnClickListener(){
-            Pregunta.text="Adios"
+            Pregunta.text= retos.random()
             hide()
         }
         Conf.setOnClickListener(){
             Pregunta.text=""
             Verdad.visibility = View.VISIBLE
             Reto.visibility = View.VISIBLE
-            Conf.visibility = View.INVISIBLE
+            Conf.visibility = View.GONE
+            Char.visibility = View.VISIBLE
         }
+
+
+
+        Char.setOnClickListener(){
+            Pregunta.text= charadas.random()
+            hide()
+        }
+
+
 
         //Fin de la inicializacion
 

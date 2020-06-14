@@ -9,7 +9,12 @@ import android.widget.Toast
 import com.drma.mycayiapp.R
 import java.util.ArrayList
 import com.drma.mycayiapp.activities.OpponentsActivity
+import com.drma.mycayiapp.chat.modelclasses.IDFriends
 import com.drma.mycayiapp.services.LoginService
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import java.lang.Exception
 
 class FindFriendActivity : AppCompatActivity() {
@@ -17,8 +22,8 @@ class FindFriendActivity : AppCompatActivity() {
     private lateinit var id_user:EditText
     private lateinit var add:Button
     private lateinit var delete:Button
-    private  var id:Int = 0
-    private var usersIds:ArrayList<Int> = ArrayList()
+    private var firebaseUser: FirebaseUser? = null
+    var refUsers : DatabaseReference? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,51 +39,34 @@ class FindFriendActivity : AppCompatActivity() {
         id_user = findViewById(R.id.id_user)
         add = findViewById(R.id.add)
         delete = findViewById(R.id.delete)
-        var bundle: Bundle? = intent.extras
-        usersIds = bundle!!.getIntegerArrayList("Lista")
-
-
 
         add.setOnClickListener(){
-            try {
-
-                id = id_user.text.toString().toInt()
-                if (id == 0) {
-                    Toast.makeText(this, "Ingrese un ID correcto", Toast.LENGTH_SHORT).show()
-                } else {
-                    usersIds.add(id)
-                    Toast.makeText(this, "Usuario agregado correctamente", Toast.LENGTH_SHORT)
-                        .show()
-                    var intent: Intent = Intent(this, OpponentsActivity::class.java)
-                    intent.putExtra("Lista", usersIds)
-                    startActivity(intent)
-                    finish()
-                }
-            }catch (e:Exception){
-                Toast.makeText(this, "Ingrese un valor", Toast.LENGTH_SHORT).show()
-            }
+            GuardarAmigo()
         }
 
         delete.setOnClickListener(){
-            try {
-                id = id_user.text.toString().toInt()
-                if (id == 0) {
-                    Toast.makeText(this, "Ingrese un ID correcto", Toast.LENGTH_SHORT).show()
-                } else {
-                    usersIds.remove(id)
-                    Toast.makeText(this, "Usuario eliminado correctamente", Toast.LENGTH_SHORT)
-                        .show()
-                    var intent: Intent = Intent(this, OpponentsActivity::class.java)
-                    intent.putExtra("Lista", usersIds)
-                    startActivity(intent)
-                    finish()
-                }
-            }catch (e:Exception){
-                Toast.makeText(this, "Ingrese un valor", Toast.LENGTH_SHORT).show()
-            }
+
         }
-
-
-
+        firebaseUser = FirebaseAuth.getInstance().currentUser
+        refUsers = FirebaseDatabase.getInstance().reference.child("Amigos").child(firebaseUser!!.uid)
     }
+
+    fun GuardarAmigo(){
+        var name = id_user.text.toString()
+        if(name.isEmpty()){
+            Toast.makeText(this, "Escriba un ID", Toast.LENGTH_SHORT).show()
+        }else{
+            val user= IDFriends(name)
+            refUsers?.child(name)?.setValue(user)
+
+            Toast.makeText(this, "Usuario agregado correctamente", Toast.LENGTH_SHORT).show()
+            id_user.setText("")
+            val intent:Intent = Intent(this@FindFriendActivity, OpponentsActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
+
+
 }
