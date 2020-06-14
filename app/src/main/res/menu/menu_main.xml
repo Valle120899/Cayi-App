@@ -9,11 +9,6 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/log_outChat"
-        android:title="@string/action_logout"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/appinfoChat"
         android:title="@string/action_dialogs_app_info"
         app:showAsAction="never" />

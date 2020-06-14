@@ -93,7 +93,8 @@
         android:background="@color/color_light_blue_qb"
         android:text="Send Friend Request"
         android:textAllCaps="false"
-        android:textColor="@android:color/white"></Button>
+        android:textColor="@android:color/white"
+        android:visibility="gone"></Button>
 
     <Button
         android:id="@+id/decline_request_btn"
@@ -104,7 +105,8 @@
         android:background="@color/color_light_blue_qb"
         android:text="Decline Friend Request"
         android:textAllCaps="false"
-        android:textColor="@android:color/white"></Button>
+        android:textColor="@android:color/white"
+        android:visibility="gone"></Button>
 
 
 </RelativeLayout>

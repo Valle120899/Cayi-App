@@ -245,10 +245,32 @@ class VideoConversationFragment : BaseConversationFragment(), Serializable,
             "burbuja"
         )
         retos = mutableListOf(
-
+            "Busca en la habitación un objeto con la inicial de tu nombre",
+            "Imita a uno de tus amigos durante 5 minutos",
+            "Actua como tu animal favorito",
+            "Enumera 5 paises de Africa",
+            "Cuenta un chiste hasta hacer reir a alguien",
+            "Repite 3 veces: 'Cuando cuentes cuentos, cuenta cuántos cuentos cuentas, porque si no cuentas cuántos cuentos cuentas, nunca sabrás cuántos cuentos cuentas tú.'",
+            "Dile un piropo a uno de tus amigos",
+            "Deja de parpadear po 45 segundos",
+            "Canta tu canción favorita",
+            "Canta una canción de un género que no te guste"
         )
-        verdades= mutableListOf()
-
+        verdades= mutableListOf(
+            "Cuál es la broma más pesada que te ha hecho?",
+            "Menciona algo de lo que te hayas arrepentido comprar",
+            "Algun programa que te haya marcado",
+            "Si pudieras llevar a cabo uno de tus sueños, ¿cuál sería?",
+            "Si pudieras cambiar una parte de tu cuerpo, ¿cuál sería?",
+            "¿Prefieres ser inteligente o feliz?",
+            "¿Qué animal te gustaría ser?",
+            "Crees en lo paranormal?",
+            "Si fueras famoso, ¿Qué quisieras que fuera el fruto de esa fama?",
+            "Cuál es tu epoca del año favorito?",
+            "¿Qué serie has visto más rápida y completamente?",
+            "Te gustaria vivir en alguna pelicula? En cuál sería?",
+            "¿Alguna vez has tenido un amigo imaginario? Si es asi, ¿cómo se llamaba?"
+        )
 
         fun hide(){
             Verdad.visibility = View.GONE
