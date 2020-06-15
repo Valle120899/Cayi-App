@@ -35,7 +35,6 @@ class FindFriendActivity : AppCompatActivity() {
 
     fun bind(){
 
-
         id_user = findViewById(R.id.id_user)
         add = findViewById(R.id.add)
         delete = findViewById(R.id.delete)
@@ -45,7 +44,7 @@ class FindFriendActivity : AppCompatActivity() {
         }
 
         delete.setOnClickListener(){
-
+            EliminaAmigo()
         }
         firebaseUser = FirebaseAuth.getInstance().currentUser
         refUsers = FirebaseDatabase.getInstance().reference.child("Amigos").child(firebaseUser!!.uid)
@@ -67,6 +66,19 @@ class FindFriendActivity : AppCompatActivity() {
         }
     }
 
-
+    fun EliminaAmigo() {
+        var name = id_user.text.toString()
+        if (name.isEmpty()) {
+            Toast.makeText(this, "Escriba un ID", Toast.LENGTH_SHORT).show()
+        } else {
+            val user = IDFriends(name)
+            refUsers?.child(name)?.removeValue()
+            Toast.makeText(this, "Usuario eliminado correctamente", Toast.LENGTH_SHORT).show()
+            id_user.setText("")
+            val intent:Intent = Intent(this@FindFriendActivity, OpponentsActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
 
 }

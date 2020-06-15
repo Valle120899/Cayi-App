@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/MatchParent"
-
     android:orientation="vertical"
     tools:context=".activities.SignInActivity"
-    android:gravity="center"
-    android:background="@drawable/login_background">
+    android:gravity="center">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,6 +31,9 @@
         style="@style/MatchWidth"
         android:hint="@string/username"
         android:paddingTop="@dimen/padding_top"
+        android:inputType="textPassword"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:singleLine="true"
         android:textSize="16sp" />
 
@@ -40,6 +42,8 @@
         style="@style/MatchWidth"
         android:hint="Correo"
         android:paddingTop="@dimen/padding_top"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:singleLine="true"
         android:textSize="16sp" />
 
@@ -49,6 +53,8 @@
         android:hint="@string/hint_user_full_name"
         android:paddingTop="@dimen/padding_top"
         android:singleLine="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:textSize="16sp"
         android:visibility="gone"
         />
@@ -60,18 +66,36 @@
         android:inputType="textPassword"
         android:paddingTop="@dimen/padding_top"
         android:singleLine="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:textSize="16sp" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp">
     <Button
-        android:layout_marginTop="15dp"
         android:id="@+id/New_User_tv"
-        android:textColor="@color/white"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_width="190dp"
-        android:layout_gravity="center"
-        android:background="@drawable/button_circle"
         android:textAlignment="center"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:layout_marginRight="15dp"
+        android:textColor="@color/white"
+        android:background="@drawable/button_circle"
         android:text="@string/New_user_signIn" />
-    </LinearLayout>
 
+            <Button
+                android:layout_marginTop="15dp"
+                android:id="@+id/accept"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:layout_width="180dp"
+                android:gravity="center"
+                android:background="@drawable/button_circle"
+                android:textAlignment="center"
+                android:text="Aceptar"/>
+    </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

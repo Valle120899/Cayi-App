@@ -21,7 +21,7 @@
        </de.hdodenhof.circleimageview.CircleImageView>
 
 
-       //Falta background
+
        <TextView
            android:id="@+id/show_text_message"
            android:layout_width="wrap_content"
@@ -30,8 +30,11 @@
            android:layout_alignParentRight="true"
            android:text="testing message"
            android:textSize="16sp"
-           android:padding="9dp"
-           android:background="@drawable/ic_baseline_mode_comment_">
+           android:paddingTop="10dp"
+           android:paddingLeft="13dp"
+           android:paddingBottom="8dp"
+           android:paddingRight="13dp"
+           android:background="@drawable/button_circle">
        </TextView>
 
        <ImageView

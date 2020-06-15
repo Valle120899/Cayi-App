@@ -106,12 +106,26 @@ class  UserAdapter(
 
 
     private fun deleteChat(position: Int, holder:UserAdapter.ViewHolder){
-        val ref = FirebaseDatabase.getInstance().reference.child("chatList")
-            .child(mUsers.get(position).getuid().toString())
+        val firebaseUser = FirebaseAuth.getInstance().currentUser
+
+//        val ref = FirebaseDatabase.getInstance().reference.child("chatList")
+//            .child(mUsers.get(position).getuid().toString()).child(firebaseUser!!.uid)
+//            .removeValue()
+//            .addOnCompleteListener { task ->
+//                if(task.isSuccessful){
+//                    //Toast.makeText(holder.itemView.context, "Eliminaro.", Toast.LENGTH_SHORT).show()
+//                }
+//                else{
+//                    //Toast.makeText(holder.itemView.context, "Error, no se pudo eliminar.", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+
+        val ref2 = FirebaseDatabase.getInstance().reference.child("chatList")
+            .child(firebaseUser!!.uid).child(mUsers.get(position).getuid().toString())
             .removeValue()
             .addOnCompleteListener { task ->
                 if(task.isSuccessful){
-                    Toast.makeText(holder.itemView.context, "Eliminaro.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(holder.itemView.context, "Eliminado.", Toast.LENGTH_SHORT).show()
                 }
                 else{
                     Toast.makeText(holder.itemView.context, "Error, no se pudo eliminar.", Toast.LENGTH_SHORT).show()

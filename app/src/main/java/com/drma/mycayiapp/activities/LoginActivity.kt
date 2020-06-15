@@ -60,13 +60,10 @@ class LoginActivity : BaseActivity() {
     private fun initUI() {
         supportActionBar?.title = getString(R.string.title_login_activity)
 
-
-
         mAuth = FirebaseAuth.getInstance()
 
         userLoginEditText = findViewById(R.id.userLoginEditText)
         userLoginEditText.addTextChangedListener(LoginEditTextWatcher(userLoginEditText))
-
 
         Password = findViewById(R.id.Password)
         Password.addTextChangedListener(LoginEditTextWatcher(Password))
@@ -128,8 +125,8 @@ class LoginActivity : BaseActivity() {
                 val userHasMap= HashMap<String, Any>()
                 userHasMap["uid"] = firebaseUserID
                 userHasMap["username"] = username
-                userHasMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/Users%20Image%2FDbSL3cG7l3g5XKLPEWoVcnnc5o32?alt=media&token=ef27c5b3-42d7-45b3-950c-42abb3cc6397"
-                userHasMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/Users%20Image%2Fs0kqsgHHfBYAKSHBvhRU54GQr7s1?alt=media&token=dee1bc74-ef7a-4c31-83c4-4144b8d04ad7"
+                userHasMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/User%20Images%2Fprofile_pic.png?alt=media&token=fd3d202f-43e1-4305-a48b-0d7b733225c7"
+                userHasMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/User%20Images%2Flogin_background.png?alt=media&token=9f2d79f3-5550-424a-b105-d8e3c57cdef8"
                 userHasMap["status"] = "offline"
                 userHasMap["search"] = username.toLowerCase()
 

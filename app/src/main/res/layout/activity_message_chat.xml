@@ -50,7 +50,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/barLayout_message_chat"
-        android:layout_above="@+id/relative_layout_bottom">
+        android:layout_above="@+id/relative_layout_bottom"
+        android:background="@color/white">
 
     </androidx.recyclerview.widget.RecyclerView>
     
@@ -60,7 +61,8 @@
         android:layout_height="wrap_content"
         android:padding="6dp"
         android:background="#fff"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        >
 
         <ImageView
             android:id="@+id/attact_image_file_btn"

@@ -67,5 +67,6 @@
     <color name="random_color_8">#d0021b</color>
     <color name="random_color_9">#166642</color>
     <color name="random_color_10">#bdbdbd</color>
+    <color name="color_friend_message">#EDEDED</color>
 
 </resources>

@@ -50,7 +50,7 @@
         android:layout_height="match_parent">
     </androidx.viewpager.widget.ViewPager>
 
-    <include layout="@layout/content_chat"></include>
+
 
 
 </LinearLayout>

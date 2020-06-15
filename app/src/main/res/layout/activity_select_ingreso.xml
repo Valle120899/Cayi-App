@@ -5,12 +5,12 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@drawable/background_cayi">
+    android:background="@color/CayiColor">
 
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="130dp"
         android:text="@string/app_name"
         android:fontFamily="@font/chewy"
         android:textSize="70sp"
@@ -18,7 +18,6 @@
         android:textColor="@color/white"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:background="@color/CayiColor"
         >
 
     </TextView>
@@ -37,7 +36,6 @@
         android:textColor="@color/CayiColor"
         android:background="@drawable/button_circle_entrada"
         android:text="@string/title_login_activity">
-
     </Button>
 
     <Button

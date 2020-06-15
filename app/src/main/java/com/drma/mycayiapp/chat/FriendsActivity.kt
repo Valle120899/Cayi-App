@@ -26,4 +26,5 @@ class FriendsActivity : AppCompatActivity() {
     class FriendsViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
         internal var mView:View = itemView
     }
+
 }

@@ -3,13 +3,18 @@ package com.drma.mycayiapp.chat.fragment
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.PermissionRequest
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.checkSelfPermission
 import com.drma.mycayiapp.R
 import com.drma.mycayiapp.chat.modelclasses.Users
 import com.google.android.gms.tasks.Continuation
@@ -22,18 +27,19 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
+import io.fabric.sdk.android.services.common.CommonUtils.checkPermission
 import kotlinx.android.synthetic.main.fragment_setting.view.*
-import kotlinx.android.synthetic.main.seekbar_preference.*
-
 
 class SettingFragment : Fragment() {
 
+    private val PermissionRequest = 10
     var usersRefrence: DatabaseReference? = null
     var firebaseUser: FirebaseUser? = null
     private val RequestCode = 438
     private var imageUri: Uri? = null
     private var storageRef: StorageReference? = null
     private var coverChecker: String?= ""
+    private var permissions = android.Manifest.permission.READ_EXTERNAL_STORAGE
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,36 +70,55 @@ class SettingFragment : Fragment() {
         })
 
         view.profile_image.setOnClickListener{
-            pickImage()
+            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                //preguntar si tiene permiso
+                if (checkPermission(context,permissions)) {
+                    pickImage()
+                } else {
+                    val permisoArchivos = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    requestPermissions(permisoArchivos, PermissionRequest)
+                }
+            }
+
         }
 
         view.cover_image.setOnClickListener{
             coverChecker = "cover"
-            pickImage()
+            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                //preguntar si tiene permiso
+                if (checkPermission(context,permissions)) {
+                    pickImage()
+                } else {
+                    val permisoArchivos = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    requestPermissions(permisoArchivos, PermissionRequest)
+                }
+            }
         }
 
         return view
     }
 
-
-
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when(requestCode){
+            PermissionRequest ->{
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    pickImage()
+                else
+                    Toast.makeText(context, "No se puede acceder a las imagenes", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
     private fun pickImage() {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(intent, RequestCode)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if(requestCode == RequestCode && resultCode == Activity.RESULT_OK && data!!.data != null)
-        {
-           imageUri = data.data
-            Toast.makeText(context, "Uploading...", Toast.LENGTH_LONG).show()
-            uploadImageToDatabase()
-        }
     }
 
     private fun uploadImageToDatabase() {

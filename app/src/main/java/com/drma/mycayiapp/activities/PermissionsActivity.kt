@@ -27,8 +27,7 @@ class PermissionsActivity : BaseActivity() {
 
     private enum class PermissionFeatures {
         CAMERA,
-        MICROPHONE,
-        GALERY
+        MICROPHONE
     }
 
     private var requiresCheck: Boolean = false

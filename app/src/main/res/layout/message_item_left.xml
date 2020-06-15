@@ -19,9 +19,12 @@
         android:layout_toRightOf="@id/profile_image"
         android:layout_marginLeft="6dp"
         android:text="testing message"
-        android:textSize="18sp"
-        android:padding="8dp"
-        android:background="@drawable/ic_baseline_chat_bubble_"
+        android:textSize="16sp"
+        android:paddingTop="10dp"
+        android:paddingLeft="13dp"
+        android:paddingBottom="8dp"
+        android:paddingRight="13dp"
+        android:background="@drawable/circle_message"
         >
     </TextView>
 

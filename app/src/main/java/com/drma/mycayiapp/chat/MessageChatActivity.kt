@@ -4,12 +4,15 @@ import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import android.widget.Toolbar
+import io.fabric.sdk.android.services.common.CommonUtils.checkPermission
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.drma.mycayiapp.R
@@ -27,6 +30,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
+import io.fabric.sdk.android.services.common.CommonUtils
 import kotlinx.android.synthetic.main.activity_message_chat.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,6 +38,7 @@ import retrofit2.Response
 
 class MessageChatActivity : AppCompatActivity() {
 
+    private val PermissionRequest = 10
     var userIdVisit: String = ""
     var firebaseUser: FirebaseUser? = null
     var chatsAdapter: ChatsAdapter? = null
@@ -41,7 +46,7 @@ class MessageChatActivity : AppCompatActivity() {
     lateinit var recycler_view_chats: RecyclerView
     lateinit var messageET: EditText
     var reference: DatabaseReference? = null
-
+    private var permissions = android.Manifest.permission.READ_EXTERNAL_STORAGE
     var notify = false
     var apiService: APIService? = null
 
@@ -105,15 +110,45 @@ class MessageChatActivity : AppCompatActivity() {
 
         attact_image_file_btn.setOnClickListener{
             notify = true
-            val intent = Intent()
-            intent.action = Intent.ACTION_GET_CONTENT
-            intent.type = "image/*"
-            startActivityForResult(Intent.createChooser(intent,"Pick Image"), 438)
+            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                //preguntar si tiene permiso
+                if (checkPermission(this,permissions)) {
+                    pickImage()
+                } else {
+                    val permisoArchivos = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    requestPermissions(permisoArchivos, PermissionRequest)
+                }
+            }
+
+
         }
 
         seenMessage(userIdVisit)
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when(requestCode){
+            PermissionRequest ->{
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    pickImage()
+                else
+                    Toast.makeText(this, "No se puede acceder a las imagenes", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+
+    private fun pickImage() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent,"Pick Image"), 438)
+    }
 
 
     private fun sendMessageToUser(senderId: String, receiverId: String?, message: String) {
