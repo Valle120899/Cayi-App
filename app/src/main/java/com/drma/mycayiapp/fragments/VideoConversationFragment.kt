@@ -82,6 +82,8 @@ class VideoConversationFragment : BaseConversationFragment(), Serializable,
     private lateinit var Reto:TextView
     private lateinit var Conf:TextView
     private lateinit var Char:TextView
+    private lateinit var Fail:TextView
+    private lateinit var Marca:TextView
     private lateinit var charadas: MutableList<String>
     private lateinit var retos: MutableList<String>
     private lateinit var verdades: MutableList<String>
@@ -219,7 +221,11 @@ class VideoConversationFragment : BaseConversationFragment(), Serializable,
         Reto = view.findViewById(R.id.Reto)
         Conf = view.findViewById(R.id.Confirmar)
         Char = view.findViewById(R.id.Charada)
+        Marca = view.findViewById(R.id.Marcador)
+        var contador:Int = 0
+        Fail= view.findViewById(R.id.Failed)
         var random = Random()
+
 
         charadas = mutableListOf(
             "Reina",
@@ -273,10 +279,11 @@ class VideoConversationFragment : BaseConversationFragment(), Serializable,
         )
 
         fun hide(){
-            Verdad.visibility = View.GONE
-            Reto.visibility = View.GONE
+            Verdad.visibility = View.INVISIBLE
+            Reto.visibility = View.INVISIBLE
             Conf.visibility = View.VISIBLE
-            Char.visibility = View.GONE
+            Fail.visibility=View.VISIBLE
+            Char.visibility = View.INVISIBLE
         }
         Verdad.setOnClickListener(){
             Pregunta.text= verdades.random()
@@ -287,11 +294,28 @@ class VideoConversationFragment : BaseConversationFragment(), Serializable,
             hide()
         }
         Conf.setOnClickListener(){
+            contador++
+            Marca.text="Marcador: $contador"
             Pregunta.text=""
             Verdad.visibility = View.VISIBLE
             Reto.visibility = View.VISIBLE
-            Conf.visibility = View.GONE
+            Conf.visibility = View.INVISIBLE
             Char.visibility = View.VISIBLE
+            Fail.visibility= View.INVISIBLE
+        }
+        Fail.setOnClickListener(){
+            if(contador!=0) {
+                contador--
+            }else{
+                contador=0
+            }
+            Marca.text="Marcador: $contador"
+            Pregunta.text=""
+            Verdad.visibility = View.VISIBLE
+            Reto.visibility = View.VISIBLE
+            Conf.visibility = View.INVISIBLE
+            Char.visibility = View.VISIBLE
+            Fail.visibility= View.INVISIBLE
         }
 
 

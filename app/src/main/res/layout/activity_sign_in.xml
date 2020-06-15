@@ -31,7 +31,7 @@
         style="@style/MatchWidth"
         android:hint="@string/username"
         android:paddingTop="@dimen/padding_top"
-        android:inputType="textPassword"
+        android:inputType="text"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:singleLine="true"

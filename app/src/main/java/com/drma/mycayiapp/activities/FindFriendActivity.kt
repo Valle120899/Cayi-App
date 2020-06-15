@@ -57,12 +57,8 @@ class FindFriendActivity : AppCompatActivity() {
         }else{
             val user= IDFriends(name)
             refUsers?.child(name)?.setValue(user)
-
             Toast.makeText(this, "Usuario agregado correctamente", Toast.LENGTH_SHORT).show()
             id_user.setText("")
-            val intent:Intent = Intent(this@FindFriendActivity, OpponentsActivity::class.java)
-            startActivity(intent)
-            finish()
         }
     }
 
@@ -75,9 +71,6 @@ class FindFriendActivity : AppCompatActivity() {
             refUsers?.child(name)?.removeValue()
             Toast.makeText(this, "Usuario eliminado correctamente", Toast.LENGTH_SHORT).show()
             id_user.setText("")
-            val intent:Intent = Intent(this@FindFriendActivity, OpponentsActivity::class.java)
-            startActivity(intent)
-            finish()
         }
     }
 
