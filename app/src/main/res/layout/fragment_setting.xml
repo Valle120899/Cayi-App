@@ -58,8 +58,6 @@
 
             </TextView>
 
-
-
             <TextView
                 android:id="@+id/user_id"
                 android:layout_width="wrap_content"
@@ -68,7 +66,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="Id"
                 android:textColor="@color/text_color_medium_grey"
-                android:textSize="23sp">
+                android:textSize="18sp">
 
             </TextView>
 

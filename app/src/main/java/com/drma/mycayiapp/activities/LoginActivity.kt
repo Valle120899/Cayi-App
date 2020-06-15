@@ -125,8 +125,8 @@ class LoginActivity : BaseActivity() {
                 val userHasMap= HashMap<String, Any>()
                 userHasMap["uid"] = firebaseUserID
                 userHasMap["username"] = username
-                userHasMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/User%20Images%2Fprofile_pic.png?alt=media&token=fd3d202f-43e1-4305-a48b-0d7b733225c7"
-                userHasMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/User%20Images%2Flogin_background.png?alt=media&token=9f2d79f3-5550-424a-b105-d8e3c57cdef8"
+                userHasMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/Users%20Image%2Fprofile_pic.png?alt=media&token=b5e76d46-eb0c-431c-a5ac-4b028387d4f0"
+                userHasMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/Users%20Image%2Flogin_background.png?alt=media&token=37506d14-90f8-4e6b-b82b-b9634f6930c1"
                 userHasMap["status"] = "offline"
                 userHasMap["search"] = username.toLowerCase()
 
