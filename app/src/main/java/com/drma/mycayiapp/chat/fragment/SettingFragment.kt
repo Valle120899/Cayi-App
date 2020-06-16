@@ -121,6 +121,19 @@ class SettingFragment : Fragment() {
         startActivityForResult(intent, RequestCode)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode==RequestCode && resultCode==Activity.RESULT_OK && data?.data!= null){
+            imageUri= data?.data
+            try {
+                uploadImageToDatabase()
+            } catch (e:Exception){
+                Toast.makeText(activity, "La imagen pesa demasiado.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     private fun uploadImageToDatabase() {
         val progressBar = ProgressDialog(context)
         progressBar.setMessage("Image is uploading, please wait...")
