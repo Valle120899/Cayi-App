@@ -27,7 +27,14 @@
     </com.google.android.material.appbar.AppBarLayout>
 <ScrollView
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/bar">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingRight="10dp"
+        >
     <TextView
         android:id="@+id/Terminos"
         android:layout_width="match_parent"
@@ -61,7 +68,8 @@
         android:textSize="15sp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="8dp"
-        android:textColor="@color/CayiColor">
+        android:textColor="@color/black"
+        android:textStyle="bold">
 
     </TextView>
 
@@ -86,6 +94,7 @@
         android:text="Responsabilidad de Cayi"
         android:textSize="15sp"
         android:textColor="@color/black"
+        android:textStyle="bold"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="10dp">
 
@@ -102,7 +111,7 @@
         android:layout_below="@id/Responsabilidad">
 
     </TextView>
-
+    </LinearLayout>
 </ScrollView>
 
 </RelativeLayout>
