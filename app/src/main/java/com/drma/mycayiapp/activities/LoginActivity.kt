@@ -83,24 +83,26 @@ class LoginActivity : BaseActivity() {
         aceptar = findViewById(R.id.accept)
 
         aceptar.setOnClickListener {
-            if(botonTerminos.isChecked){
-                var firstpass = Password.text.toString()
-                var secondpass = confirmPassword.text.toString()
-                if (isEnteredUserNameValid() && firstpass == secondpass) {
-                    hideKeyboard()
+            if(botonTerminos.isChecked) {
+                if (Password.text.toString() != "12345678") {
+                    var firstpass = Password.text.toString()
+                    var secondpass = confirmPassword.text.toString()
+                    if (isEnteredUserNameValid() && firstpass == secondpass) {
+                        hideKeyboard()
 
-                    val user = createUserWithEnteredData()
-                    signUpNewUser(user)
+                        val user = createUserWithEnteredData()
+                        signUpNewUser(user)
 
-                    RegisterUserFirebase()
+                        RegisterUserFirebase()
+                    } else {
+                        Toast.makeText(this, "La contraseña no coincide", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
-                    Toast.makeText(this,"Password do not match!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,"La contraseña es muy débil",Toast.LENGTH_LONG).show()
                 }
             }
 
         }
-
-
 
     }
 
