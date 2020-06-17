@@ -8,14 +8,13 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.drma.mycayiapp.R
 import com.drma.mycayiapp.utils.longToast
 import com.quickblox.core.QBEntityCallback
 import com.quickblox.core.exception.QBResponseException
 import com.drma.mycayiapp.DEFAULT_USER_PASSWORD
+import com.drma.mycayiapp.TerminosFragment
 import com.drma.mycayiapp.chat.ChatActivity
 import com.drma.mycayiapp.services.LoginService
 import com.drma.mycayiapp.util.signInUser
@@ -39,12 +38,12 @@ class LoginActivity : BaseActivity() {
     private lateinit var confirmPassword: EditText
     private lateinit var returned: TextView
     private lateinit var Email:EditText
-
+    private lateinit var terminos: TextView
     private lateinit var mAuth:FirebaseAuth
     private lateinit var refUsers:DatabaseReference
     private var firebaseUserID:String = ""
-
-
+    private lateinit var aceptar : Button
+    private lateinit var botonTerminos : CheckBox
     private lateinit var user: QBUser
 
     companion object {
@@ -54,6 +53,7 @@ class LoginActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         initUI()
     }
 
@@ -62,6 +62,7 @@ class LoginActivity : BaseActivity() {
 
         mAuth = FirebaseAuth.getInstance()
 
+        terminos = findViewById(R.id.terminos)
         userLoginEditText = findViewById(R.id.userLoginEditText)
         userLoginEditText.addTextChangedListener(LoginEditTextWatcher(userLoginEditText))
 
@@ -80,16 +81,17 @@ class LoginActivity : BaseActivity() {
             var Intent:Intent = Intent(this@LoginActivity, SignInActivity::class.java)
             startActivity(Intent)
         }
-    }
+        terminos.setOnClickListener {
+            var Intent:Intent = Intent(this@LoginActivity, TerminosFragment::class.java)
+            startActivity(Intent)
+        }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.activity_login, menu)
-        return true
-    }
+        botonTerminos = findViewById(R.id.Check_terminos)
+        aceptar = findViewById(R.id.accept)
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.menu_login_user_done -> {
+        if(botonTerminos.isChecked){
+            aceptar.isEnabled = true
+            aceptar.setOnClickListener {
                 var firstpass = Password.text.toString()
                 var secondpass = confirmPassword.text.toString()
                 if (isEnteredUserNameValid() && firstpass == secondpass) {
@@ -102,10 +104,19 @@ class LoginActivity : BaseActivity() {
                 }else{
                     Toast.makeText(this,"Password do not match!", Toast.LENGTH_SHORT).show();
                 }
-                return true
             }
-            else -> super.onOptionsItemSelected(item)
+
+        }else{
+            aceptar.isEnabled =false
         }
+
+
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.activity_login, menu)
+        return true
     }
 
     private fun isEnteredUserNameValid(): Boolean {
@@ -126,7 +137,7 @@ class LoginActivity : BaseActivity() {
                 userHasMap["uid"] = firebaseUserID
                 userHasMap["username"] = username
                 userHasMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/profile_image.png?alt=media&token=b8160574-6126-4332-a26d-6a044f80e752"
-                userHasMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/cover.jpg?alt=media&token=1262d632-9f20-4d71-97b6-6d021993ca52"
+                userHasMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/login_background.png?alt=media&token=c1d19b8b-a105-499d-9cce-22ca8ce3b6fb"
                 userHasMap["status"] = "offline"
                 userHasMap["search"] = username.toLowerCase()
 

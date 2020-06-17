@@ -257,4 +257,39 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="charada">Charada</string>
 
+    <string name = "terminos">Términos y Condiciones de Uso – CAYI
+La aplicación Cayi es una aplicación social desarrollada por estudiantes universitarios, por lo que esta aplicación tiene la finalidad de servir como otra aplicación para la comunicación entre usuarios, por lo cuál no apoyamos actos que puedan dañar la dignidad e integridad de otras personas.. Por lo tanto, Cayi y los desarrolladores no se hacen responsables por cualquier infracción que un usuario pueda cometer; todo usuario descarga la aplicación bajo su responsabilidad, de la misma manera que es responsabilidad de cada quien hacer buen uso de los servicios que la aplicación provee.
+Por ningún motivo se espera que la app sea utilizada con la finalidad de hacer daño a una o más personas, o cualquier otro motivo que represente contenido inadecuado, que cause daños a la integridad de otra personas. Si un usuario infringe los términos y condiciones definidos, a nuestra discreción, procederemos a terminar su cuenta en consecuencia con el fin de evitar que más acciones que puedan causar algún tipo de daño puedan seguir sucediendo.
+Si usted no desea que el contenido que usted suba (imágenes, por ejemplo) sea utilizado sin su autoría, le recomendamos que evite utilizar las funciones para hacer público dicho contenido. Nosotros no tomamos autoría de cualquier media que el usuario pueda publicar en la app.
+Al aceptar los presentes términos, acepta a que seguirá las siguientes reglas:\n\n
+-    Es mayor de edad, y sino, tiene la autorización de un adulto responsable.\n
+-    No usará la aplicación que involucre acciones ilegales.\
+-    No participará en actividades que puedan amenazar o dañar a menores de edad.\n
+-   No mostrará ni publicará información o contenido inapropiado (ya sea mensajes de textos o media que muestre desnudez, violencia, contenido sexual o actividades ilegales) que no cumpla con las regulaciones locales.\n
+-  No publicará datos personales, como tarjetas de crédito, débito, edad, identificación, entre otra.\n
+-  No discriminará a ninguna persona, sin importar su sexo, raza, orientación sexual, etc.\n
+-    No participará en actividades fraudulentas o difamatorias.\n
+-    No infringirá los derechos de otros, como por ejemplo derechos de copyright de música u otro material.\n
+-    No participará en actividades dañinas para usted, el servicio y otras personas.\n
+-    No participará en actividades que infrinjan la privacidad de otros.\n
+-    No colaborará a otros a infringir estas reglas.\n
+-  Todo lo que sea enviado será bajo la responsabilidad del usuario.\n
+
+    El Usuario acepta expresamente los Términos y Condiciones, siendo condición esencial para la utilización de la aplicación. En el evento en que se encuentre en desacuerdo con estos Términos y Condiciones, solicitamos abandonar la aplicación inmediatamente. CAYI podrá modificar los presentes términos y condiciones.
+
+</string>
+
+    <string name="obligacion">El Usuario se obliga a usar la aplicación y los contenidos encontrados en ella de una manera diligente, correcta, lícita y en especial, se compromete a NO realizar las conductas que se mencionan a continuación:
+ Utilizar los contenidos de forma, con fines o efectos contrarios a la ley, a la moral y a las buenas costumbres generalmente aceptadas o al orden público
+Reproducir, copiar, representar, utilizar, distribuir, transformar o modificar los contenidos de la aplicación.
+ Suprimir, eludir o manipular el derecho de autor y demás datos identificativos de los derechos de autor incorporados a los contenidos.
+No permitir que terceros ajenos a usted usen la aplicación móvil con su clave.
+Utilizar la aplicación y los contenidos con fines lícitos y/o ilícitos, contrarios a lo establecido en estos Términos y Condiciones, o al uso mismo de la aplicación, que sean lesivos de los derechos e intereses de terceros
+    </string>
+
+    <string name="responsabilidad">
+CAYI procura garantizar disponibilidad, continuidad o buen funcionamiento de la aplicación. CAYI podrá bloquear, interrumpir o restringir el acceso a esta cuando lo considere necesario para el mejoramiento de la aplicación o por dada de baja de la misma.
+Se recomienda al Usuario tomar medidas adecuadas y actuar diligentemente al momento de acceder a la aplicación, como por ejemplo, contar con programas de protección, antivirus, para manejo de malware, spyware y herramientas similares.
+</string>
+
 </resources>

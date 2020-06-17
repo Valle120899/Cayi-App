@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -41,7 +42,7 @@ class SignInActivity : BaseActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var refUser:DatabaseReference
     private var firebaseUserID:String = ""
-
+    private lateinit var entrar : Button
 
     private lateinit var user: QBUser
 
@@ -79,27 +80,23 @@ class SignInActivity : BaseActivity() {
             var Intent:Intent = Intent(this@SignInActivity, LoginActivity::class.java)
             startActivity(Intent)
         }
+
+        entrar = findViewById(R.id.accept)
+
+        entrar.setOnClickListener {
+            if (isEnteredUserNameValid()) {
+                hideKeyboard()
+
+                val user = createUserWithEnteredData()
+                signInCreatedUser(user)
+                EntradaFirebase()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.activity_login, menu)
         return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.menu_login_user_done -> {
-                if (isEnteredUserNameValid()) {
-                    hideKeyboard()
-
-                    val user = createUserWithEnteredData()
-                    signInCreatedUser(user)
-                    EntradaFirebase()
-                }
-                return true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     fun EntradaFirebase(){

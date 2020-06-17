@@ -67,7 +67,36 @@
         android:singleLine="true"
         android:textSize="16sp"
         />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="5dp">
+           <CheckBox
+               android:id="@+id/Check_terminos"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content">
 
+           </CheckBox>
+        <TextView
+            android:id="@+id/aceptar_terminos"
+            android:layout_width="wrap_content"
+            android:gravity="left"
+            android:layout_height="wrap_content"
+            android:text="Acepto "
+            android:textColor="@color/black">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/terminos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/CayiColor"
+            android:text="Terminos y Condiciones"
+            >
+
+        </TextView>
+       </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
