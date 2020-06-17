@@ -22,6 +22,7 @@ class SplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         supportActionBar?.hide()
+        Handler().postDelayed({
         if (FirebaseAuth.getInstance().currentUser == null) {
             var Intent: Intent = Intent(this@SplashActivity, OptionsLorSActivity::class.java)
             startActivity(Intent)
@@ -31,6 +32,7 @@ class SplashActivity : BaseActivity() {
             startActivity(Intent)
         }
         finish()
+    }, SPLASH_DELAY.toLong())
     }
 
 
