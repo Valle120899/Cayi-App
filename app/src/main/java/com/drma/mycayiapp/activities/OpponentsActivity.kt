@@ -10,7 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.drma.mycayiapp.R
@@ -25,10 +25,9 @@ import com.quickblox.core.request.GenericQueryRule
 import com.quickblox.core.request.QBPagedRequestBuilder
 import com.quickblox.messages.services.SubscribeService
 import com.drma.mycayiapp.adapters.UsersAdapter
-import com.drma.mycayiapp.chat.AdapterClasses.UserAdapter
+
 import com.drma.mycayiapp.chat.modelclasses.Chatlist
-import com.drma.mycayiapp.chat.modelclasses.Friends
-import com.drma.mycayiapp.chat.modelclasses.IDFriends
+
 import com.drma.mycayiapp.chat.modelclasses.Users
 import com.drma.mycayiapp.services.LoginService
 import com.drma.mycayiapp.util.loadUsersByPagedRequestBuilder

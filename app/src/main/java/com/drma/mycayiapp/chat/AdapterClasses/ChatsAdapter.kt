@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
-///import kotlinx.android.synthetic.main.activity_chat2.view.*
+
 
 class ChatsAdapter(mContext: Context,
                   mChatList: List<Chat>,

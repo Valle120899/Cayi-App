@@ -94,21 +94,6 @@ class ChatActivity : AppCompatActivity() {
             }
         })
 
-
-       /* refUsers!!.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(p0: DataSnapshot) {
-                if(p0.exists()){
-                    val user : Users? = p0.getValue(Users::class.java)
-                    user_name.text= user!!.getusername()
-                    Picasso.get().load(user.getprofile()).placeholder(R.drawable.ic_person_big).into(profile_image)
-                }
-            }
-
-            override fun onCancelled(p0: DatabaseError) {
-
-            }*/
-      //  })
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -123,10 +108,7 @@ class ChatActivity : AppCompatActivity() {
                 SettingsActivity.start(this)
                 return true
             }
-            /*R.id.log_outChat -> {
-                logout()
-                return true
-            }*/
+
             R.id.appinfoChat -> {
                 AppInfoActivity.start(this)
                 return true
@@ -134,14 +116,6 @@ class ChatActivity : AppCompatActivity() {
             else -> return super.onOptionsItemSelected(item)
         }
 
-    }
-    private fun logout() {
-        FirebaseAuth.getInstance().signOut()
-
-        SubscribeService.unSubscribeFromPushes(this)
-        LoginService.logout(this)
-        removeAllUserData()
-        startLoginActivity()
     }
     private fun removeAllUserData() {
         SharedPrefsHelper.clearAllData()

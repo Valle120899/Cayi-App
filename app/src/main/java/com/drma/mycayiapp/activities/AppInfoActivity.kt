@@ -17,7 +17,6 @@ import com.drma.mycayiapp.R
 import com.quickblox.auth.session.QBSettings
 
 class AppInfoActivity : AppCompatActivity() {
-    private lateinit var appVersionTextView: TextView
     private lateinit var sdkVersionTextView: TextView
     private lateinit var apiDomainTextView: TextView
     private lateinit var chatDomainTextView: TextView

@@ -1,21 +1,20 @@
 package com.drma.mycayiapp.activities
 
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.drma.mycayiapp.R
-import java.util.ArrayList
-import com.drma.mycayiapp.activities.OpponentsActivity
+
 import com.drma.mycayiapp.chat.modelclasses.IDFriends
-import com.drma.mycayiapp.services.LoginService
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import java.lang.Exception
+
 
 class FindFriendActivity : AppCompatActivity() {
 
@@ -25,12 +24,10 @@ class FindFriendActivity : AppCompatActivity() {
     private var firebaseUser: FirebaseUser? = null
     var refUsers : DatabaseReference? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_find_friend)
         bind()
-
     }
 
     fun bind(){

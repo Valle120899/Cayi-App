@@ -6,30 +6,25 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
-import android.view.MenuItem
+
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
+
 import com.drma.mycayiapp.R
 import com.drma.mycayiapp.utils.longToast
 import com.quickblox.core.QBEntityCallback
 import com.quickblox.core.exception.QBResponseException
-import com.drma.mycayiapp.DEFAULT_USER_PASSWORD
-import com.drma.mycayiapp.activities.SignInActivity.Companion.start
+
 import com.drma.mycayiapp.chat.ChatActivity
-import com.drma.mycayiapp.chat.fragment.ChatFragment
 import com.drma.mycayiapp.services.LoginService
 import com.drma.mycayiapp.util.signInUser
-import com.drma.mycayiapp.util.signUp
 import com.drma.mycayiapp.utils.*
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
+
 import com.quickblox.users.QBUsers
 import com.quickblox.users.model.QBUser
-//import kotlinx.android.synthetic.main.activity_login.*
-//import kotlinx.android.synthetic.main.activity_sign_in.*
-import kotlin.random.Random
+
 
 
 class SignInActivity : BaseActivity() {
@@ -38,10 +33,9 @@ class SignInActivity : BaseActivity() {
     private lateinit var Password_SignIn: EditText
     private lateinit var correo_SignIn: EditText
     private lateinit var New_User_tv:TextView
-    private lateinit var userfullnameEditText_SignIn:String
+
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var refUser:DatabaseReference
-    private var firebaseUserID:String = ""
+
     private lateinit var entrar : Button
 
     private lateinit var user: QBUser

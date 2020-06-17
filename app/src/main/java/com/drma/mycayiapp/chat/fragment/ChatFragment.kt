@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.drma.mycayiapp.R
@@ -24,7 +23,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.iid.FirebaseInstanceId
-import kotlinx.android.synthetic.main.fragment_chat.*
 
 class ChatFragment : Fragment() {
 
@@ -41,11 +39,6 @@ class ChatFragment : Fragment() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             context.startActivity(intent)
         }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(

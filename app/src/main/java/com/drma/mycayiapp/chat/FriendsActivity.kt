@@ -23,8 +23,6 @@ class FriendsActivity : AppCompatActivity() {
         myFriendlist.layoutManager = linearLayoutManager
     }
 
-    class FriendsViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-        internal var mView:View = itemView
-    }
+
 
 }
