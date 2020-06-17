@@ -66,6 +66,9 @@
         <activity
             android:name=".activities.OpponentsActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activities.TerminosView"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".activities.PermissionsActivity"
             android:screenOrientation="portrait" />

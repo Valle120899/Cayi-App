@@ -2,31 +2,24 @@ package com.drma.mycayiapp.activities
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
-import android.view.MenuItem
 import android.widget.*
 import com.drma.mycayiapp.R
 import com.drma.mycayiapp.utils.longToast
 import com.quickblox.core.QBEntityCallback
 import com.quickblox.core.exception.QBResponseException
-import com.drma.mycayiapp.DEFAULT_USER_PASSWORD
-import com.drma.mycayiapp.TerminosFragment
 import com.drma.mycayiapp.chat.ChatActivity
 import com.drma.mycayiapp.services.LoginService
-import com.drma.mycayiapp.util.signInUser
 import com.drma.mycayiapp.util.signUp
 import com.drma.mycayiapp.utils.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.quickblox.users.QBUsers
 import com.quickblox.users.model.QBUser
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.list_item_user.view.*
 
 const val ERROR_LOGIN_ALREADY_TAKEN_HTTP_STATUS = 422
 
@@ -82,16 +75,15 @@ class LoginActivity : BaseActivity() {
             startActivity(Intent)
         }
         terminos.setOnClickListener {
-            var Intent:Intent = Intent(this@LoginActivity, TerminosFragment::class.java)
+            var Intent:Intent = Intent(this@LoginActivity, TerminosView::class.java)
             startActivity(Intent)
         }
 
         botonTerminos = findViewById(R.id.Check_terminos)
         aceptar = findViewById(R.id.accept)
 
-        if(botonTerminos.isChecked){
-            aceptar.isEnabled = true
-            aceptar.setOnClickListener {
+        aceptar.setOnClickListener {
+            if(botonTerminos.isChecked){
                 var firstpass = Password.text.toString()
                 var secondpass = confirmPassword.text.toString()
                 if (isEnteredUserNameValid() && firstpass == secondpass) {
@@ -106,8 +98,6 @@ class LoginActivity : BaseActivity() {
                 }
             }
 
-        }else{
-            aceptar.isEnabled =false
         }
 
 
