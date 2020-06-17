@@ -67,7 +67,8 @@
             android:name=".activities.OpponentsActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activities.TerminosView"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".activities.PermissionsActivity"

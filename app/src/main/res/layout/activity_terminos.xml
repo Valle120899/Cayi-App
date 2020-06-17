@@ -20,12 +20,14 @@
             android:fontFamily="@font/chewy"
             android:textSize="28sp"
             android:layout_marginLeft="9dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp">
 
         </TextView>
     </com.google.android.material.appbar.AppBarLayout>
-
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <TextView
         android:id="@+id/Terminos"
         android:layout_width="match_parent"
@@ -100,5 +102,7 @@
         android:layout_below="@id/Responsabilidad">
 
     </TextView>
+
+</ScrollView>
 
 </RelativeLayout>
