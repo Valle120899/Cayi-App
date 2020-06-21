@@ -5,17 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.FindFriendActivity"
-    android:layout_margin="50dp"
+    android:layout_margin="30dp"
+    android:gravity="center"
     >
 
     <TextView
         android:id="@+id/info_findfriend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Por favor ingrese el ID del usuario y luego presione su decisión."
+        android:text="Por favor ingrese el ID del usuario."
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:textAlignment="center"
+        android:textSize="18sp"
         />
 
     <EditText
@@ -24,28 +26,36 @@
         android:layout_height="wrap_content"
         android:hint="Ingrese el ID"
         android:layout_below="@+id/info_findfriend"
-        android:layout_margin="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:inputType="text"
 
         />
 
     <Button
         android:id="@+id/add"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/id_user"
         android:text="Agregar"
+        android:textColor="@color/white"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/button_circle"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="40dp"
         />
     <Button
         android:id="@+id/delete"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/id_user"
         android:text="Eliminar"
+        android:textColor="@color/white"
+        android:background="@drawable/button_circle"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="40dp"
         />
 
 </RelativeLayout>

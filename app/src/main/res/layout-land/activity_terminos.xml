@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:outlineAmbientShadowColor="@color/black_transparent_50"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/CayiColor"
+            android:fontFamily="@font/chewy"
+            android:textSize="28sp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp">
+
+        </TextView>
+    </com.google.android.material.appbar.AppBarLayout>
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/bar">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingRight="10dp"
+        >
+    <TextView
+        android:id="@+id/Terminos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_below="@+id/bar"
+        android:textColor="@color/CayiColor"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/chewy"
+        android:text="TERMINOS Y CONDICIONES DE USOS" />
+
+    <TextView
+        android:id="@+id/texto_terminos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/terminos"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/Terminos">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/Obligaciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Obligacion del Usuario"
+        android:layout_below="@id/texto_terminos"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:textColor="@color/black"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/texto_obligaciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Obligaciones"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="@string/obligacion"
+        android:textColor="@color/black"
+        >
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/Responsabilidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/texto_obligaciones"
+        android:text="Responsabilidad de Cayi"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="10dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/texto_responsabilidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/responsabilidad"
+        android:textColor="@color/black"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/Responsabilidad">
+
+    </TextView>
+    </LinearLayout>
+</ScrollView>
+
+</RelativeLayout>

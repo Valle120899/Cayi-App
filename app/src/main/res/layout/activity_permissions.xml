@@ -4,5 +4,4 @@
     android:layout_weight="1"
     android:adjustViewBounds="true"
     android:contentDescription="@null"
-    android:src="@drawable/ic_mic_off"
-    android:tint="@color/color_accent" />
+    android:src="@drawable/login_background" />
