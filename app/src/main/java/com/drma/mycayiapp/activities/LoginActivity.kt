@@ -132,7 +132,9 @@ class LoginActivity : BaseActivity() {
                 userHasMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/login_background.png?alt=media&token=c1d19b8b-a105-499d-9cce-22ca8ce3b6fb"
                 userHasMap["status"] = "offline"
                 userHasMap["search"] = username.toLowerCase()
-
+                userHasMap["image1"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/graycolor.png?alt=media&token=e59d768c-bc14-48de-93d3-22f6889a3586"
+                userHasMap["image2"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/graycolor.png?alt=media&token=e59d768c-bc14-48de-93d3-22f6889a3586"
+                userHasMap["image3"] = "https://firebasestorage.googleapis.com/v0/b/cayi-app-2e512.appspot.com/o/graycolor.png?alt=media&token=e59d768c-bc14-48de-93d3-22f6889a3586"
 
                 refUsers.updateChildren(userHasMap).addOnCompleteListener {
                     task ->  if(task.isSuccessful){

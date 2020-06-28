@@ -23,7 +23,7 @@ abstract class BaseActivity : AppCompatActivity() {
             progressDialog!!.setCancelable(false)
             progressDialog!!.setCanceledOnTouchOutside(false)
 
-            // Desabilita el boton
+            // Deshabilita el boton
             progressDialog!!.setOnKeyListener(KeyEventListener())
         }
         progressDialog!!.setMessage(getString(messageId))

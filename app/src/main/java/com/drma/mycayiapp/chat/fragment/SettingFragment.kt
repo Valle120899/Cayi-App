@@ -79,6 +79,48 @@ class SettingFragment : Fragment() {
 
         }
 
+        view.image1.setOnClickListener{
+            coverChecker = "image1"
+            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                //preguntar si tiene permiso
+                if (checkPermission(context,permissions)) {
+                    pickImage()
+                } else {
+                    val permisoArchivos = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    requestPermissions(permisoArchivos, PermissionRequest)
+                }
+            }
+
+        }
+
+        view.image2.setOnClickListener{
+            coverChecker = "image2"
+            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                //preguntar si tiene permiso
+                if (checkPermission(context,permissions)) {
+                    pickImage()
+                } else {
+                    val permisoArchivos = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    requestPermissions(permisoArchivos, PermissionRequest)
+                }
+            }
+
+        }
+
+        view.image3.setOnClickListener{
+            coverChecker = "image3"
+            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                //preguntar si tiene permiso
+                if (checkPermission(context,permissions)) {
+                    pickImage()
+                } else {
+                    val permisoArchivos = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    requestPermissions(permisoArchivos, PermissionRequest)
+                }
+            }
+
+        }
+
         view.cover_image.setOnClickListener{
             coverChecker = "cover"
             if(Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
@@ -159,7 +201,26 @@ class SettingFragment : Fragment() {
                         mapCoverImg["cover"] = url
                         usersRefrence!!.updateChildren(mapCoverImg)
                         coverChecker = ""
-                    }else{
+                    }
+                    else if(coverChecker == "image1"){
+                        val mapCoverImg = HashMap<String, Any>()
+                        mapCoverImg["image1"] = url
+                        usersRefrence!!.updateChildren(mapCoverImg)
+                        coverChecker = ""
+                    }
+                    else if(coverChecker == "image2"){
+                        val mapCoverImg = HashMap<String, Any>()
+                        mapCoverImg["image2"] = url
+                        usersRefrence!!.updateChildren(mapCoverImg)
+                        coverChecker = ""
+                    }
+                    else if(coverChecker == "image3"){
+                        val mapCoverImg = HashMap<String, Any>()
+                        mapCoverImg["image3"] = url
+                        usersRefrence!!.updateChildren(mapCoverImg)
+                        coverChecker = ""
+                    }
+                    else{
                         val mapProfileImg = HashMap<String, Any>()
                         mapProfileImg["profile"] = url
                         usersRefrence!!.updateChildren(mapProfileImg)

@@ -175,4 +175,17 @@ class ChatActivity : AppCompatActivity() {
 
         updateStatus("offline")
     }
+
+    override fun onStop() {
+        super.onStop()
+
+        updateStatus("offline")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        updateStatus("offline")
+    }
+
+
 }
