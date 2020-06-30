@@ -57,19 +57,33 @@
                 >
 
             </TextView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/username_profile"
+            android:layout_centerHorizontal="true">
+            <TextView
+                android:id="@+id/id_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Id: "
+                android:textColor="@color/text_color_medium_grey"
+                android:textSize="18sp">
+            </TextView>
 
             <TextView
                 android:id="@+id/user_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/username_profile"
                 android:layout_centerHorizontal="true"
+                android:layout_toEndOf="@+id/id_text"
                 android:text="Id"
                 android:textColor="@color/text_color_medium_grey"
                 android:textSize="18sp">
 
             </TextView>
-
+        </LinearLayout>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

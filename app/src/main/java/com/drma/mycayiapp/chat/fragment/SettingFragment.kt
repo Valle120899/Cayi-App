@@ -2,6 +2,10 @@ package com.drma.mycayiapp.chat.fragment
 
 import android.app.Activity
 import android.app.ProgressDialog
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Context.CLIPBOARD_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -12,6 +16,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import com.drma.mycayiapp.R
 import com.drma.mycayiapp.chat.modelclasses.Users
 import com.google.android.gms.tasks.Continuation
@@ -25,7 +30,9 @@ import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
 import io.fabric.sdk.android.services.common.CommonUtils.checkPermission
+import kotlinx.android.synthetic.main.fragment_setting.*
 import kotlinx.android.synthetic.main.fragment_setting.view.*
+import kotlinx.android.synthetic.main.fragment_setting.view.user_id
 
 class SettingFragment : Fragment() {
 
@@ -37,6 +44,7 @@ class SettingFragment : Fragment() {
     private var storageRef: StorageReference? = null
     private var coverChecker: String?= ""
     private var permissions = android.Manifest.permission.READ_EXTERNAL_STORAGE
+    private var textId : String? = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -133,6 +141,16 @@ class SettingFragment : Fragment() {
                 }
             }
         }
+
+        view.user_id.setOnLongClickListener {
+            textId = it.toString()
+            val clipboard = context?.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            var clipData = ClipData.newPlainText("Id", textId)
+            clipboard.primaryClip = clipData
+            Toast.makeText(context, "Id copiado en el portapapeles", Toast.LENGTH_LONG).show()
+            return@setOnLongClickListener false
+        }
+
 
         return view
     }
