@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     android:padding="5dp"
     tools:context=".chat.VisitUserProfileActivity">
+
+
+
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -13,6 +17,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:outlineAmbientShadowColor="@color/black_transparent_50"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textColor="@color/CayiColor"
+                    android:fontFamily="@font/chewy"
+                    android:textSize="28sp"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp">
+
+                </TextView>
+            </com.google.android.material.appbar.AppBarLayout>
     <androidx.cardview.widget.CardView
         android:id="@+id/cv1"
         android:layout_width="match_parent"
@@ -99,42 +124,62 @@
         ></Button>
         </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/Galeria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Galería"
+                    android:layout_below="@+id/send_message_btn"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    >
+                </TextView>
+
+            </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/send_message_btn"
+        android:layout_below="@+id/Galeria"
         android:layout_marginTop="10dp"
         android:gravity="center"
         >
         <ImageView
-            android:id="@+id/image1"
+            android:id="@+id/image1_display"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:scaleType="centerCrop"
             android:layout_marginTop="5dp"
-            android:src="@color/color_grey"
+            android:src="@drawable/graycolor"
             android:layout_marginRight="5dp"
             android:translationZ="5dp">
         </ImageView>
 
         <ImageView
-            android:id="@+id/image2"
+            android:id="@+id/image2_display"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:scaleType="centerCrop"
             android:layout_marginTop="5dp"
-            android:src="@color/color_grey"
+            android:src="@drawable/graycolor"
             android:layout_marginRight="5dp"
             android:translationZ="5dp">
         </ImageView>
 
         <ImageView
-            android:id="@+id/image3"
+            android:id="@+id/image3_display"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:scaleType="centerCrop"
             android:layout_marginTop="5dp"
-            android:src="@color/color_grey"
+            android:src="@drawable/graycolor"
             android:layout_marginRight="5dp"
             android:translationZ="5dp">
         </ImageView>

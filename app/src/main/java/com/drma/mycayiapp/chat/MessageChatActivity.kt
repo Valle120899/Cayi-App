@@ -242,7 +242,7 @@ class MessageChatActivity : AppCompatActivity() {
                             ) {
                                 if(response.code() == 200){
                                     if(response.body()!!.success !== 1){
-                                        Toast.makeText(this@MessageChatActivity, "Error.", Toast.LENGTH_LONG).show()
+                                        //Toast.makeText(this@MessageChatActivity, "Error.", Toast.LENGTH_LONG).show()
                                     }
                                 }
                             }

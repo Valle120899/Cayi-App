@@ -24,17 +24,24 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".chat.FriendsActivity"></activity>
-        <activity android:name=".chat.VisitUserProfileActivity" />
+        <activity android:name=".chat.VisitUserProfileActivity"
+            android:label="@string/VisitUserProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity android:name=".chat.ViewFullImageActivity" />
         <activity
             android:name=".chat.MessageChatActivity"
             android:label="@string/title_activity_chat"
             android:theme="@style/AppTheme.NoActionBar"
+
             />
         <activity
             android:name=".chat.ChatActivity"
             android:label="@string/title_activity_chat"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:screenOrientation="portrait"
+            />
         <activity android:name=".activities.FindFriendActivity" />
         <activity
             android:name=".activities.OptionsLorSActivity"

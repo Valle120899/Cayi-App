@@ -58,6 +58,7 @@
 
             </TextView>
         <LinearLayout
+            android:id="@+id/layout_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/username_profile"
@@ -81,17 +82,57 @@
                 android:text="Id"
                 android:textColor="@color/text_color_medium_grey"
                 android:textSize="18sp">
-
             </TextView>
         </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_1"
+                android:layout_centerHorizontal="true">
+                <TextView
+                    android:id="@+id/email_set"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Correo: "
+                    android:textColor="@color/text_color_medium_grey"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/user_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_toEndOf="@+id/email_set"
+                    android:text="Correo"
+                    android:textColor="@color/text_color_medium_grey"
+                    android:textSize="18sp">
+                </TextView>
+            </LinearLayout>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/Galeria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Galería"
+        android:layout_below="@+id/cv1"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginBottom="5dp"
+        >
+
+    </TextView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cv1"
+        android:layout_below="@+id/Galeria"
         android:gravity="center">
         <ImageView
             android:id="@+id/image1"

@@ -43,6 +43,7 @@ class VisitUserProfileActivity : AppCompatActivity() {
                     username_display.text = user!!.getusername()
                     Picasso.get().load(user!!.getprofile()).into(profile_display)
                     Picasso.get().load(user!!.getcover()).into(cover_display)
+
                     Picasso.get().load(user!!.getimage1()).into(image1_display)
                     Picasso.get().load(user!!.getimage2()).into(image2_display)
                     Picasso.get().load(user!!.getimage3()).into(image3_display)

@@ -92,7 +92,7 @@
         android:layout_height="130dp"
         android:scaleType="centerCrop"
         android:layout_marginTop="5dp"
-        android:src="@color/color_grey"
+        android:src="@drawable/graycolor"
         android:layout_marginRight="5dp"
         android:translationZ="5dp">
     </ImageView>
@@ -103,7 +103,7 @@
         android:layout_height="130dp"
         android:scaleType="centerCrop"
         android:layout_marginTop="5dp"
-        android:src="@color/color_grey"
+        android:src="@drawable/graycolor"
         android:layout_marginRight="5dp"
         android:translationZ="5dp">
     </ImageView>
@@ -114,7 +114,7 @@
         android:layout_height="130dp"
         android:scaleType="centerCrop"
         android:layout_marginTop="5dp"
-        android:src="@color/color_grey"
+        android:src="@drawable/graycolor"
         android:layout_marginRight="5dp"
         android:translationZ="5dp">
     </ImageView>

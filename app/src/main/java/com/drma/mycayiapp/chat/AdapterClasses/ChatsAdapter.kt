@@ -1,8 +1,6 @@
 package com.drma.mycayiapp.chat.AdapterClasses
 
-import android.content.Context
-import android.content.DialogInterface
-import android.content.Intent
+import android.content.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +15,10 @@ import com.drma.mycayiapp.chat.ViewFullImageActivity
 import com.drma.mycayiapp.chat.modelclasses.Chat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -72,6 +73,8 @@ class ChatsAdapter(mContext: Context,
                     })
                     builder.show()
                 }
+
+
             }
             //Mensaje del lado izquierdo
             else if(!chat.getSender().equals(firebaseUser!!.uid)){
@@ -121,8 +124,31 @@ class ChatsAdapter(mContext: Context,
                     })
                     builder.show()
                 }
+            }else{
+                holder.show_text_message!!.setOnClickListener{
+                    val options = arrayOf<CharSequence>(
+                        "Copiar mensaje",
+                        "Cancel"
+                    )
+
+                    var builder: AlertDialog.Builder = AlertDialog.Builder(holder.itemView.context)
+                    builder.setTitle("¿Qué desea hacer?")
+
+                    builder.setItems(options, DialogInterface.OnClickListener{
+                            dialog, which ->
+                        if(which == 0){
+                            copyMessage(position, holder)
+                            Toast.makeText(mContext, "Mensaje copiado", Toast.LENGTH_SHORT).show()
+                        }
+
+                    })
+                    builder.show()
+                }
             }
         }
+
+
+
         //Mensajes vistos
         if(position == mChatList.size-1){
             if(chat.isIsSeen()){
@@ -159,6 +185,27 @@ class ChatsAdapter(mContext: Context,
                     Toast.makeText(holder.itemView.context, "No se pudo eliminar.", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun copyMessage(position: Int, holder: ChatsAdapter.ViewHolder){
+        val ref = FirebaseDatabase.getInstance().reference.child("chats")
+            .child(mChatList.get(position).getMessageId()!!).addValueEventListener(object :ValueEventListener{
+                override fun onDataChange(p0: DataSnapshot) {
+                    var text:String = p0.value.toString()
+                    var copy:String=""
+                    copy = text.substring(130).dropLast(7)
+
+
+                    val clipboard = mContext?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                    var clipData = ClipData.newPlainText("CopyMessage", copy)
+                    clipboard.primaryClip = clipData
+                }
+
+                override fun onCancelled(p0: DatabaseError) {
+                }
+            })
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {

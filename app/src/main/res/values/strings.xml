@@ -291,5 +291,6 @@ Utilizar la aplicación y los contenidos con fines lícitos y/o ilícitos, contr
 CAYI procura garantizar disponibilidad, continuidad o buen funcionamiento de la aplicación. CAYI podrá bloquear, interrumpir o restringir el acceso a esta cuando lo considere necesario para el mejoramiento de la aplicación o por dada de baja de la misma.
 Se recomienda al Usuario tomar medidas adecuadas y actuar diligentemente al momento de acceder a la aplicación, como por ejemplo, contar con programas de protección, antivirus, para manejo de malware, spyware y herramientas similares.
 </string>
+    <string name="VisitUserProfileActivity">VisitUserProfileActivity</string>
 
 </resources>

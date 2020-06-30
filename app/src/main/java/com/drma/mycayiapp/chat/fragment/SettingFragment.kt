@@ -45,6 +45,7 @@ class SettingFragment : Fragment() {
     private var coverChecker: String?= ""
     private var permissions = android.Manifest.permission.READ_EXTERNAL_STORAGE
     private var textId : String? = ""
+    private var textCorreo : String? = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,8 +65,12 @@ class SettingFragment : Fragment() {
                     if(context!=null){
                         view.username_profile.text = user!!.getusername()
                         view.user_id.text = user!!.getuid()
+                        view.user_email.text= firebaseUser!!.email.toString()
                         Picasso.get().load(user.getprofile()).into(view.profile_image)
                         Picasso.get().load(user.getcover()).into(view.cover_image)
+                        Picasso.get().load(user.getimage1()).into(view.image1)
+                        Picasso.get().load(user.getimage2()).into(view.image2)
+                        Picasso.get().load(user.getimage3()).into(view.image3)
                     }
                 }
             }
@@ -143,7 +148,7 @@ class SettingFragment : Fragment() {
         }
 
         view.user_id.setOnLongClickListener {
-            textId = it.toString()
+            textId = user_id.text.toString()
             val clipboard = context?.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
             var clipData = ClipData.newPlainText("Id", textId)
             clipboard.primaryClip = clipData
