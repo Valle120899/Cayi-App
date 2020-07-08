@@ -1,172 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="5dp"
     tools:context=".chat.fragment.SettingFragment">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv1"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-        <RelativeLayout
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/cover_image"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv1"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:scaleType="centerCrop"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/login_background"
-                android:translationZ="5dp">
-            </ImageView>
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="60dp"
-                android:scaleType="centerCrop"
-                android:layout_marginBottom="50dp"
-                android:src="@drawable/profile_image"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="3dp"
-                android:translationZ="5dp"
-                >
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
 
-            </de.hdodenhof.circleimageview.CircleImageView>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/cover_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_marginTop="5dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/login_background"
+                        android:translationZ="5dp"></ImageView>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginBottom="50dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/profile_image"
+                        android:translationZ="5dp"
+                        app:civ_border_color="@color/white"
+                        app:civ_border_width="3dp">
+
+                    </de.hdodenhof.circleimageview.CircleImageView>
+
+                    <TextView
+                        android:id="@+id/username_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/profile_image"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/username"
+                        android:textColor="@color/black"
+                        android:textSize="28sp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                    <LinearLayout
+                        android:id="@+id/layout_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/username_profile"
+                        android:layout_centerHorizontal="true">
+
+                        <TextView
+                            android:id="@+id/id_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Id: "
+                            android:textColor="@color/text_color_medium_grey"
+                            android:textSize="18sp"></TextView>
+
+                        <TextView
+                            android:id="@+id/user_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_toEndOf="@+id/id_text"
+                            android:text="Id"
+                            android:textColor="@color/text_color_medium_grey"
+                            android:textSize="18sp"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/layout_1"
+                        android:layout_centerHorizontal="true">
+
+                        <TextView
+                            android:id="@+id/email_set"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Correo: "
+                            android:textColor="@color/text_color_medium_grey"
+                            android:textSize="18sp"></TextView>
+
+                        <TextView
+                            android:id="@+id/user_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_toEndOf="@+id/email_set"
+                            android:text="Correo"
+                            android:textColor="@color/text_color_medium_grey"
+                            android:textSize="18sp"></TextView>
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/username_profile"
+                android:id="@+id/Galeria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/username"
-                android:layout_below="@+id/profile_image"
+                android:layout_below="@+id/cv1"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="15dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="28sp"
                 android:layout_marginBottom="5dp"
-                >
+                android:text="Galería"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp">
 
             </TextView>
-        <LinearLayout
-            android:id="@+id/layout_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/username_profile"
-            android:layout_centerHorizontal="true">
-            <TextView
-                android:id="@+id/id_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="Id: "
-                android:textColor="@color/text_color_medium_grey"
-                android:textSize="18sp">
-            </TextView>
 
-            <TextView
-                android:id="@+id/user_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_toEndOf="@+id/id_text"
-                android:text="Id"
-                android:textColor="@color/text_color_medium_grey"
-                android:textSize="18sp">
-            </TextView>
-        </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/layout_1"
-                android:layout_centerHorizontal="true">
-                <TextView
-                    android:id="@+id/email_set"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="Correo: "
-                    android:textColor="@color/text_color_medium_grey"
-                    android:textSize="18sp">
-                </TextView>
+                android:layout_below="@+id/Galeria"
+                android:gravity="center">
 
-                <TextView
-                    android:id="@+id/user_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_toEndOf="@+id/email_set"
-                    android:text="Correo"
-                    android:textColor="@color/text_color_medium_grey"
-                    android:textSize="18sp">
-                </TextView>
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/graycolor"
+                    android:translationZ="5dp"></ImageView>
+
+                <ImageView
+                    android:id="@+id/image2"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/graycolor"
+                    android:translationZ="5dp"></ImageView>
+
+                <ImageView
+                    android:id="@+id/image3"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/graycolor"
+                    android:translationZ="5dp"></ImageView>
             </LinearLayout>
-        </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/Galeria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Galería"
-        android:layout_below="@+id/cv1"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginBottom="5dp"
-        >
-
-    </TextView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Galeria"
-        android:gravity="center">
-        <ImageView
-            android:id="@+id/image1"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/graycolor"
-            android:layout_marginRight="5dp"
-            android:translationZ="5dp">
-        </ImageView>
-
-        <ImageView
-            android:id="@+id/image2"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/graycolor"
-            android:layout_marginRight="5dp"
-            android:translationZ="5dp">
-        </ImageView>
-
-        <ImageView
-            android:id="@+id/image3"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/graycolor"
-            android:layout_marginRight="5dp"
-            android:translationZ="5dp">
-        </ImageView>
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

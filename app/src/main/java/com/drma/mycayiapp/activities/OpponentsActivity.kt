@@ -159,7 +159,6 @@ class OpponentsActivity : BaseActivity() {
         ajustes.setOnClickListener(){
             val intent:Intent = Intent(this@OpponentsActivity, FindFriendActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
 

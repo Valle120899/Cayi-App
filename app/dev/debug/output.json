@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.drma.mycayiapp",
+  "variantName": "devDebug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "properties": [],
+      "versionCode": 200000,
+      "versionName": "200000",
+      "enabled": true,
+      "outputFile": "app-debug-20200630-code-200000-version-2.0.0.apk"
+    }
+  ]
+}
