@@ -11,10 +11,14 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.Base"
-        android:background="@color/white"
-        android:paddingBottom="6dp"
-        android:paddingTop="6dp">
+        android:theme="@style/AppTheme.Base">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_chat2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white">
+
         <TextView
             android:id="@+id/nameApp"
             android:layout_width="wrap_content"
@@ -26,17 +30,16 @@
             android:textSize="28sp">
 
         </TextView>
+
+    </androidx.appcompat.widget.Toolbar>
+
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/image_viewer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         >
     </ImageView>
-    </androidx.viewpager.widget.ViewPager>
 
 </LinearLayout>

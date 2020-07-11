@@ -31,12 +31,12 @@
         <activity android:name=".chat.ViewFullImageActivity"
             android:label="ViewFullImageActivity"
             android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".chat.MessageChatActivity"
             />
         <activity
             android:name=".chat.MessageChatActivity"
             android:label="@string/title_activity_chat"
             android:theme="@style/AppTheme.NoActionBar"
-
             />
         <activity
             android:name=".chat.ChatActivity"

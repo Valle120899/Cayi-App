@@ -9,9 +9,8 @@ import com.squareup.picasso.Picasso
 class ViewFullImageActivity : AppCompatActivity() {
 
     private var image_viewer: ImageView? = null
+   // private var backImage : ImageView? = null
     private var imageUrl: String = ""
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
