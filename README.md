@@ -1,6 +1,8 @@
 # Cayi-App
 Proyecto de programación móvil- UCA
 
+Link de descarga de la app en la PlayStore: https://play.google.com/store/apps/details?id=com.drma.mycayiapp
+
 Quickblox android SDK
 
 En conjunto:
