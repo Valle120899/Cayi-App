@@ -32,6 +32,9 @@ Configuración:
 Firebase trabaja por medio de cuentas asociadas con google, como es el caso de gmail. Posterior entrar a https://firebase.google.com , e iniciar sesión con la respectiva cuenta, se procede a entrar a la consola de firebase y se añade un nuevo proyecto, el cual está relacionado con la app creada.
 Se añade la aplicación en el botón “añadir aplicación” y con el archivo “googe-services.json” obtenido, se agrega al directorio principal de la aplicación.
 Posterior a ello, se configura la consola de firebase, modificando que la autentificación sea mediante correo, la database esté habilitada y finalmente, que el storage se encuentre en modo de prueba en tiempo real.
+
+![alt text](https://raw.githubusercontent.com/Valle120899/Cayi-App/master/firebase.jpg)
+
 Dependencias de firebase:
 dependences{
     implementation "com.google.firebase:firebase-messaging:20.2.0"
