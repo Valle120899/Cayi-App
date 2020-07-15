@@ -11,7 +11,7 @@ Dentro de cada proyecto utilizando el API de Quickblox, se es necesario primero 
 Posterior a ello, se procede a crear una app dentro del sitio web y obtener las credenciales correspondientes dentro de la administración de la aplicación creada.
 En Android Studio, se busca la clase “App”, y dentro de ella se encontrarán cuatro constantes: APPLICATION_ID, AUTH_KEY, AUTH_SECRET y ACCOUNT_KEY; Habiendo encontrado dichas constantes, se procede a buscar, en el menú de administración de la app, los respectivos códigos para poder empezar a trabajar ya con la API de Quickblox.
 
-https://raw.githubusercontent.com/Valle120899/Cayi-App/master/Quick.jpg
+![alt text](https://raw.githubusercontent.com/Valle120899/Cayi-App/master/Quick.jpg)
 
 Dependencias quickblox:
 dependencies {
