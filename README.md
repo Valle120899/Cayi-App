@@ -16,11 +16,17 @@ En Android Studio, se busca la clase “App”, y dentro de ella se encontrarán
 Dependencias quickblox:
 dependencies {
     implementation "com.quickblox:quickblox-android-sdk-messages:3.9.2"
+    
     implementation "com.quickblox:quickblox-android-sdk-chat:3.9.2"
+    
     implementation "com.quickblox:quickblox-android-sdk-content:3.9.2"
+    
     implementation "com.quickblox:quickblox-android-sdk-videochat-webrtc:3.9.2"
+    
     implementation "com.quickblox:quickblox-android-sdk-conference:3.9.2"
+    
     implementation "com.quickblox:quickblox-android-sdk-customobjects:3.9.2"
+    
 }
 
 Firebase Android:
@@ -38,11 +44,19 @@ Posterior a ello, se configura la consola de firebase, modificando que la autent
 Dependencias de firebase:
 dependences{
     implementation "com.google.firebase:firebase-messaging:20.2.0"
+    
     implementation 'com.google.firebase:firebase-analytics:17.4.2'
+    
     implementation 'com.google.firebase:firebase-database:19.3.0'
+    
     implementation 'com.google.firebase:firebase-storage:19.1.1'
+    
     implementation 'com.google.firebase:firebase-auth:19.3.1'
+    
     implementation 'com.firebaseui:firebase-ui-database:3.2.2'
+    
     implementation 'com.squareup.picasso:picasso:2.71828'
+    
     implementation "com.google.firebase:firebase-core:17.4.2"
+    
 }
