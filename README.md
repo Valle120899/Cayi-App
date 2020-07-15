@@ -15,6 +15,7 @@ En Android Studio, se busca la clase “App”, y dentro de ella se encontrarán
 
 Dependencias quickblox:
 dependencies {
+
     implementation "com.quickblox:quickblox-android-sdk-messages:3.9.2"
     
     implementation "com.quickblox:quickblox-android-sdk-chat:3.9.2"
@@ -43,6 +44,7 @@ Posterior a ello, se configura la consola de firebase, modificando que la autent
 
 Dependencias de firebase:
 dependences{
+
     implementation "com.google.firebase:firebase-messaging:20.2.0"
     
     implementation 'com.google.firebase:firebase-analytics:17.4.2'
